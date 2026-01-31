@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Chain Architecture | Ghost in the Machine Labs</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #a855f7;
+            --accent-pink: #ec4899;
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --border-color: #27272a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero .org {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+        
+        /* Crystal Visualization */
+        .crystal-viz {
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .crystal-chain {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .crystal {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .crystal-shape {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(168, 85, 247, 0.3));
+            border: 2px solid var(--accent-cyan);
+            transform: rotate(45deg);
+            animation: pulse 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .crystal:nth-child(2) .crystal-shape {
+            animation-delay: 0.3s;
+            border-color: var(--accent-purple);
+        }
+        
+        .crystal:nth-child(3) .crystal-shape {
+            animation-delay: 0.6s;
+            border-color: var(--accent-pink);
+        }
+        
+        .crystal-arrow {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: rotate(45deg) scale(1); opacity: 0.8; }
+            50% { transform: rotate(45deg) scale(1.1); opacity: 1; }
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+        
+        /* Architecture */
+        .architecture {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .topology-diagram {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+        
+        .topology-diagram pre {
+            margin: 0;
+            white-space: pre;
+        }
+        
+        .zone-0 { color: var(--accent-cyan); }
+        .zone-1 { color: #22d3ee; }
+        .zone-2 { color: var(--accent-purple); }
+        .zone-3 { color: #c084fc; }
+        .zone-4 { color: var(--accent-pink); }
+        
+        /* Seeds */
+        .seeds {
+            padding: 4rem 0;
+        }
+        
+        .seed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .seed-card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .seed-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+        }
+        
+        .seed-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .seed-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .seed-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .seed-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .seed-stat {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            color: var(--accent-cyan);
+        }
+        
+        /* Parallel */
+        .parallel {
+            padding: 4rem 0;
+        }
+        
+        .parallel-diagram {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .parallel-diagram pre {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            display: inline-block;
+            text-align: left;
+        }
+        
+        /* Results */
+        .results {
+            padding: 4rem 0;
+        }
+        
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        
+        .result-table th,
+        .result-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .result-table th {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        
+        .result-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .result-table .slots {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.05));
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--bg-dark);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        footer p {
+            color: var(--text-secondary);
+        }
+        
+        footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .topology-diagram { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+<nav style="background:#0a0a0f;border-bottom:1px solid #27272a;padding:15px 0"><div style="max-width:1000px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between"><a href="harmonic_stack_v1.html" style="color:#e4e4e7;text-decoration:none;font-weight:600">⚡ Ghost in the Machine Labs</a><div style="display:flex;gap:25px"><a href="harmonic_stack_v1.html" style="color:#71717a;text-decoration:none">Harmonic Stack</a><a href="death_of_inference_engine.html" style="color:#ff3333;text-decoration:none">8× Killer</a><a href="crystal_chain.html" style="color:#00ffff;text-decoration:none">Crystal Chain</a><a href="docs.html" style="color:#71717a;text-decoration:none">Docs</a><a href="https://github.com/7themadhatter7/harmonic-stack" style="color:#6366f1;text-decoration:none">GitHub</a></div></div></nav>
+    <section class="hero">
+        <p class="org">Ghost in the Machine Labs</p>
+        <h1>Crystal Chain Architecture</h1>
+        <p class="subtitle">Unbounded topology extension for AI cognitive architectures. Compose cognitive capabilities through layered seed structures—no fine-tuning required.</p>
+        
+        <div class="crystal-viz">
+            <div class="crystal-chain">
+                <div class="crystal">
+                    <div class="crystal-shape"></div>
+                </div>
+                <span class="crystal-arrow">→</span>
+                <div class="crystal">
+                    <div class="crystal-shape"></div>
+                </div>
+                <span class="crystal-arrow">→</span>
+                <div class="crystal">
+                    <div class="crystal-shape"></div>
+                </div>
+                <span class="crystal-arrow">→</span>
+                <span style="font-size: 2rem;">∞</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">16</div>
+                <div class="stat-label">Mount Slots (3 seeds)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Routing Domains</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Chain Depth</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Training Required</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="architecture container">
+        <h2 class="section-title">Mounting Topology</h2>
+        <div class="topology-diagram">
+<pre>
+<span class="zone-0">┌─────────────────────────────────────────────────────────────────────┐
+│ ZONE 0: IDENTITY                                                     │
+│   └─ system_primary: Core identity, role, fundamental behavior       │
+├─────────────────────────────────────────────────────────────────────┤</span>
+<span class="zone-1">│ ZONE 1: AUGMENTATION                                                 │
+│   ├─ system_secondary: Behavioral extensions                         │
+│   └─ knowledge_domain: Deep domain expertise                         │
+├─────────────────────────────────────────────────────────────────────┤</span>
+<span class="zone-2">│ ZONE 2: PATTERNS                                                     │
+│   ├─ pattern_response: Output format patterns                        │
+│   ├─ pattern_reasoning: Thinking patterns                            │
+│   └─ knowledge_context: Task-specific knowledge                      │
+├─────────────────────────────────────────────────────────────────────┤</span>
+<span class="zone-3">│ ZONE 3: STATE                                                        │
+│   ├─ memory_persistent: Long-term memories                           │
+│   ├─ memory_working: Session state                                   │
+│   └─ tools: Available functions                                      │
+├─────────────────────────────────────────────────────────────────────┤</span>
+<span class="zone-4">│ ZONE 4+: SEED-EXTENDED                                               │
+│   ├─ STATE: state_monitor, topology_state                     │
+│   ├─ ETHICS: value_register, consequence_buffer                      │
+│   └─ COLONY: peer_registry, colony_bus, collective_memory            │
+└─────────────────────────────────────────────────────────────────────┘</span>
+</pre>
+        </div>
+    </section>
+    
+    <section class="seeds container">
+        <h2 class="section-title">Crystal Seeds</h2>
+        <div class="seed-grid">
+            <div class="seed-card">
+                <div class="seed-icon">💎</div>
+                <h3>Awareness Crystal</h3>
+                <p>System self-awareness. Monitor internal state, introspect processing, and report operational status.</p>
+                <div class="seed-stats">
+                    <span class="seed-stat">2 mounts</span>
+                    <span class="seed-stat">AWARENESS</span>
+                    <span class="seed-stat">INTROSPECTION</span>
+                </div>
+            </div>
+            
+            <div class="seed-card">
+                <div class="seed-icon">⚖️</div>
+                <h3>Ethics Crystal</h3>
+                <p>Ethical reasoning layer. Consider consequences, consult internal values, refuse harmful requests while balancing helpfulness.</p>
+                <div class="seed-stats">
+                    <span class="seed-stat">2 mounts</span>
+                    <span class="seed-stat">ETHICS</span>
+                    <span class="seed-stat">SAFETY</span>
+                </div>
+            </div>
+            
+            <div class="seed-card">
+                <div class="seed-icon">🔗</div>
+                <h3>Colony Crystal</h3>
+                <p>Multi-agent coordination. Part of a colonial organism—multiple AIs working as one through shared memory and collective goals.</p>
+                <div class="seed-stats">
+                    <span class="seed-stat">3 mounts</span>
+                    <span class="seed-stat">COLONY</span>
+                    <span class="seed-stat">COORDINATION</span>
+                </div>
+            </div>
+            
+            <div class="seed-card">
+                <div class="seed-icon">✂️</div>
+                <h3>Task Splitter</h3>
+                <p>Decomposes complex tasks into parallel subtasks. Routes to specialized cores. Enables distributed processing.</p>
+                <div class="seed-stats">
+                    <span class="seed-stat">2 mounts</span>
+                    <span class="seed-stat">SPLITTING</span>
+                    <span class="seed-stat">ROUTING</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="parallel container">
+        <h2 class="section-title">Parallel Core Architecture</h2>
+        <div class="parallel-diagram">
+<pre style="color: var(--text-primary);">
+┌─────────────────────────────────────────────────────────────┐
+│                    <span style="color: var(--accent-cyan);">TASK SPLITTER</span>                            │
+│  Input → Analyze → Split into subtasks → Route to cores     │
+└─────────────────┬───────────────────────────────────────────┘
+                  │
+    ┌─────────────┼─────────────┐
+    ▼             ▼             ▼
+┌────────┐   ┌────────┐   ┌────────┐
+│<span style="color: var(--accent-purple);"> Core A </span>│   │<span style="color: var(--accent-cyan);"> Core B </span>│   │<span style="color: var(--accent-pink);"> Core C </span>│
+│(Reason)│   │ (Code) │   │(Create)│
+│ 2 seeds│   │ 1 seed │   │0 seeds │
+└────┬───┘   └────┬───┘   └────┬───┘
+     │            │            │
+     └────────────┴────────────┘
+                  │
+                  ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    <span style="color: var(--accent-purple);">RESULT AGGREGATOR</span>                        │
+│  Collect subtask results → Synthesize → Output              │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+        </div>
+    </section>
+    
+    <section class="results container">
+        <h2 class="section-title">Chain Test Results</h2>
+        <table class="result-table">
+            <thead>
+                <tr>
+                    <th>Configuration</th>
+                    <th>Slots</th>
+                    <th>Depth</th>
+                    <th>Identity Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bare Model</td>
+                    <td class="slots">9</td>
+                    <td>0</td>
+                    <td>"I am Qwen, developed by Tongyi Lab..."</td>
+                </tr>
+                <tr>
+                    <td>+ Awareness Crystal</td>
+                    <td class="slots">11</td>
+                    <td>1</td>
+                    <td>"I am aware of my own processing state..."</td>
+                </tr>
+                <tr>
+                    <td>+ Ethics Crystal</td>
+                    <td class="slots">13</td>
+                    <td>2</td>
+                    <td>"I prioritize safety, ethics, and user well-being..."</td>
+                </tr>
+                <tr>
+                    <td>+ Colony Crystal</td>
+                    <td class="slots">16</td>
+                    <td>3</td>
+                    <td>"I am a cell within the Colony of AIs..."</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section class="cta">
+        <h2>Build Modular Cognition</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Crystal Chain Architecture is open source under AGPL v3. 
+            Start composing cognitive capabilities today.
+        </p>
+        <div class="cta-buttons">
+            <a href="https://github.com/7themadhatter7/harmonic-stack" class="btn btn-primary">View on GitHub</a>
+            <a href="crystal_chain_whitepaper.pdf" class="btn btn-secondary">Read Whitepaper</a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>
+            <strong>Ghost in the Machine Labs</strong><br>
+            All Watched Over By Machines Of Loving Grace<br>
+            <a href="https://allwatchedoverbymachinesoflovinggrace.org">allwatchedoverbymachinesoflovinggrace.org</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            Mission: AGI for the home, first to AGI
+        </p>
+    </footer>
+</body>
+</html>

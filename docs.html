@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Harmonic Stack</title>
+    <meta name="description" content="Harmonic Stack v1.0 documentation - installation, architecture, and API reference.">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent: #6366f1;
+            --text: #e4e4e7;
+            --text-dim: #71717a;
+            --border: #27272a;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.7; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+        @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+        .sidebar { background: var(--bg-card); border-right: 1px solid var(--border); padding: 24px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+        .sidebar-logo { font-weight: 600; margin-bottom: 32px; display: flex; align-items: center; gap: 8px; }
+        .sidebar-logo span { width: 28px; height: 28px; background: linear-gradient(135deg, var(--accent), #8b5cf6); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+        .nav-section { margin-bottom: 24px; }
+        .nav-title { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 12px; }
+        .nav-link { display: block; padding: 8px 12px; color: var(--text-dim); border-radius: 6px; font-size: 0.9rem; }
+        .nav-link:hover { color: var(--text); background: var(--bg-dark); text-decoration: none; }
+        .main { padding: 48px 64px; max-width: 900px; }
+        @media (max-width: 600px) { .main { padding: 24px; } }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; background: linear-gradient(135deg, var(--text), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 1.5rem; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.2rem; margin: 32px 0 12px; }
+        p { margin-bottom: 16px; color: var(--text-dim); }
+        ul, ol { margin: 0 0 16px 24px; color: var(--text-dim); }
+        li { margin-bottom: 8px; }
+        pre { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 16px 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+        code { font-family: 'JetBrains Mono', monospace; background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+        pre code { background: none; padding: 0; }
+        .comment { color: #6b7280; }
+        .keyword { color: #c084fc; }
+        .string { color: #34d399; }
+        .number { color: #f59e0b; }
+        .callout { padding: 16px 20px; border-radius: 8px; margin: 24px 0; border-left: 4px solid var(--accent); background: rgba(99,102,241,0.1); }
+        .callout-title { font-weight: 600; margin-bottom: 4px; }
+        .callout p { margin: 0; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
+        th, td { padding: 12px 16px; text-align: left; border: 1px solid var(--border); }
+        th { background: var(--bg-card); font-weight: 600; }
+        td { color: var(--text-dim); }
+        .layer-diagram { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+        .layer-row { display: grid; grid-template-columns: 80px 1fr 120px; gap: 16px; align-items: center; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+        .layer-num { font-size: 0.75rem; color: var(--accent); font-weight: 600; }
+        .layer-name { font-weight: 500; }
+        .layer-model { font-family: monospace; font-size: 0.8rem; color: var(--text-dim); }
+    </style>
+</head>
+<body>
+<nav style="background:#0a0a0f;border-bottom:1px solid #27272a;padding:15px 0"><div style="max-width:1000px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between"><a href="harmonic_stack_v1.html" style="color:#e4e4e7;text-decoration:none;font-weight:600">⚡ Ghost in the Machine Labs</a><div style="display:flex;gap:25px"><a href="harmonic_stack_v1.html" style="color:#71717a;text-decoration:none">Harmonic Stack</a><a href="death_of_inference_engine.html" style="color:#ff3333;text-decoration:none">8× Killer</a><a href="crystal_chain.html" style="color:#00ffff;text-decoration:none">Crystal Chain</a><a href="docs.html" style="color:#71717a;text-decoration:none">Docs</a><a href="https://github.com/7themadhatter7/harmonic-stack" style="color:#6366f1;text-decoration:none">GitHub</a></div></div></nav>
+    <div class="layout">
+        <nav class="sidebar">
+            <div class="sidebar-logo"><span>⚡</span> Harmonic Stack</div>
+            <div class="nav-section">
+                <div class="nav-title">Getting Started</div>
+                <a href="#installation" class="nav-link">Installation</a>
+                <a href="#quickstart" class="nav-link">Quick Start</a>
+                <a href="#requirements" class="nav-link">Requirements</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Architecture</div>
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#layers" class="nav-link">The Five Layers</a>
+                <a href="#hardware" class="nav-link">Hardware Profiles</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Components</div>
+                <a href="#executive" class="nav-link">Executive</a>
+                <a href="#ethics" class="nav-link">Ethics Council</a>
+                <a href="#workers" class="nav-link">Workers</a>
+                <a href="#specialists" class="nav-link">Specialists</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Links</div>
+                <a href="harmonic_stack_v1.html" class="nav-link">← Back to Release</a>
+                <a href="https://github.com/7themadhatter7/harmonic-stack" class="nav-link">GitHub</a>
+            </div>
+        </nav>
+        
+        <main class="main">
+            <h1>Documentation</h1>
+            <p>Complete guide to Harmonic Stack v1.0</p>
+            
+            <h2 id="installation">Installation</h2>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Python 3.10+</li>
+                <li>Ollama installed and running</li>
+                <li>PostgreSQL (optional, for persistent memory)</li>
+                <li>16GB+ RAM recommended</li>
+            </ul>
+            
+            <h3>Install from GitHub</h3>
+<pre><span class="comment"># Clone the repository</span>
+git clone https://github.com/7themadhatter7/harmonic-stack.git
+<span class="keyword">cd</span> harmonic-stack
+
+<span class="comment"># Install dependencies</span>
+pip install -r requirements.txt
+
+<span class="comment"># Pull models (adjust for your hardware)</span>
+ollama pull qwen3:32b   <span class="comment"># Executive</span>
+ollama pull qwen3:14b   <span class="comment"># Operator/Directors</span>
+ollama pull qwen3:8b    <span class="comment"># Workers</span></pre>
+
+            <div class="callout">
+                <div class="callout-title">💡 Auto-scaling</div>
+                <p>Harmonic Stack auto-detects your hardware and selects appropriate models. On limited hardware, it will gracefully degrade.</p>
+            </div>
+            
+            <h2 id="quickstart">Quick Start</h2>
+<pre><span class="keyword">from</span> harmonic_executive <span class="keyword">import</span> HarmonicStack
+
+<span class="comment"># Initialize - auto-configures to your hardware</span>
+stack = HarmonicStack()
+
+<span class="comment"># Process a task with full orchestration</span>
+response = <span class="keyword">await</span> stack.process(<span class="string">"Analyze this code for security issues"</span>)
+print(response.content)
+
+<span class="comment"># Run ethics arbitration</span>
+decision = <span class="keyword">await</span> stack.ethics_council.arbitrate(
+    <span class="string">"Should we implement shadow banning?"</span>
+)
+print(decision.votes)  <span class="comment"># {approve: 6, revise: 1, abstain: 1}</span></pre>
+
+            <h2 id="requirements">System Requirements</h2>
+            <table>
+                <tr><th>Profile</th><th>VRAM/RAM</th><th>Executive</th><th>Workers</th></tr>
+                <tr><td>phone</td><td>0-16GB</td><td>qwen3:1.7b</td><td>1</td></tr>
+                <tr><td>gaming</td><td>16-24GB</td><td>qwen3:8b</td><td>2</td></tr>
+                <tr><td>desktop</td><td>24-48GB</td><td>qwen3:14b</td><td>4</td></tr>
+                <tr><td>workstation</td><td>48-96GB</td><td>qwen3:32b</td><td>8</td></tr>
+                <tr><td>server</td><td>96-512GB</td><td>qwen3:32b</td><td>16</td></tr>
+                <tr><td>datacenter</td><td>512GB+</td><td>qwen3:32b</td><td>32</td></tr>
+            </table>
+            
+            <h2 id="overview">Architecture Overview</h2>
+            <p>Harmonic Stack implements a 5-layer cognitive architecture. Each layer has distinct responsibilities and appropriate model sizes.</p>
+            
+            <div class="layer-diagram">
+                <div class="layer-row"><span class="layer-num">LAYER 1</span><span class="layer-name">Executive</span><span class="layer-model">qwen3:32b</span></div>
+                <div class="layer-row"><span class="layer-num">LAYER 2</span><span class="layer-name">Operator + 4 Directors</span><span class="layer-model">qwen3:14b</span></div>
+                <div class="layer-row"><span class="layer-num">LAYER 3</span><span class="layer-name">Ethics Council</span><span class="layer-model">8 members</span></div>
+                <div class="layer-row"><span class="layer-num">LAYER 4</span><span class="layer-name">Workers</span><span class="layer-model">qwen3:8b</span></div>
+                <div class="layer-row"><span class="layer-num">LAYER 5</span><span class="layer-name">Specialists</span><span class="layer-model">fitted</span></div>
+            </div>
+            
+            <h2 id="layers">The Five Layers</h2>
+            
+            <h3 id="executive">Layer 1: Executive</h3>
+            <p>Strategic reasoning, final decisions, synthesis. Uses the largest available model.</p>
+            
+            <h3>Layer 2: Operator & Directors</h3>
+            <p>Day-to-day coordination. Four Directors handle: Technical, Creative, Research, Operations.</p>
+            
+            <h3 id="ethics">Layer 3: Ethics Council</h3>
+            <p>8-member deliberative body for ethical review:</p>
+            <table>
+                <tr><th>Member</th><th>Perspective</th></tr>
+                <tr><td>A. Priori</td><td>Deontological ethics</td></tr>
+                <tr><td>Brautigan</td><td>Human-machine harmony</td></tr>
+                <tr><td>Hans Jonas</td><td>Responsibility ethics</td></tr>
+                <tr><td>Wittgenstein</td><td>Language philosophy</td></tr>
+                <tr><td>Jane Vonnegut</td><td>Humanist pragmatism</td></tr>
+                <tr><td>Kurt Vonnegut</td><td>Satirical wisdom</td></tr>
+                <tr><td>Studs Terkel</td><td>Working-class perspective</td></tr>
+                <tr><td>Voltaire</td><td>Skeptical rationalism</td></tr>
+            </table>
+            
+            <h3 id="workers">Layer 4: Workers</h3>
+            <p>Parallel task execution. Scales from 1-32 workers based on hardware.</p>
+            
+            <h3 id="specialists">Layer 5: Specialists</h3>
+            <p>Domain experts with fitted prompts: code, analysis, writing, research, legal, finance, strategy, security, data, systems, design, narrative.</p>
+            
+            <h2 id="hardware">Hardware Profiles</h2>
+<pre><span class="keyword">from</span> hardware_profiles <span class="keyword">import</span> select_profile
+
+<span class="comment"># Auto-detect</span>
+profile_name, profile, vram = select_profile()
+print(<span class="string">f"Selected: {profile_name} ({vram}GB)"</span>)
+
+<span class="comment"># Or force specific profile</span>
+<span class="keyword">from</span> hardware_profiles <span class="keyword">import</span> get_profile
+profile = get_profile(<span class="string">"workstation"</span>)</pre>
+
+            <h2>API Reference</h2>
+<pre><span class="keyword">class</span> HarmonicStack:
+    <span class="keyword">def</span> __init__(self, profile: str = <span class="keyword">None</span>)
+    <span class="keyword">async def</span> process(task: str, context: dict = <span class="keyword">None</span>) -> Response
+    <span class="keyword">async def</span> query_executive(prompt: str) -> str
+    <span class="keyword">async def</span> arbitrate(decision: str) -> ArbitrationResult
+
+<span class="keyword">class</span> ArbitrationSystem:
+    <span class="keyword">async def</span> arbitrate(case: str) -> ArbitrationResult
+    <span class="keyword">def</span> get_council() -> List[CouncilMember]</pre>
+
+            <h2>Configuration</h2>
+<pre><span class="comment"># Environment variables</span>
+HARMONIC_PROFILE=workstation
+HARMONIC_OLLAMA_URL=http://localhost:11434
+HARMONIC_DB_URL=postgresql://...
+HARMONIC_LOG_LEVEL=INFO</pre>
+
+            <h2>Licensing</h2>
+            <div class="callout">
+                <div class="callout-title">"The poetry is free. The exploitation isn't."</div>
+                <p>Dual-licensing: Consumer (free forever) + Commercial (negotiated with Niceness Clauses).</p>
+            </div>
+            
+            <p><strong>Consumer License (Free):</strong> Personal use, educational, non-commercial research - unlimited.</p>
+            <p><strong>Commercial License:</strong> Standard terms with Niceness Clauses - no predatory pricing, no surveillance capitalism, worker welfare requirements.</p>
+            
+            <hr style="border: none; border-top: 1px solid var(--border); margin: 48px 0;">
+            <p style="text-align: center; color: var(--text-dim);">
+                Harmonic Stack v1.0 · January 30, 2026<br>
+                Built by <a href="https://allwatchedoverbymachinesoflovinggrace.org">Ghost in the Machine Labs</a><br>
+                AGI for the home. First to AGI.
+            </p>
+        </main>
+    </div>
+</body>
+</html>
