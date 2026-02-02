@@ -408,6 +408,26 @@
             </div>
         </section>
 
+        <div class="container" style="margin-bottom: 40px;">
+            <div style="background: linear-gradient(135deg, #0a1a0a 0%, #0a0f0a 100%); border: 1px solid var(--accent); border-radius: 12px; padding: 24px 32px; display: flex; align-items: center; gap: 20px; justify-content: space-between; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 10px; height: 10px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite;"></div>
+                    <span style="font-weight: 600; color: var(--accent);">SYSTEM ACTIVE</span>
+                    <span style="color: var(--text-dim);">AI self-improvement running autonomously on home hardware</span>
+                </div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim);">
+                    11 models active • 30B solver integrated • v2 precision-enforcing prompts deployed
+                </div>
+            </div>
+        </div>
+
+        <style>
+            @keyframes pulse {
+                0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+                50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 212, 170, 0); }
+            }
+        </style>
+
         <section class="tech-section container">
             <div class="section-header">
                 <h2>Core Technologies</h2>
@@ -419,14 +439,14 @@
                     <div class="icon">🎼</div>
                     <h3>Harmonic Stack <span class="badge badge-core">CORE</span></h3>
                     <p>Multi-model orchestration with specialized roles. Executive, Technical Director, Workers, and Specialists coordinated through a cognitive bus. True parallel intelligence.</p>
-                    <div class="metric">16 models • 5 layers • 334 tok/s</div>
+                    <div class="metric">11 models • v2 precision prompts • 30B solver integrated</div>
                 </a>
                 
                 <a href="death_of_inference_engine.html" class="tech-card">
                     <div class="icon">🧠</div>
                     <h3>Cognitive Bus <span class="badge badge-core">CORE</span></h3>
                     <p>The inference engine is dead. Dual-path routing (analytical + creative) with real-time task decomposition. The wire thinks—routing IS cognition.</p>
-                    <div class="metric">Dual-path • 25ms routing • Zero overhead</div>
+                    <div class="metric">Dual-path • Self-optimizing • Autonomous tuning daemon</div>
                 </a>
                 
                 <a href="crystal_chain.html" class="tech-card">
@@ -452,9 +472,9 @@
                 
                 <a href="docs.html" class="tech-card">
                     <div class="icon">🎯</div>
-                    <h3>ARC Solver</h3>
-                    <p>Geometric reasoning for abstract pattern recognition. Multi-example consensus validation with early-exit. Persistent checkpointing for continuous learning.</p>
-                    <div class="metric">144× speedup • 47 tasks solved • Streaming validation</div>
+                    <h3>ARC Solver <span class="badge badge-new">LIVE</span></h3>
+                    <p>Autonomous AI self-improvement in production. The Harmonic Stack analyzes its own failure patterns, rewrites its own model configurations, and validates improvements—without human intervention.</p>
+                    <div class="metric">Active self-optimization • Autonomous research • Continuous learning</div>
                 </a>
             </div>
         </section>
@@ -476,8 +496,8 @@
                         <div class="label">Cognitive Layers</div>
                     </div>
                     <div class="featured-stat">
-                        <div class="value">$20</div>
-                        <div class="label">Target Hardware</div>
+                        <div class="value">0</div>
+                        <div class="label">Cloud Dependencies</div>
                     </div>
                     <div class="featured-stat">
                         <div class="value">∞</div>
@@ -495,7 +515,7 @@
                 <div class="mission-point">
                     <div class="icon">🏠</div>
                     <h3>Home First</h3>
-                    <p>$5-20 hardware target. No cloud required. Your AI, your hardware, your privacy.</p>
+                    <p>Free for home use. No cloud required. Your AI, your hardware, your privacy.</p>
                 </div>
                 <div class="mission-point">
                     <div class="icon">🔓</div>
@@ -509,6 +529,32 @@
                 </div>
             </div>
         </section>
+    
+        <!-- Deployment Log -->
+        <section class="changelog" style="margin: 3rem auto; max-width: 900px; padding: 0 1.5rem;">
+            <h2 style="color: var(--accent); font-size: 1.3rem; margin-bottom: 1rem;">Recent Deployments</h2>
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(0,255,136,0.15); border-radius: 12px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.8;">
+                <div style="margin-bottom: 1rem;">
+                    <span style="color: var(--accent);">2026-02-02</span> &mdash; <strong>v2.0: Harmonic Stack v2 + 30B Solver Integration</strong>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-dim);">
+                        <li>Created dedicated 30B solver model with precision-enforcing prompt (10 explicit coding rules)</li>
+                        <li>Upgraded all 11 agent Modelfiles: expanded context, anti-vagueness prompts, temperature tuning</li>
+                        <li>Fixed 3 critical bugs: truncated output (1024&rarr;4096 tokens), missing grid initialization, missing stdlib in execution namespace</li>
+                        <li>Code generation went from 100% crash rate to active grid computation</li>
+                        <li>Self-optimizer context budgets doubled, solve timeout extended</li>
+                    </ul>
+                </div>
+                <div>
+                    <span style="color: var(--accent);">2026-02-02</span> &mdash; <strong>v1.5: Autonomous Self-Improvement</strong>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-dim);">
+                        <li>Four autonomous daemons: ARC Orchestrator, Cooperative Research, Self-Optimizer, Cognitive Research</li>
+                        <li>System analyzes its own failure patterns, rewrites model configurations, validates improvements</li>
+                        <li>No human intervention required for continuous optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
