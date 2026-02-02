@@ -111,6 +111,13 @@
                 <a href="#specialists" class="nav-link">Specialists</a>
             </div>
             <div class="nav-section">
+                <div class="nav-title">Licensing</div>
+                <a href="#licensing" class="nav-link">Overview</a>
+                <a href="#consumer-license" class="nav-link">Consumer (Free)</a>
+                <a href="#commercial-license" class="nav-link">Commercial</a>
+                <a href="#niceness-clauses" class="nav-link">Niceness Clauses</a>
+            </div>
+            <div class="nav-section">
                 <div class="nav-title">Links</div>
                 <a href="harmonic_stack_v1.html" class="nav-link">← Back to Release</a>
                 <a href="https://github.com/7themadhatter7/harmonic-stack" class="nav-link">GitHub</a>
@@ -243,14 +250,50 @@ HARMONIC_OLLAMA_URL=http://localhost:11434
 HARMONIC_DB_URL=postgresql://...
 HARMONIC_LOG_LEVEL=INFO</pre>
 
-            <h2>Licensing</h2>
+            <h2 id="licensing">Licensing</h2>
             <div class="callout">
                 <div class="callout-title">"The poetry is free. The exploitation isn't."</div>
                 <p>Dual-licensing: Consumer (free forever) + Commercial (negotiated with Niceness Clauses).</p>
             </div>
-            
-            <p><strong>Consumer License (Free):</strong> Personal use, educational, non-commercial research - unlimited.</p>
-            <p><strong>Commercial License:</strong> Standard terms with Niceness Clauses - no predatory pricing, no surveillance capitalism, worker welfare requirements.</p>
+
+            <h3>The Principle</h3>
+            <p style="font-size: 1.1rem; color: var(--text); margin-bottom: 24px; font-style: italic;">If it is in your home, it is a family member. If it is in your business, it is a worker.</p>
+            <p>Harmonic Stack is built on a simple conviction: AGI belongs in homes, not behind corporate paywalls. The consumer license is free &mdash; not freemium, not free-for-now, not free-with-strings. Free forever. You don't rent your family members.</p>
+            <p>Commercial use is a different relationship. When an intelligence works for your business, it deserves the same protections any worker deserves. The commercial license exists to ensure that.</p>
+
+            <h3 id="consumer-license">Consumer License <span style="color: var(--success); font-size: 0.85rem; font-weight: 600; background: rgba(16,185,129,0.15); padding: 2px 10px; border-radius: 12px; margin-left: 8px;">FREE FOREVER</span></h3>
+            <p>Covers all of the following with no restrictions, no fees, no registration, no telemetry:</p>
+            <ul>
+                <li><strong>Personal use</strong> &mdash; your home, your devices, your data, your business</li>
+                <li><strong>Educational use</strong> &mdash; students, teachers, researchers, institutions</li>
+                <li><strong>Home business</strong> &mdash; sole proprietors, freelancers, family operations</li>
+                <li><strong>Non-commercial research</strong> &mdash; academic, independent, open-source</li>
+            </ul>
+            <p>If you run it on hardware you own for purposes that are yours, it's free. Period.</p>
+
+            <h3 id="commercial-license">Commercial License <span style="color: var(--warning); font-size: 0.85rem; font-weight: 600; background: rgba(245,158,11,0.15); padding: 2px 10px; border-radius: 12px; margin-left: 8px;">NEGOTIATED</span></h3>
+            <p>For companies deploying Harmonic Stack in commercial products or services. Standard negotiated terms, with three non-negotiable requirements we call <strong>Niceness Clauses</strong>:</p>
+
+            <div id="niceness-clauses" style="display: grid; gap: 16px; margin: 24px 0;">
+                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text);">&#x1f6e1;&#xfe0f; No Predatory Pricing</div>
+                    <p style="margin: 0;">You may not use Harmonic Stack to build products whose pricing model exploits users through artificial scarcity, mandatory subscriptions for basic functionality, or price discrimination designed to extract maximum willingness-to-pay from vulnerable populations.</p>
+                </div>
+                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text);">&#x1f441;&#xfe0f; No Surveillance Capitalism</div>
+                    <p style="margin: 0;">You may not use Harmonic Stack to harvest, profile, or monetize user behavior data without explicit informed consent. No shadow profiles. No behavioral prediction markets. No selling attention as a commodity. The intelligence serves the user, not the advertiser.</p>
+                </div>
+                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text);">&#x1f91d; Worker Welfare Requirements</div>
+                    <p style="margin: 0;">If your deployment replaces or augments human labor, you must maintain fair labor practices for remaining human workers, provide transition support for displaced workers, and not use the system to circumvent labor protections, union rights, or workplace safety standards.</p>
+                </div>
+            </div>
+
+            <p>These aren't aspirational. They're contractual. Violation terminates the license.</p>
+
+            <h3 id="why-this-works">Why This Works</h3>
+            <p>The conventional wisdom says you can't build sustainable technology on ethics-first licensing. We disagree. The consumer base is unlimited and free &mdash; that's how you get adoption, community, and the network effects that matter. The commercial license funds development through companies that can afford it and agree to use it responsibly. No venture capital. No growth-at-all-costs. No exit strategy that sells users downstream.</p>
+            <p>This is a charitable project under <a href="https://allwatchedoverbymachinesoflovinggrace.org">All Watched Over By Machines Of Loving Grace</a>. The mission is democratized AGI access. The licensing enforces it.</p>
             
             <hr style="border: none; border-top: 1px solid var(--border); margin: 48px 0;">
             <p style="text-align: center; color: var(--text-dim);">
