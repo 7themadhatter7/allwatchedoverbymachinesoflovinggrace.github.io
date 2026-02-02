@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papers - Ghost in the Machine Labs</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        header {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        nav a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active { color: #00d4ff; }
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .subtitle {
+            color: #888;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+        .paper-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s;
+        }
+        .paper-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .paper-card h2 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        .paper-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .paper-abstract {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .paper-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        .download-link {
+            display: inline-block;
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .download-link:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #555;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            nav a { margin-left: 0.8rem; }
+            .content { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">&#x26A1; Ghost in the Machine Labs</a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="benchmarks.html">Benchmarks</a>
+            <a href="harmonic_stack_v1.html">Harmonic Stack</a>
+            <a href="death_of_inference_engine.html">Cognitive Bus</a>
+            <a href="crystal_chain.html">Crystal Chain</a>
+            <a href="papers.html" class="active">Papers</a>
+            <a href="docs.html">Docs</a>
+            <a href="https://github.com/7themadhatter7/harmonic-stack">GitHub</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h1>Research Papers</h1>
+        <p class="subtitle">Technical reports from Ghost in the Machine Labs &mdash; All Watched Over By Machines Of Loving Grace</p>
+
+        <div class="paper-card">
+            <h2>Prompt Priming Bias in Cooperative Multi-Agent LLM Architectures: How Enumerated Examples Collapse Hypothesis Diversity</h2>
+            <div class="paper-meta">Joe Caulfield and Claude (Anthropic) &bull; February 2026 &bull; Technical Report</div>
+            <div class="paper-abstract">
+                We identify a systematic failure mode in cooperative multi-agent LLM systems where enumerated algorithm
+                suggestions in analysis prompts cause all specialist models to converge on the same generic strategies
+                regardless of input characteristics. In our Harmonic Stack architecture&mdash;an 11-model cooperative
+                system running on a single DGX Spark (128GB)&mdash;we observed that a research director model prompted
+                with "Focus on: BFS, flood fill, connected components" produced flood-fill-based hypotheses for 100% of
+                task groups, including tasks requiring simple rotation, downsampling, or color remapping. This caused 0/51
+                successful solves on the ARC benchmark. After removing enumerated suggestions and replacing them with
+                observation-first directives, the system produced task-specific hypotheses within the first analysis cycle.
+                We formalize prompt priming bias as a class of failure in multi-agent systems and propose design principles
+                for maintaining hypothesis diversity.
+            </div>
+            <div class="paper-tags">
+                <span class="tag">multi-agent LLM</span>
+                <span class="tag">prompt engineering</span>
+                <span class="tag">ARC benchmark</span>
+                <span class="tag">cooperative AI</span>
+                <span class="tag">DGX Spark</span>
+            </div>
+            <a href="papers/prompt_priming_bias_2026.pdf" class="download-link">&#x1F4C4; Download PDF</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Ghost in the Machine Labs &mdash; All Watched Over By Machines Of Loving Grace
+    </footer>
+</body>
+</html>
