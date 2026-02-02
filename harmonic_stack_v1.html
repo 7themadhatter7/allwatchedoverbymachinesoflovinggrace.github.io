@@ -295,12 +295,12 @@
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 30px; text-align: center;">
                     <div style="background: var(--bg-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-                        <div style="font-size: 2rem; font-weight: 700; color: #00ffff;">8×</div>
-                        <div style="font-size: 0.8rem; color: var(--text-dim);">Parallel Cores</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #00ffff;">11×</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim);">Parallel Models</div>
                     </div>
                     <div style="background: var(--bg-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-                        <div style="font-size: 2rem; font-weight: 700; color: #00ff00;">7.6×</div>
-                        <div style="font-size: 0.8rem; color: var(--text-dim);">Throughput</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #00ff00;">205</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim);">tok/s (30B × 16)</div>
                     </div>
                     <div style="background: var(--bg-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
                         <div style="font-size: 2rem; font-weight: 700; color: #ffaa00;">~0.95N</div>
@@ -322,19 +322,21 @@
                             <th style="text-align: left; padding: 8px; color: var(--text-dim);">Model</th>
                             <th style="text-align: right; padding: 8px; color: var(--text-dim);">VRAM</th>
                         </tr>
-                        <tr><td style="padding: 8px;">hs-executive</td><td style="padding: 8px; color: #888;">qwen3:32b</td><td style="text-align: right; padding: 8px; color: #ff3333;">~20GB</td></tr>
-                        <tr><td style="padding: 8px;">hs-code</td><td style="padding: 8px; color: #888;">qwen2.5-coder:14b</td><td style="text-align: right; padding: 8px; color: #ffaa00;">~10GB</td></tr>
-                        <tr><td style="padding: 8px;">hs-create</td><td style="padding: 8px; color: #888;">qwen3:14b</td><td style="text-align: right; padding: 8px; color: #ffaa00;">~10GB</td></tr>
-                        <tr><td style="padding: 8px;">hs-research</td><td style="padding: 8px; color: #888;">qwen3:14b</td><td style="text-align: right; padding: 8px; color: #ffaa00;">~10GB</td></tr>
-                        <tr><td style="padding: 8px;">hs-math</td><td style="padding: 8px; color: #888;">qwen3:14b</td><td style="text-align: right; padding: 8px; color: #ffaa00;">~10GB</td></tr>
-                        <tr><td style="padding: 8px;">hs-analysis</td><td style="padding: 8px; color: #888;">qwen3:14b</td><td style="text-align: right; padding: 8px; color: #ffaa00;">~10GB</td></tr>
-                        <tr><td style="padding: 8px;">hs-ethics</td><td style="padding: 8px; color: #888;">qwen3:14b</td><td style="text-align: right; padding: 8px; color: #ffaa00;">~10GB</td></tr>
-                        <tr><td style="padding: 8px;">hs-reserve</td><td style="padding: 8px; color: #888;">qwen3:7b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
-                        <tr style="border-top: 1px solid var(--border);"><td style="padding: 8px;">hs-router</td><td style="padding: 8px; color: #888;">qwen3:1.7b</td><td style="text-align: right; padding: 8px; color: #00ffff;">~2GB</td></tr>
-                        <tr style="border-top: 2px solid #00ffff;"><td style="padding: 8px; font-weight: bold;">TOTAL</td><td style="padding: 8px; color: #888;">(all cores loaded)</td><td style="text-align: right; padding: 8px; color: #00ffff; font-weight: bold;">~87GB</td></tr>
+                        <tr><td style="padding: 8px;">solver</td><td style="padding: 8px; color: #888;">qwen3:30b-a3b</td><td style="text-align: right; padding: 8px; color: #ff3333;">~19GB</td></tr>
+                        <tr><td style="padding: 8px;">analyst</td><td style="padding: 8px; color: #888;">qwen3:8b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
+                        <tr><td style="padding: 8px;">research_director</td><td style="padding: 8px; color: #888;">qwen3:8b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
+                        <tr><td style="padding: 8px;">executive</td><td style="padding: 8px; color: #888;">qwen3:8b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
+                        <tr><td style="padding: 8px;">creative_director</td><td style="padding: 8px; color: #888;">qwen3:8b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
+                        <tr><td style="padding: 8px;">technical_director</td><td style="padding: 8px; color: #888;">qwen3:8b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
+                        <tr><td style="padding: 8px;">operations_director</td><td style="padding: 8px; color: #888;">qwen3:8b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
+                        <tr><td style="padding: 8px;">coder</td><td style="padding: 8px; color: #888;">qwen3:30b-a3b</td><td style="text-align: right; padding: 8px; color: #ff3333;">~19GB</td></tr>
+                        <tr><td style="padding: 8px;">operator</td><td style="padding: 8px; color: #888;">qwen3:8b</td><td style="text-align: right; padding: 8px; color: #00ff00;">~5GB</td></tr>
+                        <tr><td style="padding: 8px;">a_priori</td><td style="padding: 8px; color: #888;">qwen3:4b</td><td style="text-align: right; padding: 8px; color: #00ffff;">~3GB</td></tr>
+                        <tr><td style="padding: 8px;">interference_engine</td><td style="padding: 8px; color: #888;">qwen3:14b</td><td style="text-align: right; padding: 8px; color: #ffaa00;">~9GB</td></tr>
+                        <tr style="border-top: 2px solid #00ffff;"><td style="padding: 8px; font-weight: bold;">TOTAL</td><td style="padding: 8px; color: #888;">11 models (8B-30B)</td><td style="text-align: right; padding: 8px; color: #00ffff; font-weight: bold;">~85GB</td></tr>
                     </table>
                     <p style="margin-top: 15px; font-size: 0.8rem; color: var(--text-dim);">
-                        💡 True 16× parallelism requires 8 separate hardware nodes. Single-node runs cores sequentially via cognitive bus routing.
+                        💡 All 11 models run on a single DGX Spark (128GB). Parallel fan-out sends analyst + research_director + executive simultaneously. 205 tok/s aggregate at 16× concurrency.
                     </p>
                 </div>
             </div>
