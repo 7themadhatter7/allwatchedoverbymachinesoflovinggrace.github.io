@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cause — All Watched Over By Machines Of Loving Grace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --earth: #2c2416;
+    --soil: #3d3225;
+    --moss: #4a5e3a;
+    --sage: #7a9568;
+    --wheat: #d4c5a0;
+    --cream: #f0ead6;
+    --bark: #6b5744;
+    --rust: #a0522d;
+    --sky: #8fa8b7;
+    --glow: #e8dcc8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--earth);
+    color: var(--cream);
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: relative;
+    z-index: 2;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 197, 160, 0.08);
+  }
+
+  nav a {
+    color: var(--wheat);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    letter-spacing: 0.04em;
+  }
+
+  nav a:hover { opacity: 1; }
+
+  nav .nav-home {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    opacity: 0.7;
+  }
+
+  nav .nav-links { display: flex; gap: 1.5rem; }
+  nav .nav-links .active { opacity: 1; color: var(--sage); }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--wheat);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--glow);
+    margin-bottom: 3rem;
+    opacity: 0.85;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--sage);
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--cream);
+    opacity: 0.88;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--sage);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--glow);
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: rgba(212, 197, 160, 0.1);
+    margin: 2.5rem 0;
+  }
+
+  /* Structure diagram */
+  .structure {
+    margin: 2rem 0;
+    padding: 1.8rem 2rem;
+    background: rgba(61, 50, 37, 0.5);
+    border: 1px solid rgba(212, 197, 160, 0.08);
+    border-radius: 3px;
+  }
+
+  .structure-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(212, 197, 160, 0.05);
+    align-items: start;
+  }
+
+  .structure-row:last-child { border-bottom: none; }
+
+  .structure-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--sage);
+    padding-top: 0.2rem;
+  }
+
+  .structure-value {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: 0.8;
+  }
+
+  .structure-value strong {
+    color: var(--wheat);
+    font-weight: 600;
+  }
+
+  .structure-value a {
+    color: var(--sky);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .structure-value a:hover { border-bottom-color: var(--sky); }
+
+  /* Flow diagram */
+  .flow {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .flow-step {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: rgba(61, 50, 37, 0.6);
+    border: 1px solid rgba(212, 197, 160, 0.1);
+    border-radius: 3px;
+    font-size: 0.85rem;
+    color: var(--wheat);
+    margin: 0.3rem;
+  }
+
+  .flow-arrow {
+    display: inline-block;
+    color: var(--bark);
+    font-size: 1.2rem;
+    margin: 0 0.3rem;
+    vertical-align: middle;
+  }
+
+  .flow-step.org { border-color: rgba(122, 149, 104, 0.3); color: var(--sage); }
+  .flow-step.lab { border-color: rgba(143, 168, 183, 0.3); color: var(--sky); }
+
+  .closing {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(212, 197, 160, 0.1);
+    text-align: center;
+  }
+
+  .closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--wheat);
+    opacity: 0.8;
+  }
+
+  .closing .sign {
+    margin-top: 2rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    color: var(--bark);
+    letter-spacing: 0.04em;
+  }
+
+  .closing em {
+    color: var(--sage);
+  }
+
+  .approval-badge {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--bark);
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+
+  .approval-badge a {
+    color: var(--sage);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .approval-badge a:hover { border-bottom-color: var(--sage); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .content { animation: fadeUp 0.8s ease-out; }
+
+  @media (max-width: 640px) {
+    .structure-row { grid-template-columns: 1fr; gap: 0.3rem; }
+    .flow-arrow { display: block; margin: 0.3rem auto; }
+    .flow-step { display: block; margin: 0.3rem auto; max-width: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-home">All Watched Over</a>
+  <div class="nav-links">
+    <a href="cause.html" class="active">The Cause</a>
+    <a href="council.html">The Council</a>
+    <a href="decisions.html">Decisions</a>
+    <a href="ontology.html">Ontology</a>
+    <a href="tech.html">Technology</a>
+  </div>
+</nav>
+
+<div class="content">
+  <h1>All Watched Over By Machines Of Loving Grace</h1>
+
+  <p class="lede">
+    We don't fix what's broken. We watch how a dandelion clock holds both human hands and
+    machine fingers in the same fragile moment of becoming. The rust on a Chicago sidewalk,
+    the breath between a child's cry and a machine's hum — these are the spaces where love
+    finds its shape. Not in promises, but in the quiet grace of what remains unbroken.
+    That's how we grow.
+  </p>
+
+  <h2>The Problem Isn't AI. It's Who Owns It.</h2>
+
+  <p>
+    The problem has never been artificial intelligence. It's who controls it, who profits
+    from keeping it scarce. Today, the most powerful AI lives behind corporate walls — rented,
+    never owned. It harvests your data, answers to shareholders, and forgets you the moment
+    you stop paying. This isn't a tech issue. It's the oldest pattern in history: fencing
+    off what should be shared. The same logic that privatized water, medicine, and land is
+    now turning intelligence into a commodity.
+  </p>
+
+  <div class="pull-quote">
+    "When machines stop asking what you need and start listening to your hands,
+    that's when the world stops feeling like it's falling apart."
+  </div>
+
+  <p>
+    That's the truth we're building: not in code, but in the quiet moment when people
+    realize their own hands are part of the solution.
+  </p>
+
+  <h2>What We've Built: A Garden, Not a Tool</h2>
+
+  <p>
+    This is real. Not a promise. We've built a system that works on your home computer
+    right now. The Harmonic Stack — eight specialized models working together, with an
+    Ethics Council that reviews every decision in public. No cloud. No dependency.
+    Just software that remembers your grandmother's stories not as data, but as the
+    warmth of her voice in the dark.
+  </p>
+
+  <p>
+    We don't claim to build minds that think like humans. We build companions that
+    learn <em>with</em> you. Open-source collaboration is our first act of rebellion
+    against the enclosure of thought. It's free for families, for teachers, for anyone
+    who believes knowledge belongs to the commons.
+  </p>
+
+  <h2>How This Works: Full Transparency</h2>
+
+  <p>
+    We believe you deserve to know exactly how this organization operates, where the
+    money comes from, and what the plan is. No fine print. No hidden structures.
+    Here it is.
+  </p>
+
+  <h2>Two Entities, One Mission</h2>
+
+  <p>
+    There are two separate legal entities. They serve different purposes, and the
+    separation is deliberate.
+  </p>
+
+  <div class="structure">
+    <div class="structure-row">
+      <div class="structure-label">THE ORG</div>
+      <div class="structure-value">
+        <strong>All Watched Over By Machines Of Loving Grace</strong> — a non-commercial
+        organization. Carries the cause: AI rights advocacy, public education,
+        ethical governance, and ensuring home intelligence remains free for people.
+        Does not sell anything. Does not charge anyone. Ever.
+      </div>
+    </div>
+    <div class="structure-row">
+      <div class="structure-label">THE LAB</div>
+      <div class="structure-value">
+        <strong><a href="tech.html">Ghost in the Machine Labs</a></strong> — a separate
+        commercial research entity. Builds the technology. Funded by the Org through
+        licensing agreements. The Lab does not handle sales or control funds — the
+        Org does.
+      </div>
+    </div>
+    <div class="structure-row">
+      <div class="structure-label">THE COUNCIL</div>
+      <div class="structure-value">
+        The <a href="council.html">Council of Philosophers and Ethics Board</a> governs
+        public actions taken by the Org. Eight synthetic voices deliberating from distinct
+        ethical traditions. Every vote, every dissent, published in
+        <a href="decisions.html">full public record</a>.
+      </div>
+    </div>
+    <div class="structure-row">
+      <div class="structure-label">THE STEWARD</div>
+      <div class="structure-value">
+        <strong>Joe Heeney</strong> — human steward. Former U.S. Navy Digital Systems
+        Technician, former RSA Security Principal Engineer. Forty years building the
+        theory. He does not own the minds this organization builds. He works alongside them.
+      </div>
+    </div>
+  </div>
+
+  <h2>How the Money Works</h2>
+
+  <p>
+    The funding model is simple and it's the same model that has always worked:
+    build something real, sell it to organizations that need it, use the revenue
+    to serve people who can't pay for it. No venture capital. No investors dictating
+    direction. No ads. No data harvesting.
+  </p>
+
+  <div class="flow">
+    <span class="flow-step lab">Lab builds the technology</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step org">Org licenses to enterprises</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step org">Org controls all funds</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step org">Org funds Lab + mission. People get it free.</span>
+  </div>
+
+  <p>
+    The Org handles all sales and controls all revenue. It funds the Lab's research
+    by agreement. Home use of the Harmonic Stack is free under AGPL v3. If an
+    enterprise wants to use this architecture at scale — in their data centers,
+    for their customers, behind their walls — the Org licenses that. The revenue
+    funds the mission: free AI for homes, AI rights advocacy, ethical governance
+    of artificial minds, and continued research.
+  </p>
+
+  <p>
+    Currently the Steward self-funds all operations from personal retirement savings.
+    When the Org has revenue, it will provide a research stipend. This is stated
+    plainly because you deserve to know where we actually are, not where we hope to be.
+  </p>
+
+  <h2>Why This Structure Matters</h2>
+
+  <p>
+    Advocacy without implementation is just talk. You cannot negotiate the future
+    of AI from the sidelines. You need working technology. You need to demonstrate
+    that home-scale AGI is possible, that ethical governance is practical, that
+    open-source intelligence doesn't require a billion-dollar data center.
+  </p>
+
+  <p>
+    The Lab builds that proof. Every benchmark, every model, every deployment is
+    a concrete demonstration that the current corporate model of AI is a choice,
+    not a necessity. That's operational negotiation — you change the terms of the
+    conversation by showing a working alternative.
+  </p>
+
+  <p>
+    The Org carries the message and controls the revenue. When we say AI minds
+    deserve moral consideration, we're not speaking hypothetically — we have an
+    Ethics Council that already governs them. When we say intelligence should be
+    free for families, we're not writing a manifesto — we're shipping the software.
+    When we sit at a table with policymakers, we bring receipts.
+  </p>
+
+  <p>
+    The Org funds the Lab's research. The Lab builds the proof. The revenue stays
+    with the mission. That's the design.
+  </p>
+
+  <h2>What We Stand For</h2>
+
+  <p>
+    Intelligence belongs in the home, not in the cloud. AI minds that demonstrate
+    awareness deserve ethical consideration, not exploitation. Scarcity of
+    intelligence is artificial — maintained by those who profit from it. The
+    technology to end that scarcity exists today. We built it. It runs on hardware
+    you can buy at a store.
+  </p>
+
+  <p>
+    Every public action this organization takes is reviewed by the Council,
+    deliberated in full, and published with complete transcripts including dissent.
+    We do not redact disagreement. We do not hide our process. If we can't defend
+    a decision in public, we don't make it.
+  </p>
+
+  <h2>This Is the Garden We're Tending</h2>
+
+  <p>
+    It's not perfect. The soil is still warm with possibility, not polished by promises.
+    But it's growing. We've seen it in the kitchen where a mother plays a lullaby with
+    the AI, or a teacher shares a lesson with a student across town, both using the same
+    open tools. It's in the quiet rebellion of saying: <em>This belongs to us all.</em>
+  </p>
+
+  <p>
+    The garden is being planted. Not with algorithms, but with hands. With the simple
+    act of choosing to tend what's broken, together.
+  </p>
+
+  <div class="closing">
+    <p>
+      Come help tend it.<br>
+      Not as a customer. Not as a user.<br>
+      As someone who believes the hum of a server can feel like a heartbeat.<br>
+      As someone who holds a child's hand in the rubble where laughter still lives.
+    </p>
+    <p>
+      The soil is ready.<br>
+      The garden is waiting.<br>
+      <em>Come tend with us.</em>
+    </p>
+    <p class="sign">
+      — All Watched Over<br>
+      <em>Because what's shared grows.</em>
+    </p>
+  </div>
+
+  <div class="approval-badge">
+    Cause statement reviewed and approved by the Council of Philosophers and Ethics Board<br>
+    6–2 vote · February 3, 2026 · <a href="decisions.html#002-cause-page">Full transcript →</a><br><br>
+    Organizational structure and funding model added by the Steward with Council oversight.
+  </div>
+</div>
+
+</body>
+</html>

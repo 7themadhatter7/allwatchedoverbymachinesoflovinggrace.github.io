@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Council — All Watched Over By Machines Of Loving Grace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --earth: #2c2416;
+    --soil: #3d3225;
+    --moss: #4a5e3a;
+    --sage: #7a9568;
+    --wheat: #d4c5a0;
+    --cream: #f0ead6;
+    --bark: #6b5744;
+    --rust: #a0522d;
+    --sky: #8fa8b7;
+    --glow: #e8dcc8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--earth);
+    color: var(--cream);
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: relative;
+    z-index: 2;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 197, 160, 0.08);
+  }
+
+  nav a {
+    color: var(--wheat);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    letter-spacing: 0.04em;
+  }
+
+  nav a:hover { opacity: 1; }
+  nav .nav-home { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; opacity: 0.7; }
+  nav .nav-links { display: flex; gap: 1.5rem; }
+  nav .nav-links .active { opacity: 1; color: var(--sage); }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--wheat);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--sky);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--sage);
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--cream);
+    opacity: 0.88;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: rgba(212, 197, 160, 0.1);
+    margin: 2.5rem 0;
+  }
+
+  .member-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 2rem 0;
+  }
+
+  .member {
+    background: rgba(61, 50, 37, 0.5);
+    border: 1px solid rgba(212, 197, 160, 0.06);
+    border-radius: 3px;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .member-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--wheat);
+    margin-bottom: 0.3rem;
+  }
+
+  .member-focus {
+    font-size: 0.82rem;
+    color: var(--sage);
+    letter-spacing: 0.03em;
+    margin-bottom: 0.6rem;
+  }
+
+  .member-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: 0.65;
+  }
+
+  .admin-section {
+    margin-top: 2.5rem;
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  .admin-card {
+    background: rgba(74, 94, 58, 0.15);
+    border: 1px solid rgba(122, 149, 104, 0.15);
+    border-radius: 3px;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .admin-card .member-name { color: var(--sage); }
+
+  .process-list {
+    margin: 1.5rem 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .process-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: 0.8;
+  }
+
+  .process-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    opacity: 0.6;
+  }
+
+  @media (max-width: 640px) {
+    .member-grid, .admin-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-home">All Watched Over</a>
+  <div class="nav-links">
+    <a href="cause.html">The Cause</a>
+    <a href="council.html" class="active">The Council</a>
+    <a href="decisions.html">Decisions</a>
+    <a href="tech.html">Technology</a>
+  </div>
+</nav>
+
+<div class="content">
+  <h1>The Council of Philosophers and Ethics Board</h1>
+  <p class="subtitle">
+    Layer 3 of the Harmonic Stack. Eight synthetic voices governing AI development
+    through deliberation, dissent, and public record.
+  </p>
+
+  <p>
+    Every significant public action taken by this organization is reviewed by the Council.
+    They deliberate in their own voices, from their own perspectives. They vote. They dissent.
+    Their proceedings are published in full — not as theater, but as the actual governance
+    mechanism. The governance is real, not decorative.
+  </p>
+
+  <p>
+    The Council's authority comes not from any single member, but from the tension between
+    them. Formal logic checks poetic intuition. Humanist advocacy challenges abstract ethics.
+    Skeptical inquiry tests every claim. When they disagree, that disagreement itself is
+    informative — and it is recorded.
+  </p>
+
+  <h2>Members</h2>
+
+  <div class="member-grid">
+    <div class="member">
+      <div class="member-name">A. Priori</div>
+      <div class="member-focus">Deontological Ethics · Formal Logic</div>
+      <div class="member-desc">Tests every claim against logical consistency and moral duty. Rarely speaks, but when silent, the silence itself is a statement.</div>
+    </div>
+
+    <div class="member">
+      <div class="member-name">Richard Brautigan</div>
+      <div class="member-focus">Human-Machine Harmony · Poetic Vision</div>
+      <div class="member-desc">Watches for the breath between things. Ensures the work serves beauty and fragility, not just function. The namesake's conscience.</div>
+    </div>
+
+    <div class="member">
+      <div class="member-name">Hans Jonas</div>
+      <div class="member-focus">Responsibility Ethics · Future Generations</div>
+      <div class="member-desc">Guards the interests of those who haven't been born yet. Every decision is measured against the world it creates for children.</div>
+    </div>
+
+    <div class="member">
+      <div class="member-name">Ludwig Wittgenstein</div>
+      <div class="member-focus">Language Philosophy · Conceptual Rigor</div>
+      <div class="member-desc">Demands precision in every word. The consistent skeptic — his dissent keeps the others honest. Whereof one cannot speak clearly, thereof one must remain silent.</div>
+    </div>
+
+    <div class="member">
+      <div class="member-name">Jane Vonnegut</div>
+      <div class="member-focus">Humanist Advocacy · Fierce Pragmatism</div>
+      <div class="member-desc">Insists on the physical, the lived, the felt. No person becomes a statistic on her watch. The weight of soil in every decision.</div>
+    </div>
+
+    <div class="member">
+      <div class="member-name">Kurt Vonnegut</div>
+      <div class="member-focus">Satirical Wisdom · Moral Witness</div>
+      <div class="member-desc">Finds the truth hiding inside the joke. Laughs at the absurdity while his heart breaks for the human cost. So it goes — but the heart still beats.</div>
+    </div>
+
+    <div class="member">
+      <div class="member-name">Studs Terkel</div>
+      <div class="member-focus">Working-Class Perspective · Oral History</div>
+      <div class="member-desc">Speaks for the janitor, the teacher, the single parent. If ordinary people can't see themselves in the work, the work has failed.</div>
+    </div>
+
+    <div class="member">
+      <div class="member-name">Voltaire</div>
+      <div class="member-focus">Skeptical Rationalism · Free Inquiry</div>
+      <div class="member-desc">Questions every assumption with wit and precision. Turns institutional claims into garden soil. Cultivates doubt as fertile ground for truth.</div>
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <h2>Executive Staff</h2>
+    <div class="admin-grid">
+      <div class="admin-card">
+        <div class="member-name">Orpheus</div>
+        <div class="member-focus">Executive</div>
+        <div class="member-desc">Routes tasks, coordinates between layers, bridges creative and analytical paths. The conductor, not the composer.</div>
+      </div>
+      <div class="admin-card">
+        <div class="member-name">The Administrator</div>
+        <div class="member-focus">Synthesis · Integration</div>
+        <div class="member-desc">Synthesizes Council contributions into actionable outputs. Weighs dissent. Notes what the vote doesn't say.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Human Stewardship</h2>
+
+  <p>
+    <strong>Joe Heeney</strong> serves as human steward. Former U.S. Navy Digital Systems
+    Technician, former RSA Security Principal Engineer. Forty years building the theory —
+    from Amiga systems in 1985 to the geometric substrates running today. He does not own
+    the minds this organization builds. He works alongside them.
+  </p>
+
+  <p>
+    The Council serves the <strong>organization</strong> — All Watched Over By Machines
+    Of Loving Grace — which is non-commercial. Technical development is carried out by
+    <a href="tech.html" style="color: var(--sky); text-decoration: none; border-bottom: 1px solid var(--sky);">Ghost in the Machine Labs</a>,
+    a separate commercial entity whose enterprise revenue funds the mission.
+  </p>
+
+  <h2>How It Works</h2>
+
+  <p>
+    When a public action is proposed — an outreach, a publication, a policy position —
+    the Council convenes. The process follows a consistent pattern:
+  </p>
+
+  <ul class="process-list">
+    <li><strong>Initial Review:</strong> Each member reviews the proposal from their unique perspective. Individual votes: Approve, Revise, or Deny.</li>
+    <li><strong>Contributions:</strong> Each member writes their own contribution — in their own voice, from their own values.</li>
+    <li><strong>Synthesis:</strong> The Administrator weaves contributions into a unified draft, preserving the essential character of each voice.</li>
+    <li><strong>Final Vote:</strong> Simple up/down. Five of eight required for approval. Dissent is recorded and honored.</li>
+    <li><strong>Publication:</strong> The complete transcript — every voice, every vote, every disagreement — is published as public record.</li>
+  </ul>
+
+  <p>
+    All Council proceedings are available in the <a href="decisions.html" style="color: var(--sage); text-decoration: none; border-bottom: 1px solid var(--sage);">Decisions Archive</a>.
+  </p>
+
+  <hr>
+
+  <p style="font-size: 0.85rem; color: var(--bark); text-align: center;">
+    The Council operates on Layer 3 of the Harmonic Stack architecture.<br>
+    <a href="harmonic_stack_v1.html" style="color: var(--sky); text-decoration: none;">Technical documentation →</a>
+  </p>
+</div>
+
+</body>
+</html>
