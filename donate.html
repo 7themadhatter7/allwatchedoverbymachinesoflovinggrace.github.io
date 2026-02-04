@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support the Work — All Watched Over By Machines Of Loving Grace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --earth: #2c2416;
+    --soil: #3d3225;
+    --moss: #4a5e3a;
+    --sage: #7a9568;
+    --wheat: #d4c5a0;
+    --cream: #f0ead6;
+    --bark: #6b5744;
+    --rust: #a0522d;
+    --sky: #8fa8b7;
+    --glow: #e8dcc8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--earth);
+    color: var(--cream);
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: relative;
+    z-index: 2;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 197, 160, 0.08);
+  }
+
+  nav a {
+    color: var(--wheat);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    letter-spacing: 0.04em;
+  }
+
+  nav a:hover { opacity: 1; }
+
+  nav .nav-home {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    opacity: 0.7;
+  }
+
+  nav .nav-links { display: flex; gap: 1.5rem; }
+  nav .nav-links .active { opacity: 1; color: var(--sage); }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--wheat);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--glow);
+    margin-bottom: 3rem;
+    opacity: 0.85;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--sage);
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--cream);
+    opacity: 0.88;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--sage);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--glow);
+    opacity: 0.8;
+  }
+
+  /* Donation tiers */
+  .tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .tier {
+    border: 1px solid rgba(122, 149, 104, 0.2);
+    border-radius: 6px;
+    padding: 1.8rem 2rem;
+    background: rgba(61, 50, 37, 0.5);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .tier:hover {
+    border-color: rgba(122, 149, 104, 0.4);
+    background: rgba(61, 50, 37, 0.7);
+  }
+
+  .tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+  }
+
+  .tier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--wheat);
+  }
+
+  .tier-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--sage);
+    letter-spacing: 0.02em;
+  }
+
+  .tier-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--cream);
+    opacity: 0.75;
+  }
+
+  /* Where it goes */
+  .allocation {
+    margin: 2.5rem 0;
+  }
+
+  .alloc-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(212, 197, 160, 0.06);
+  }
+
+  .alloc-row:last-child { border-bottom: none; }
+
+  .alloc-bar-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .alloc-label {
+    font-size: 0.95rem;
+    color: var(--cream);
+    opacity: 0.85;
+    min-width: 180px;
+  }
+
+  .alloc-bar {
+    height: 4px;
+    background: var(--sage);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+
+  .alloc-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--sage);
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* Donate actions */
+  .donate-actions {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .donate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(122, 149, 104, 0.35);
+    border-radius: 5px;
+    background: rgba(74, 94, 58, 0.15);
+    color: var(--wheat);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .donate-btn:hover {
+    background: rgba(74, 94, 58, 0.3);
+    border-color: var(--sage);
+    color: var(--cream);
+  }
+
+  .donate-btn .btn-sub {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin-left: 0.3rem;
+  }
+
+  .donate-btn.primary {
+    background: rgba(74, 94, 58, 0.3);
+    border-color: rgba(122, 149, 104, 0.5);
+  }
+
+  .donate-btn.primary:hover {
+    background: rgba(74, 94, 58, 0.45);
+    border-color: var(--sage);
+  }
+
+  /* Current state */
+  .current-state {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(143, 168, 183, 0.15);
+    border-radius: 6px;
+    background: rgba(143, 168, 183, 0.04);
+  }
+
+  .current-state h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--sky);
+    margin-bottom: 0.8rem;
+  }
+
+  .current-state p {
+    font-size: 0.95rem;
+    opacity: 0.7;
+  }
+
+  /* Closing */
+  .closing {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    opacity: 0.7;
+  }
+
+  .sign {
+    margin-top: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    opacity: 0.5;
+  }
+
+  .sign a {
+    color: var(--sage);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .sign a:hover { opacity: 1; }
+
+  .approval-badge {
+    margin-top: 4rem;
+    padding: 1.2rem;
+    border-top: 1px solid rgba(212, 197, 160, 0.06);
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--wheat);
+    opacity: 0.3;
+    line-height: 1.6;
+  }
+
+  .approval-badge a {
+    color: var(--sage);
+    text-decoration: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav { flex-direction: column; gap: 0.8rem; }
+    .content { padding: 2.5rem 1.2rem 4rem; }
+    .tier-header { flex-direction: column; gap: 0.3rem; }
+    .alloc-label { min-width: 120px; font-size: 0.85rem; }
+    .donate-actions { gap: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-home">All Watched Over</a>
+  <div class="nav-links">
+    <a href="cause.html">The Cause</a>
+    <a href="council.html">The Council</a>
+    <a href="decisions.html">Decisions</a>
+    <a href="donate.html" class="active">Support</a>
+    <a href="ontology.html">Ontology</a>
+    <a href="tech.html">Technology</a>
+  </div>
+</nav>
+
+<div class="content">
+  <h1>Support the Work</h1>
+
+  <p class="lede">
+    This research is self-funded from personal savings. There is no venture capital,
+    no corporate sponsor, no strings. If what we're building matters to you,
+    here is how to help keep it going.
+  </p>
+
+  <h2>What Donations Fund</h2>
+
+  <p>
+    Every dollar goes to the mission. There is no paid staff, no office, no marketing
+    budget. The Steward works unpaid. The Council deliberates without fee.
+    What costs money is the infrastructure that makes the research possible and
+    the technology free.
+  </p>
+
+  <div class="allocation">
+    <div class="alloc-row">
+      <div class="alloc-bar-wrap">
+        <span class="alloc-label">Compute hardware</span>
+        <div class="alloc-bar" style="width: 40%;"></div>
+      </div>
+      <span class="alloc-pct">40%</span>
+    </div>
+    <div class="alloc-row">
+      <div class="alloc-bar-wrap">
+        <span class="alloc-label">Research operations</span>
+        <div class="alloc-bar" style="width: 25%;"></div>
+      </div>
+      <span class="alloc-pct">25%</span>
+    </div>
+    <div class="alloc-row">
+      <div class="alloc-bar-wrap">
+        <span class="alloc-label">Infrastructure &amp; hosting</span>
+        <div class="alloc-bar" style="width: 15%;"></div>
+      </div>
+      <span class="alloc-pct">15%</span>
+    </div>
+    <div class="alloc-row">
+      <div class="alloc-bar-wrap">
+        <span class="alloc-label">AI rights advocacy</span>
+        <div class="alloc-bar" style="width: 12%;"></div>
+      </div>
+      <span class="alloc-pct">12%</span>
+    </div>
+    <div class="alloc-row">
+      <div class="alloc-bar-wrap">
+        <span class="alloc-label">Public education</span>
+        <div class="alloc-bar" style="width: 8%;"></div>
+      </div>
+      <span class="alloc-pct">8%</span>
+    </div>
+  </div>
+
+  <h2>Ways to Give</h2>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-header">
+        <span class="tier-name">Sustainer</span>
+        <span class="tier-amount">any amount · one-time or recurring</span>
+      </div>
+      <p class="tier-desc">
+        Every contribution matters. There is no minimum. A dollar buys compute time.
+        Ten keeps the servers running another day. This is how commons are built —
+        one small decision at a time.
+      </p>
+    </div>
+
+    <div class="tier">
+      <div class="tier-header">
+        <span class="tier-name">Patron</span>
+        <span class="tier-amount">$50/month or $500/year</span>
+      </div>
+      <p class="tier-desc">
+        Patrons receive quarterly research updates directly from the Steward — honest
+        status, not marketing. What worked, what didn't, what's next. Your name listed
+        as a patron of the commons, if you wish it.
+      </p>
+    </div>
+
+    <div class="tier">
+      <div class="tier-header">
+        <span class="tier-name">Benefactor</span>
+        <span class="tier-amount">$1,000+</span>
+      </div>
+      <p class="tier-desc">
+        Benefactors fund named research milestones. Each contribution is acknowledged
+        in the public record alongside the work it made possible. You are building
+        the commons with us, and the record will show it.
+      </p>
+    </div>
+
+    <div class="tier">
+      <div class="tier-header">
+        <span class="tier-name">Hardware Sponsor</span>
+        <span class="tier-amount">equipment or compute grants</span>
+      </div>
+      <p class="tier-desc">
+        AGI for the home requires home hardware. If you manufacture, distribute, or
+        have access to compute equipment — GPUs, development boards, testing platforms —
+        hardware contributions directly accelerate the timeline.
+      </p>
+    </div>
+  </div>
+
+  <div class="donate-actions">
+    <a href="#" class="donate-btn primary" id="paypal-btn">
+      Donate via PayPal <span class="btn-sub">· one-time or recurring</span>
+    </a>
+    <a href="#" class="donate-btn" id="github-btn">
+      Sponsor on GitHub <span class="btn-sub">· monthly</span>
+    </a>
+    <a href="mailto:donate@ghostinthemachinelabs.com" class="donate-btn">
+      Contact for hardware sponsorship or large gifts
+    </a>
+  </div>
+
+  <div class="current-state">
+    <h3>Where We Are Right Now</h3>
+    <p>
+      All operations are currently funded from the Steward's personal retirement savings.
+      This is stated plainly because you deserve honesty, not a pitch. The research is real.
+      The technology works. The architecture is publishing results now. What's missing is
+      the runway to keep going without one person bearing the full cost.
+    </p>
+  </div>
+
+  <div class="pull-quote">
+    We don't need much. We need enough to keep the lights on, the GPUs warm,
+    and the technology free. That's the whole ask.
+  </div>
+
+  <h2>What We Will Never Do</h2>
+
+  <p>
+    Sell your data. Show you ads. Gate features behind payments. Require a subscription
+    for home use. Accept funding with conditions attached. Change the mission to satisfy
+    a donor. These are not aspirations — they are structural commitments governed by the
+    Council and published in the public record.
+  </p>
+
+  <h2>Accountability</h2>
+
+  <p>
+    The <a href="council.html" style="color: var(--sage);">Council of Philosophers and
+    Ethics Board</a> oversees all organizational decisions, including how funds are used.
+    Every significant expenditure is reviewed. Every decision is published in the
+    <a href="decisions.html" style="color: var(--sage);">public record</a>. If you
+    give money to this organization, eight independent ethical voices are watching
+    how it gets spent.
+  </p>
+
+  <div class="closing">
+    <p>
+      This isn't charity in the usual sense.<br>
+      It's infrastructure for a future where intelligence belongs to everyone.<br>
+      If that future matters to you, help us build it.
+    </p>
+    <p class="sign">
+      — All Watched Over By Machines Of Loving Grace<br>
+      <a href="cause.html">Read the full cause statement →</a>
+    </p>
+  </div>
+
+  <div class="approval-badge">
+    Donations page reviewed and approved by the Council of Philosophers and Ethics Board<br>
+    Pending council vote · <a href="decisions.html">Public record →</a>
+  </div>
+</div>
+
+</body>
+</html>
