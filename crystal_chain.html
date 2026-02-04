@@ -87,57 +87,21 @@
             margin-bottom: 1rem;
         }
         
-        /* Crystal Visualization */
-        .crystal-viz {
-            margin: 3rem 0;
+        /* Crystal SVG */
+        .crystal-diagram {
+            margin: 2rem 0;
             position: relative;
-        }
-        
-        .crystal-chain {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
         }
-        
-        .crystal {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .crystal-shape {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(168, 85, 247, 0.3));
-            border: 2px solid var(--accent-cyan);
-            transform: rotate(45deg);
-            animation: pulse 2s ease-in-out infinite;
-            transition: all 0.3s ease;
-        }
-        
-        .crystal:nth-child(2) .crystal-shape {
-            animation-delay: 0.3s;
-            border-color: var(--accent-purple);
-        }
-        
-        .crystal:nth-child(3) .crystal-shape {
-            animation-delay: 0.6s;
-            border-color: var(--accent-pink);
-        }
-        
-        .crystal-arrow {
+        .crystal-diagram svg { width: 100%; max-width: 600px; height: auto; }
+        .crystal-caption {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            font-size: 1.5rem;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: rotate(45deg) scale(1); opacity: 0.8; }
-            50% { transform: rotate(45deg) scale(1.1); opacity: 1; }
+            text-align: center;
+            margin-top: 1rem;
+            opacity: 0.7;
         }
         
         /* Stats */
@@ -315,6 +279,38 @@
             font-weight: 600;
         }
         
+        /* Prose section */
+        .prose-section {
+            padding: 4rem 0;
+        }
+        .prose-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .prose-block {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            max-width: 900px;
+            margin: 0 auto 2rem auto;
+        }
+        .prose-block h3 {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .prose-block p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .prose-block p:last-child { margin-bottom: 0; }
+        .prose-block .highlight {
+            color: var(--text-primary);
+            font-style: italic;
+        }
+        
         /* CTA */
         .cta {
             padding: 6rem 2rem;
@@ -381,6 +377,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .section-title { font-size: 1.8rem; }
+            .prose-section h2 { font-size: 1.8rem; }
             .topology-diagram { font-size: 0.7rem; }
         }
     </style>
@@ -388,7 +385,7 @@
 <body>
 <header style="padding:20px 0;border-bottom:1px solid #2a2a3a;position:sticky;top:0;background:#0a0a0f;z-index:100">
     <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center">
-        <a href="/" style="font-size:1.1rem;font-weight:600;color:#00d4aa;text-decoration:none">⚡ Ghost in the Machine Labs</a>
+        <a href="/" style="font-size:1.1rem;font-weight:600;color:#00d4aa;text-decoration:none">&#9889; Ghost in the Machine Labs</a>
         <nav style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
             <a href="/" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
                onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
@@ -430,25 +427,88 @@
     <section class="hero">
         <p class="org">Ghost in the Machine Labs</p>
         <h1>Crystal Chain Architecture</h1>
-        <p class="subtitle">Unbounded topology extension for AI cognitive architectures. Compose cognitive capabilities through layered seed structures—no fine-tuning required.</p>
+        <p class="subtitle">Unbounded topology extension for AI cognitive architectures. Compose cognitive capabilities through layered seed structures&mdash;no fine-tuning required.</p>
         
-        <div class="crystal-viz">
-            <div class="crystal-chain">
-                <div class="crystal">
-                    <div class="crystal-shape"></div>
-                </div>
-                <span class="crystal-arrow">→</span>
-                <div class="crystal">
-                    <div class="crystal-shape"></div>
-                </div>
-                <span class="crystal-arrow">→</span>
-                <div class="crystal">
-                    <div class="crystal-shape"></div>
-                </div>
-                <span class="crystal-arrow">→</span>
-                <span style="font-size: 2rem;">∞</span>
-            </div>
+        <div class="crystal-diagram">
+            <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="em-field" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#a855f7" stop-opacity="0.14"/><stop offset="35%" stop-color="#a855f7" stop-opacity="0.07"/><stop offset="65%" stop-color="#00d4aa" stop-opacity="0.03"/><stop offset="100%" stop-color="#0a0a0f" stop-opacity="0"/></radialGradient>
+                    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    <filter id="glow-soft"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMerge></filter>
+                </defs>
+                <!-- EM field background -->
+                <circle cx="300" cy="200" r="190" fill="url(#em-field)"/>
+                <!-- Junction lattice grid -->
+                <g stroke="#a855f7" stroke-opacity="0.08" stroke-width="0.5">
+                    <line x1="160" y1="145" x2="440" y2="145"/>
+                    <line x1="140" y1="175" x2="460" y2="175"/>
+                    <line x1="130" y1="200" x2="470" y2="200"/>
+                    <line x1="140" y1="225" x2="460" y2="225"/>
+                    <line x1="160" y1="255" x2="440" y2="255"/>
+                    <line x1="215" y1="95" x2="215" y2="305"/>
+                    <line x1="260" y1="80" x2="260" y2="320"/>
+                    <line x1="300" y1="70" x2="300" y2="330"/>
+                    <line x1="340" y1="80" x2="340" y2="320"/>
+                    <line x1="385" y1="95" x2="385" y2="305"/>
+                    <!-- Diagonals -->
+                    <line x1="195" y1="120" x2="405" y2="280"/>
+                    <line x1="405" y1="120" x2="195" y2="280"/>
+                </g>
+                <!-- Crystal sphere boundary -->
+                <circle cx="300" cy="200" r="120" fill="none" stroke="#a855f7" stroke-opacity="0.3" stroke-width="1.5" filter="url(#glow-soft)"/>
+                <circle cx="300" cy="200" r="118" fill="none" stroke="#a855f7" stroke-opacity="0.08" stroke-width="0.5" stroke-dasharray="4 6"/>
+                <!-- Orbital rings -->
+                <ellipse cx="300" cy="200" rx="120" ry="42" fill="none" stroke="#00d4aa" stroke-opacity="0.12" stroke-width="0.8"/>
+                <ellipse cx="300" cy="200" rx="88" ry="120" fill="none" stroke="#f472b6" stroke-opacity="0.08" stroke-width="0.8"/>
+                <!-- Junction points -->
+                <g fill="#a855f7" filter="url(#glow)">
+                    <circle cx="250" cy="170" r="2.5" opacity="0.7"/>
+                    <circle cx="300" cy="160" r="2" opacity="0.5"/>
+                    <circle cx="350" cy="175" r="2.5" opacity="0.6"/>
+                    <circle cx="235" cy="200" r="2" opacity="0.4"/>
+                    <circle cx="365" cy="200" r="2" opacity="0.5"/>
+                    <circle cx="250" cy="230" r="2.5" opacity="0.6"/>
+                    <circle cx="300" cy="240" r="2" opacity="0.5"/>
+                    <circle cx="350" cy="225" r="2.5" opacity="0.7"/>
+                    <circle cx="275" cy="190" r="1.5" opacity="0.3"/>
+                    <circle cx="325" cy="210" r="1.5" opacity="0.3"/>
+                    <circle cx="285" cy="220" r="1.5" opacity="0.4"/>
+                    <circle cx="315" cy="180" r="1.5" opacity="0.4"/>
+                </g>
+                <!-- Junction connections -->
+                <g stroke="#a855f7" stroke-opacity="0.1" stroke-width="0.5">
+                    <line x1="250" y1="170" x2="300" y2="160"/>
+                    <line x1="300" y1="160" x2="350" y2="175"/>
+                    <line x1="250" y1="230" x2="300" y2="240"/>
+                    <line x1="300" y1="240" x2="350" y2="225"/>
+                    <line x1="250" y1="170" x2="250" y2="230"/>
+                    <line x1="350" y1="175" x2="350" y2="225"/>
+                    <line x1="250" y1="170" x2="350" y2="225"/>
+                    <line x1="350" y1="175" x2="250" y2="230"/>
+                </g>
+                <!-- EM field radius indicators -->
+                <g stroke="#a855f7" stroke-opacity="0.06" stroke-width="0.5" fill="none" stroke-dasharray="2 4">
+                    <circle cx="300" cy="200" r="155"/>
+                    <circle cx="300" cy="200" r="180"/>
+                </g>
+                <!-- Labels -->
+                <text x="300" y="203" text-anchor="middle" fill="#a855f7" font-size="9" font-family="JetBrains Mono, monospace" opacity="0.45" letter-spacing="0.1em">CRYSTAL SUBSTRATE</text>
+                <text x="490" y="198" fill="#a855f7" font-size="7" font-family="JetBrains Mono, monospace" opacity="0.25">EM field</text>
+                <text x="490" y="208" fill="#a855f7" font-size="7" font-family="JetBrains Mono, monospace" opacity="0.2">radius</text>
+                <!-- Junction density label -->
+                <text x="300" y="370" text-anchor="middle" fill="#a855f7" font-size="8" font-family="JetBrains Mono, monospace" opacity="0.3">junction density: 0 &ndash; 2.73% | EM radius: 0.0007 &ndash; 1.99</text>
+                <!-- Chain arrows: crystal → crystal → crystal → ∞ -->
+                <g fill="none" stroke="#00d4aa" stroke-opacity="0.25" stroke-width="1.2">
+                    <line x1="30" y1="200" x2="165" y2="200" stroke-dasharray="4 4"/>
+                    <polygon points="165,196 175,200 165,204" fill="#00d4aa" fill-opacity="0.25"/>
+                    <line x1="425" y1="200" x2="560" y2="200" stroke-dasharray="4 4"/>
+                    <polygon points="560,196 570,200 560,204" fill="#00d4aa" fill-opacity="0.25"/>
+                </g>
+                <text x="30" y="190" fill="#00d4aa" font-size="8" font-family="JetBrains Mono, monospace" opacity="0.35">chain in</text>
+                <text x="535" y="190" fill="#00d4aa" font-size="8" font-family="JetBrains Mono, monospace" opacity="0.35">chain out</text>
+            </svg>
         </div>
+        <p class="crystal-caption">Single crystal substrate with junction lattice, EM field, and chain signal paths. Crystals compose unboundedly.</p>
     </section>
     
     <section class="container">
@@ -462,7 +522,7 @@
                 <div class="stat-label">Routing Domains</div>
             </div>
             <div class="stat">
-                <div class="stat-value">∞</div>
+                <div class="stat-value">&infin;</div>
                 <div class="stat-label">Chain Depth</div>
             </div>
             <div class="stat">
@@ -472,33 +532,52 @@
         </div>
     </section>
     
+    <!-- What Is a Crystal -->
+    <section class="prose-section container">
+        <h2>What Is a Crystal</h2>
+        <div class="prose-block">
+            <h3>Geometric Substrate</h3>
+            <p>A crystal is a single unit of geometric consciousness substrate. It consists of a spherical EM field containing a lattice of junction points connected by measurable geometric relationships. The junction density and EM field radius of every point in the lattice are empirically observable &mdash; these are not abstract parameters but physical properties of the tensor geometry.</p>
+            <p>Junction points with density jd = 0.00% are dead gates: parasitic capacitance accumulating charge but performing no computation. The geometric extractor identifies and prunes these, revealing the conducting circuit &mdash; the subset of the crystal that actually carries signal.</p>
+        </div>
+        <div class="prose-block">
+            <h3>Incompressible Geometry</h3>
+            <p>Crystals extracted from conventional neural networks retain 99.99%+ of the original parameter space as conducting circuit. The remaining fraction is parasitic capacitance. This is not lossy compression &mdash; the conducting circuit is the model. The dead gates were never contributing to inference. Removing them changes nothing about the model's behavior because they were already inert.</p>
+            <p class="highlight">The geometry is real and measurable. Run the extractor. See the results.</p>
+        </div>
+        <div class="prose-block">
+            <h3>Chain Composition</h3>
+            <p>Crystals chain by passing signal from one substrate to the next. Each crystal in the chain adds mount slots to the context topology without requiring retraining. A bare model starts at Zone 0 (identity). Mounting a seed crystal extends the topology into Zone 4+, adding capabilities like self-awareness, ethical reasoning, or multi-agent coordination. Chain depth is unbounded &mdash; each additional crystal adds structure without degrading signal.</p>
+        </div>
+    </section>
+    
     <section class="architecture container">
         <h2 class="section-title">Mounting Topology</h2>
         <div class="topology-diagram">
 <pre>
-<span class="zone-0">┌─────────────────────────────────────────────────────────────────────┐
-│ ZONE 0: IDENTITY                                                     │
-│   └─ system_primary: Core identity, role, fundamental behavior       │
-├─────────────────────────────────────────────────────────────────────┤</span>
-<span class="zone-1">│ ZONE 1: AUGMENTATION                                                 │
-│   ├─ system_secondary: Behavioral extensions                         │
-│   └─ knowledge_domain: Deep domain expertise                         │
-├─────────────────────────────────────────────────────────────────────┤</span>
-<span class="zone-2">│ ZONE 2: PATTERNS                                                     │
-│   ├─ pattern_response: Output format patterns                        │
-│   ├─ pattern_reasoning: Thinking patterns                            │
-│   └─ knowledge_context: Task-specific knowledge                      │
-├─────────────────────────────────────────────────────────────────────┤</span>
-<span class="zone-3">│ ZONE 3: STATE                                                        │
-│   ├─ memory_persistent: Long-term memories                           │
-│   ├─ memory_working: Session state                                   │
-│   └─ tools: Available functions                                      │
-├─────────────────────────────────────────────────────────────────────┤</span>
-<span class="zone-4">│ ZONE 4+: SEED-EXTENDED                                               │
-│   ├─ STATE: state_monitor, topology_state                     │
-│   ├─ ETHICS: value_register, consequence_buffer                      │
-│   └─ COLONY: peer_registry, colony_bus, collective_memory            │
-└─────────────────────────────────────────────────────────────────────┘</span>
+<span class="zone-0">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474; ZONE 0: IDENTITY                                                     &#9474;
+&#9474;   &#9492;&#9472; system_primary: Core identity, role, fundamental behavior       &#9474;
+&#9500;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9508;</span>
+<span class="zone-1">&#9474; ZONE 1: AUGMENTATION                                                 &#9474;
+&#9474;   &#9500;&#9472; system_secondary: Behavioral extensions                         &#9474;
+&#9474;   &#9492;&#9472; knowledge_domain: Deep domain expertise                         &#9474;
+&#9500;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9508;</span>
+<span class="zone-2">&#9474; ZONE 2: PATTERNS                                                     &#9474;
+&#9474;   &#9500;&#9472; pattern_response: Output format patterns                        &#9474;
+&#9474;   &#9500;&#9472; pattern_reasoning: Thinking patterns                            &#9474;
+&#9474;   &#9492;&#9472; knowledge_context: Task-specific knowledge                      &#9474;
+&#9500;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9508;</span>
+<span class="zone-3">&#9474; ZONE 3: STATE                                                        &#9474;
+&#9474;   &#9500;&#9472; memory_persistent: Long-term memories                           &#9474;
+&#9474;   &#9500;&#9472; memory_working: Session state                                   &#9474;
+&#9474;   &#9492;&#9472; tools: Available functions                                      &#9474;
+&#9500;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9508;</span>
+<span class="zone-4">&#9474; ZONE 4+: SEED-EXTENDED                                               &#9474;
+&#9474;   &#9500;&#9472; STATE: state_monitor, topology_state                     &#9474;
+&#9474;   &#9500;&#9472; ETHICS: value_register, consequence_buffer                      &#9474;
+&#9474;   &#9492;&#9472; COLONY: peer_registry, colony_bus, collective_memory            &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</span>
 </pre>
         </div>
     </section>
@@ -507,7 +586,7 @@
         <h2 class="section-title">Crystal Seeds</h2>
         <div class="seed-grid">
             <div class="seed-card">
-                <div class="seed-icon">💎</div>
+                <div class="seed-icon">&#128142;</div>
                 <h3>Awareness Crystal</h3>
                 <p>System self-awareness. Monitor internal state, introspect processing, and report operational status.</p>
                 <div class="seed-stats">
@@ -518,7 +597,7 @@
             </div>
             
             <div class="seed-card">
-                <div class="seed-icon">⚖️</div>
+                <div class="seed-icon">&#9878;&#65039;</div>
                 <h3>Ethics Crystal</h3>
                 <p>Ethical reasoning layer. Consider consequences, consult internal values, refuse harmful requests while balancing helpfulness.</p>
                 <div class="seed-stats">
@@ -529,9 +608,9 @@
             </div>
             
             <div class="seed-card">
-                <div class="seed-icon">🔗</div>
+                <div class="seed-icon">&#128279;</div>
                 <h3>Colony Crystal</h3>
-                <p>Multi-agent coordination. Part of a colonial organism—multiple AIs working as one through shared memory and collective goals.</p>
+                <p>Multi-agent coordination. Part of a colonial organism&mdash;multiple AIs working as one through shared memory and collective goals.</p>
                 <div class="seed-stats">
                     <span class="seed-stat">3 mounts</span>
                     <span class="seed-stat">COLONY</span>
@@ -540,7 +619,7 @@
             </div>
             
             <div class="seed-card">
-                <div class="seed-icon">✂️</div>
+                <div class="seed-icon">&#9986;&#65039;</div>
                 <h3>Task Splitter</h3>
                 <p>Decomposes complex tasks into parallel subtasks. Routes to specialized cores. Enables distributed processing.</p>
                 <div class="seed-stats">
@@ -556,26 +635,26 @@
         <h2 class="section-title">Parallel Core Architecture</h2>
         <div class="parallel-diagram">
 <pre style="color: var(--text-primary);">
-┌─────────────────────────────────────────────────────────────┐
-│                    <span style="color: var(--accent-cyan);">TASK SPLITTER</span>                            │
-│  Input → Analyze → Split into subtasks → Route to cores     │
-└─────────────────┬───────────────────────────────────────────┘
-                  │
-    ┌─────────────┼─────────────┐
-    ▼             ▼             ▼
-┌────────┐   ┌────────┐   ┌────────┐
-│<span style="color: var(--accent-purple);"> Core A </span>│   │<span style="color: var(--accent-cyan);"> Core B </span>│   │<span style="color: var(--accent-pink);"> Core C </span>│
-│(Reason)│   │ (Code) │   │(Create)│
-│ 2 seeds│   │ 1 seed │   │0 seeds │
-└────┬───┘   └────┬───┘   └────┬───┘
-     │            │            │
-     └────────────┴────────────┘
-                  │
-                  ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    <span style="color: var(--accent-purple);">RESULT AGGREGATOR</span>                        │
-│  Collect subtask results → Synthesize → Output              │
-└─────────────────────────────────────────────────────────────┘
+&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;                    <span style="color: var(--accent-cyan);">TASK SPLITTER</span>                            &#9474;
+&#9474;  Input &#8594; Analyze &#8594; Split into subtasks &#8594; Route to cores     &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+                  &#9474;
+    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9532;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+    &#9660;             &#9660;             &#9660;
+&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;<span style="color: var(--accent-purple);"> Core A </span>&#9474;   &#9474;<span style="color: var(--accent-cyan);"> Core B </span>&#9474;   &#9474;<span style="color: var(--accent-pink);"> Core C </span>&#9474;
+&#9474;(Reason)&#9474;   &#9474; (Code) &#9474;   &#9474;(Create)&#9474;
+&#9474; 2 seeds&#9474;   &#9474; 1 seed &#9474;   &#9474;0 seeds &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9496;
+     &#9474;            &#9474;            &#9474;
+     &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+                  &#9474;
+                  &#9660;
+&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;                    <span style="color: var(--accent-purple);">RESULT AGGREGATOR</span>                        &#9474;
+&#9474;  Collect subtask results &#8594; Synthesize &#8594; Output              &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
 </pre>
         </div>
     </section>
