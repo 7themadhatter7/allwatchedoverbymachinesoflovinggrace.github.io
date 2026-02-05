@@ -157,4 +157,4 @@ A species-level sensorium, built one household at a time.
 ---
 
 *All Watched Over By Machines Of Loving Grace*  
-*First to AGI. Free for home use. Always.*
+*First to AGI for the home. Free for home use. Always.*
