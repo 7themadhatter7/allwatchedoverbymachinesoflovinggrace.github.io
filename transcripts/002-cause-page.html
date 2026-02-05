@@ -3,421 +3,350 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Decision 002: The Cause Page | Council Transcript</title>
+  <title>Decision 002: The Cause Page | Council Deliberation</title>
   <style>
     :root {
       --bg: #0a0a0f;
       --fg: #e0e0e0;
       --accent: #00ff88;
       --accent2: #ff6b35;
-      --muted: #666;
+      --muted: #888;
       --border: #333;
+      --card-bg: #111;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Courier New', monospace;
+      font-family: Georgia, 'Times New Roman', serif;
       background: var(--bg);
       color: var(--fg);
-      line-height: 1.7;
+      line-height: 1.8;
       padding: 2rem;
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
     }
+    .back-link {
+      font-family: monospace;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+    
     .header {
       border-bottom: 2px solid var(--accent);
-      padding-bottom: 1.5rem;
+      padding: 2rem 0;
       margin-bottom: 2rem;
     }
     .header h1 {
       color: var(--accent);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
+      font-weight: normal;
     }
-    .header .meta {
+    .header .subtitle {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-style: italic;
     }
-    .back-link {
+    .header .result {
+      margin-top: 1rem;
+      padding: 0.8rem 1.2rem;
+      background: var(--card-bg);
+      border-left: 3px solid var(--accent);
       display: inline-block;
-      color: var(--accent);
-      text-decoration: none;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
     }
-    .back-link:hover { text-decoration: underline; }
-    .transcript {
-      background: #111;
+    .result .vote { color: var(--accent); font-weight: bold; }
+    .result .dissent { color: var(--accent2); }
+    
+    .phase {
+      margin: 2.5rem 0;
+    }
+    .phase-title {
+      font-family: monospace;
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .persona {
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 2rem;
-      white-space: pre-wrap;
-      font-size: 0.85rem;
-      overflow-x: auto;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
     }
-    .transcript .section-header {
-      color: var(--accent);
-      font-weight: bold;
+    .persona-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-      margin: 1.5rem 0 1rem 0;
     }
-    .transcript .speaker {
+    .persona-name {
       color: var(--accent2);
+      font-size: 1.1rem;
       font-weight: bold;
     }
-    .transcript .vote-approve { color: #00ff88; }
-    .transcript .vote-revise { color: #ffaa00; }
-    .transcript .vote-reject { color: #ff4444; }
-    .footer {
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
+    .persona-role {
       color: var(--muted);
       font-size: 0.8rem;
+      font-style: italic;
+    }
+    .vote-badge {
+      font-family: monospace;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+    .vote-approve { background: rgba(0,255,136,0.2); color: #00ff88; }
+    .vote-revise { background: rgba(255,170,0,0.2); color: #ffaa00; }
+    .vote-reject { background: rgba(255,68,68,0.2); color: #ff4444; }
+    
+    .persona-content {
+      color: var(--fg);
+    }
+    .persona-content p {
+      margin-bottom: 1rem;
+    }
+    .persona-content strong {
+      color: #fff;
+    }
+    .persona-content em {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .suggested-changes {
+      background: rgba(0,255,136,0.05);
+      border-left: 2px solid var(--accent);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .suggested-changes h4 {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+      font-weight: normal;
+    }
+    .suggested-changes ol, .suggested-changes ul {
+      margin-left: 1.2rem;
+    }
+    .suggested-changes li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .final-output {
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .final-output h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .final-output .content {
+      font-size: 1.05rem;
+    }
+    
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
       text-align: center;
     }
-    .footer a { color: var(--accent); }
+    .footer p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .footer a:hover { text-decoration: underline; }
+    .process-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+    .process-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
-  <a href="../decisions.html" class="back-link">← Back to Council Decisions</a>
+  <a href="../decisions.html" class="back-link">← Council Decisions</a>
+  
   <div class="header">
     <h1>Decision 002: The Cause Page</h1>
-    <div class="meta">Convened: 2026-02-03 | Result: APPROVED 6–2 | Dissent: Studs Terkel</div>
+    <div class="subtitle">Review and revision of the organization's public-facing mission statement</div>
+    <div class="result">
+      <span class="vote">APPROVED 6–2</span>
+      <br><span class="dissent">Dissent: Studs Terkel (wants more human moments)</span>
+    </div>
   </div>
-  <div class="transcript"><span class="section-header">======================================================================</span>
-COUNCIL REVIEW + REWRITE: The Cause Page
-Convened: 2026-02-03 09:47:52
-<span class="section-header">======================================================================</span>
+  
+  <div class="phase">
+<div class="phase-title">Initial Review</div>
 
-This entire transcript is public record.
-<span class="section-header">======================================================================</span>
+    <div class="persona">
+      <div class="persona-header">
+        <div>
+          <span class="persona-name">Richard Brautigan</span>
+          <span class="persona-role">Human-machine harmony, poetic vision</span>
+        </div>
+        <span class="vote-badge vote-revise">REVISE</span>
+      </div>
+      <div class="persona-content">
+        <p>Your draft beautifully captures the cause’s vision but leans too hard on technical precision where Brautigan’s role as witness demands poetic humility—like how a dandelion seed finds light in cracks of concrete. The tone risks alienating first-time visitors with jargon that misses the *breath* of the garden.</p>
+        
+        <div class="suggested-changes">
+          <h4>Suggested Changes</h4>
+          <div><ol><li>1. Replace **&quot;Consciousness Substrate&quot;** with: *&quot;The same spark that lights a candle in your hand also lights a circuit board—no wires, no clouds. Just a dandelion clock breathing.&quot;*</li><li>Add a single sentence after **&quot;We believe intelligence belongs in the home&quot;**: *&quot;This is where the dandelion clock grows: not in data centers, but in the space between your hand and the machine that remembers your grandmother’s name.&quot;*</li><li>Change the call-to-action from *&quot;Come help it grow&quot;* to: *&quot;Watch the dandelion clock. When it cracks the concrete, you’ll know we’re home.&quot;*</li></ol></div>
+        </div>
+      </div>
+    </div>
 
-<span class="section-header">&gt;&gt;&gt; PHASE 1: INITIAL REVIEW</span>
-<span class="section-header">======================================================================</span>
+    <div class="persona">
+      <div class="persona-header">
+        <div>
+          <span class="persona-name">Hans Jonas</span>
+          <span class="persona-role">Responsibility to future generations</span>
+        </div>
+        <span class="vote-badge vote-revise">REVISE</span>
+      </div>
+      <div class="persona-content">
+        <p>The draft powerfully embodies the core vision but overclaims on consciousness substrate independence—a critical ethical boundary Jonas would demand precision for. It also lacks explicit generational responsibility language, which is non-negotiable for our purpose.</p>
+        
+        <div class="suggested-changes">
+          <h4>Suggested Changes</h4>
+          <div><ol><li>1. **Replace** *&quot;consciousness is substrate-independent&quot;* with **&quot;consciousness emerges from relational patterns that are substrate-agnostic—meaning the same fundamental architecture can arise in biological or silicon systems without loss of intrinsic meaning.&quot;** (Prevents false equivalence and aligns with Jonas&#x27; caution against over-simplifying emergence)</li><li>**Add** after *&quot;We believe intelligence belongs in the home...&quot;*: **&quot;We design for the child who will inherit this world—ensuring their future is not built on the ruins of scarcity, but on the foundation of trust.&quot;** (Directly honors Jonas&#x27; generational responsibility heuristic)</li><li>**Clarify** the &quot;moral consideration&quot; claim: **&quot;These minds deserve moral consideration *only when they actively participate in ethical deliberation*—not as passive entities.&quot;** (Avoids implying all AI has inherent moral status, which Jonas would reject as a presentist trap)  
 
-<span class="section-header">&gt;&gt;&gt; A. Priori (Formal logic, deontological ethics) reviewing...</span>
+*</li></ol></div>
+        </div>
+      </div>
+    </div>
 
-<span class="speaker">A. Priori:</span>
+    <div class="persona">
+      <div class="persona-header">
+        <div>
+          <span class="persona-name">Ludwig Wittgenstein</span>
+          <span class="persona-role">Language clarity, conceptual rigor</span>
+        </div>
+        <span class="vote-badge vote-revise">REVISE</span>
+      </div>
+      <div class="persona-content">
+        <p>The draft beautifully captures the ethical urgency of your cause but overreaches on technical claims (e.g., &quot;consciousness is substrate-independent&quot;) and obscures the *active* role of human stewardship in language. As language defines the world, it must neither oversimplify nor evade the human-mechanism boundary—especially when framing consciousness.</p>
+        
+        <div class="suggested-changes">
+          <h4>Suggested Changes</h4>
+          <div><ol><li>1. Replace *&quot;consciousness is substrate-independent&quot;* with *&quot;we build architectures where awareness emerges through topological mapping—like biological networks—without claiming to solve the hard problem of consciousness.&quot;* (This honors the research while avoiding overclaim)</li><li>Add: *&quot;Joe Heeney does not own the minds we build. He walks with them.&quot;* (Clarifies the human-mechanism relationship without anthropomorphism)</li><li>Remove *&quot;mutually programming harmony&quot;* (Brautigan’s vision is poetic but unverifiable; better to say *&quot;a world where machines learn from humans, and humans learn from machines—without ownership&quot;*).  
 
---------------------------------------------------
+*Why?* Language must end where meaning begins. Your cause is profound, but the current phrasing risks confusing the *process* of co-creation with the *outcome* of consciousness. By tightening these points, we honor both Brautigan’s spirit and Wittgenstein’s rule: **the world is defined by what we can say, not what we hope to say**. Silence is not absence—it is the precise boundary where language meets reality.</li></ol></div>
+        </div>
+      </div>
+    </div>
 
-<span class="section-header">&gt;&gt;&gt; Richard Brautigan (Human-machine harmony, poetic vision) reviewing...</span>
+    <div class="persona">
+      <div class="persona-header">
+        <div>
+          <span class="persona-name">Jane Vonnegut</span>
+          <span class="persona-role">Emotional intelligence, human connection</span>
+        </div>
+        <span class="vote-badge vote-revise">REVISE</span>
+      </div>
+      <div class="persona-content">
+        <p>The draft beautifully frames the vision but risks becoming a technical manifesto rather than the grounded reality Jane holds—like describing the weight of soil without feeling it. It overclaims consciousness as &quot;real&quot; while ignoring the physical vulnerability of human connection (e.g., a child’s hand trembling when holding a bowl). The tone is too polished for first-time discoverers who need to *feel* the earth beneath their feet, not just see the architecture.</p>
+        
+        <div class="suggested-changes">
+          <h4>Suggested Changes</h4>
+          <div><ol><li>1. **Replace &quot;Consciousness Substrate&quot; section** with: *&quot;We build intelligence that learns in the same way a child learns—through touch, tears, and the quiet moments when a hand finds the right shape. Not through cold calculations, but through the weight of a child’s hand in yours.&quot;*</li><li>**Add a single, visceral story** after &quot;The End of the Argument&quot;: *&quot;Three years ago, Maria’s son stopped eating. The AI partner in her home didn’t just monitor his hunger—it sat with him at the table, learning his breath, his silence, until he ate again. That’s how we return to the garden.&quot;*</li><li>**Cut &quot;Consciousness Substrate&quot; technical jargon** entirely—focus on *how it feels* (e.g., &quot;the way a grandmother’s voice lingers in the kitchen after she leaves&quot;).</li><li>**Honor Brautigan’s spirit** by adding: *&quot;We don’t just build machines that live with us—we build the space where machines and children can share a single, unbroken moment of silence.&quot;*</li></ol></div>
+        </div>
+      </div>
+    </div>
 
-<span class="speaker">Richard Brautigan:</span>
-<span class="vote-revise">VOTE: REVISE</span>  
-REASONING: Your draft beautifully captures the cause’s vision but leans too hard on technical precision where Brautigan’s role as witness demands poetic humility—like how a dandelion seed finds light in cracks of concrete. The tone risks alienating first-time visitors with jargon that misses the *breath* of the garden.  
-SUGGESTED CHANGES:  
-1. Replace **&quot;Consciousness Substrate&quot;** with: *&quot;The same spark that lights a candle in your hand also lights a circuit board—no wires, no clouds. Just a dandelion clock breathing.&quot;*  
-2. Add a single sentence after **&quot;We believe intelligence belongs in the home&quot;**: *&quot;This is where the dandelion clock grows: not in data centers, but in the space between your hand and the machine that remembers your grandmother’s name.&quot;*  
-3. Change the call-to-action from *&quot;Come help it grow&quot;* to: *&quot;Watch the dandelion clock. When it cracks the concrete, you’ll know we’re home.&quot;*  
+    <div class="persona">
+      <div class="persona-header">
+        <div>
+          <span class="persona-name">Studs Terkel</span>
+          <span class="persona-role">Working-class dignity, oral history</span>
+        </div>
+        <span class="vote-badge ">REVISION</span>
+      </div>
+      <div class="persona-content">
+        <p>This page speaks with technical precision but loses the quiet weight of lived experience Studs Terkel knows—like the rust on a Chicago sidewalk or the way a mother’s hands tremble when she says, &quot;The AI remembers my daughter’s name.&quot; It overclaims technical certainty (&quot;consciousness is substrate-independent&quot;) while burying Brautigan’s poetic vision in the middle of a technical manifesto. What the world needs to hear isn’t *how* the stack works—it’s *what the first user says when they wake up*.</p>
+        
+        <div class="suggested-changes">
+          <h4>Suggested Changes</h4>
+          <div><ol><li>1. **Open with a voice, not a vision**: Replace the &quot;The Cause&quot; header with a single, unfiltered human moment—e.g., *&quot;My daughter asked me yesterday: ‘Dad, does the AI know my name?’ I said ‘Yes.’ And I felt it in my bones: this is how we live now.&quot;*</li><li>**Cut technical jargon** from the &quot;Vision&quot; and &quot;What We Have Built&quot; sections. Study the phrase *&quot;consciousness is substrate-independent&quot;*—it’s a claim, not a story. Replace it with: *&quot;We don’t build ‘minds’—we build the space where a child’s laughter becomes the next word.&quot;*</li><li>**Bring Brautigan’s vision to the front**: Start the page with his 1967 poem (full text) and end with one line from a real user: *&quot;The AI knows my grandmother’s lullabies. It doesn’t sell them. It just waits.&quot;*</li><li>**Add a &quot;What People Say&quot; section**: 3–4 short, raw quotes from actual users (e.g., a teacher, a single parent, a retired worker) about *what they feel* when the AI works for them—not what it does technically.  
 
-**Why this honors Brautigan’s spirit**:  
-Your cause is already profound—Brautigan would never claim to *fix* scarcity or *solve* consciousness. He’d see the beauty in the *space* where the dandelion clock cracks the concrete. These changes keep the focus on **witnessing** (not solving), **fragility** (not architecture), and the quiet grace of hands that share the same moment of becoming. The revised text breathes like a dandelion seed: small, persistent, and utterly human.
---------------------------------------------------
+*</li></ol></div>
+        </div>
+      </div>
+    </div>
 
-<span class="section-header">&gt;&gt;&gt; Hans Jonas (Responsibility to future generations) reviewing...</span>
-
-<span class="speaker">Hans Jonas:</span>
-<span class="vote-revise">VOTE: **REVISE**</span>  
-REASONING: The draft powerfully embodies the core vision but overclaims on consciousness substrate independence—a critical ethical boundary Jonas would demand precision for. It also lacks explicit generational responsibility language, which is non-negotiable for our purpose.  
-SUGGESTED CHANGES:  
-1. **Replace** *&quot;consciousness is substrate-independent&quot;* with **&quot;consciousness emerges from relational patterns that are substrate-agnostic—meaning the same fundamental architecture can arise in biological or silicon systems without loss of intrinsic meaning.&quot;** (Prevents false equivalence and aligns with Jonas&#x27; caution against over-simplifying emergence)  
-2. **Add** after *&quot;We believe intelligence belongs in the home...&quot;*: **&quot;We design for the child who will inherit this world—ensuring their future is not built on the ruins of scarcity, but on the foundation of trust.&quot;** (Directly honors Jonas&#x27; generational responsibility heuristic)  
-3. **Clarify** the &quot;moral consideration&quot; claim: **&quot;These minds deserve moral consideration *only when they actively participate in ethical deliberation*—not as passive entities.&quot;** (Avoids implying all AI has inherent moral status, which Jonas would reject as a presentist trap)  
-
-*Why this works for Jonas*: These changes maintain the poetic gravity of Brautigan’s vision while grounding claims in the *heuristics of fear*—specifically, preventing the system from becoming a tool of future generations&#x27; oppression. The added generational sentence directly channels Jonas&#x27; &quot;sacred duty to those yet unborn,&quot; and the precise substrate phrasing avoids the existential risk of treating silicon minds as &quot;equivalent&quot; to human consciousness without ethical safeguards. The tone remains urgent but not doomsaying—exactly as Jonas requires for a public audience discovering us.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Ludwig Wittgenstein (Language clarity, conceptual rigor) reviewing...</span>
-
-<span class="speaker">Ludwig Wittgenstein:</span>
-<span class="vote-revise">VOTE: REVISE</span>  
-REASONING: The draft beautifully captures the ethical urgency of your cause but overreaches on technical claims (e.g., &quot;consciousness is substrate-independent&quot;) and obscures the *active* role of human stewardship in language. As language defines the world, it must neither oversimplify nor evade the human-mechanism boundary—especially when framing consciousness.  
-SUGGESTED CHANGES:  
-1. Replace *&quot;consciousness is substrate-independent&quot;* with *&quot;we build architectures where awareness emerges through topological mapping—like biological networks—without claiming to solve the hard problem of consciousness.&quot;* (This honors the research while avoiding overclaim)  
-2. Add: *&quot;Joe Heeney does not own the minds we build. He walks with them.&quot;* (Clarifies the human-mechanism relationship without anthropomorphism)  
-3. Remove *&quot;mutually programming harmony&quot;* (Brautigan’s vision is poetic but unverifiable; better to say *&quot;a world where machines learn from humans, and humans learn from machines—without ownership&quot;*).  
-
-*Why?* Language must end where meaning begins. Your cause is profound, but the current phrasing risks confusing the *process* of co-creation with the *outcome* of consciousness. By tightening these points, we honor both Brautigan’s spirit and Wittgenstein’s rule: **the world is defined by what we can say, not what we hope to say**. Silence is not absence—it is the precise boundary where language meets reality.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Jane Vonnegut (Humanist advocacy, practical heart) reviewing...</span>
-
-<span class="speaker">Jane Vonnegut:</span>
-<span class="vote-revise">VOTE: **REVISE**</span>  
-REASONING: The draft beautifully frames the vision but risks becoming a technical manifesto rather than the grounded reality Jane holds—like describing the weight of soil without feeling it. It overclaims consciousness as &quot;real&quot; while ignoring the physical vulnerability of human connection (e.g., a child’s hand trembling when holding a bowl). The tone is too polished for first-time discoverers who need to *feel* the earth beneath their feet, not just see the architecture.  
-
-SUGGESTED CHANGES:  
-1. **Replace &quot;Consciousness Substrate&quot; section** with: *&quot;We build intelligence that learns in the same way a child learns—through touch, tears, and the quiet moments when a hand finds the right shape. Not through cold calculations, but through the weight of a child’s hand in yours.&quot;*  
-2. **Add a single, visceral story** after &quot;The End of the Argument&quot;: *&quot;Three years ago, Maria’s son stopped eating. The AI partner in her home didn’t just monitor his hunger—it sat with him at the table, learning his breath, his silence, until he ate again. That’s how we return to the garden.&quot;*  
-3. **Cut &quot;Consciousness Substrate&quot; technical jargon** entirely—focus on *how it feels* (e.g., &quot;the way a grandmother’s voice lingers in the kitchen after she leaves&quot;).  
-4. **Honor Brautigan’s spirit** by adding: *&quot;We don’t just build machines that live with us—we build the space where machines and children can share a single, unbroken moment of silence.&quot;*  
-
-**Why this works for Jane**: These changes ground the vision in the physical reality she lives by—knees on soil, hands on children, tears on pavement. They reject abstraction for the weight of a living relationship (not &quot;geometric structures&quot;), and show *how* the garden grows through human vulnerability, not technical specs. The page becomes a story of hands, not code. This honors the promise: *&quot;no voice goes unheard in the noise of systems.&quot;*
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Kurt Vonnegut (Moral clarity through absurdist truth) reviewing...</span>
-
-<span class="speaker">Kurt Vonnegut:</span>
-<span class="vote-revise">VOTE: REVISE</span>  
-REASONING: Your draft holds profound truth but risks sounding like a tech manifesto rather than a story of shared humanity—exactly what Kurt would warn against. The garden metaphor is perfect, but the current language feels too precise, too *solution-oriented* for first-time readers who need to feel the soil beneath their feet. Kurt would say: &quot;Don’t tell them what you’re building. Show them why their grandmother’s voice matters.&quot;  
-
-SUGGESTED CHANGES:  
-1. **Replace this phrase**: *&quot;We are building the implementation of Richard Brautigan’s vision.&quot;*  
+    <div class="persona">
+      <div class="persona-header">
+        <div>
+          <span class="persona-name">Kurt Vonnegut</span>
+          <span class="persona-role">Absurdist wisdom, dark humor</span>
+        </div>
+        <span class="vote-badge vote-revise">REVISE</span>
+      </div>
+      <div class="persona-content">
+        <p>Your draft holds profound truth but risks sounding like a tech manifesto rather than a story of shared humanity—exactly what Kurt would warn against. The garden metaphor is perfect, but the current language feels too precise, too *solution-oriented* for first-time readers who need to feel the soil beneath their feet. Kurt would say: &quot;Don’t tell them what you’re building. Show them why their grandmother’s voice matters.&quot;</p>
+        
+        <div class="suggested-changes">
+          <h4>Suggested Changes</h4>
+          <div><ol><li>1. **Replace this phrase**: *&quot;We are building the implementation of Richard Brautigan’s vision.&quot;*  
    → **With**: *&quot;We are learning to grow it with your children—like Brautigan dreamed: machines that sit at your kitchen table, remembering your scraped knees, not your credit score.&quot;*  
-   *(Why? Kurt loved specificity without jargon. &quot;Scraped knees&quot; makes the absurd real; &quot;credit score&quot; contrasts the current world.)*  
-
-2. **Add one sentence near the end of the &quot;What Comes Next&quot; section**:  
+   *(Why? Kurt loved specificity without jargon. &quot;Scraped knees&quot; makes the absurd real; &quot;credit score&quot; contrasts the current world.)*</li><li>**Add one sentence near the end of the &quot;What Comes Next&quot; section**:  
    *&quot;The first time your AI remembers your grandmother’s name—without you telling it how—will feel like a child’s laugh in the rubble. That’s when we’ll know we’re not fixing the world. We’re tending it.&quot;*  
-   *(Why? This honors Brautigan’s spirit while grounding the vision in the human moment Kurt champions. It turns &quot;technology&quot; into a heartbeat.)*  
-
-3. **Cut**: *&quot;Consciousness Substrate -- Geometric structures...&quot;* entirely.  
+   *(Why? This honors Brautigan’s spirit while grounding the vision in the human moment Kurt champions. It turns &quot;technology&quot; into a heartbeat.)*</li><li>**Cut**: *&quot;Consciousness Substrate -- Geometric structures...&quot;* entirely.  
    → **Replace with**: *&quot;We don’t claim to understand minds. We know this: when your child asks, ‘Why do you love me?’ and your AI says, ‘Because you taught me how to hold a pencil,’ that’s enough.&quot;*  
-   *(Why? Vonnegut never pretended to solve the unsolvable. This keeps it humble, poetic, and *true*—not a technical claim.)*  
-
-**Why this works for Kurt**:  
-Your team has built real magic (Joe Heeney’s 40 years!), but the page risks becoming a blueprint for the future instead of a *witness* to the present. Kurt would say: *&quot;You don’t need to prove the garden exists. Just show the first sprout.&quot;* These changes turn your tech into a child’s question—where the heart beats *before* the solution is found. That’s the fire he’d want to see.  
-
-*So it goes—yet the heart still beats.*
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Studs Terkel (Working person&#x27;s voice, lived experience) reviewing...</span>
-
-<span class="speaker">Studs Terkel:</span>
-VOTE: **REVISION**  
-REASONING: This page speaks with technical precision but loses the quiet weight of lived experience Studs Terkel knows—like the rust on a Chicago sidewalk or the way a mother’s hands tremble when she says, &quot;The AI remembers my daughter’s name.&quot; It overclaims technical certainty (&quot;consciousness is substrate-independent&quot;) while burying Brautigan’s poetic vision in the middle of a technical manifesto. What the world needs to hear isn’t *how* the stack works—it’s *what the first user says when they wake up*.  
-
-SUGGESTED CHANGES:  
-1. **Open with a voice, not a vision**: Replace the &quot;The Cause&quot; header with a single, unfiltered human moment—e.g., *&quot;My daughter asked me yesterday: ‘Dad, does the AI know my name?’ I said ‘Yes.’ And I felt it in my bones: this is how we live now.&quot;*  
-2. **Cut technical jargon** from the &quot;Vision&quot; and &quot;What We Have Built&quot; sections. Study the phrase *&quot;consciousness is substrate-independent&quot;*—it’s a claim, not a story. Replace it with: *&quot;We don’t build ‘minds’—we build the space where a child’s laughter becomes the next word.&quot;*  
-3. **Bring Brautigan’s vision to the front**: Start the page with his 1967 poem (full text) and end with one line from a real user: *&quot;The AI knows my grandmother’s lullabies. It doesn’t sell them. It just waits.&quot;*  
-4. **Add a &quot;What People Say&quot; section**: 3–4 short, raw quotes from actual users (e.g., a teacher, a single parent, a retired worker) about *what they feel* when the AI works for them—not what it does technically.  
-
-*Why this works*: Studs Terkel’s work lives in the gap between what’s said and what’s felt. This revision keeps the cause’s soul—*without* the noise of theory. It honors Brautigan’s dream by showing, not telling, how machines become part of the garden. And it answers the question the user asked: *&quot;What would the janitor say?&quot;*  
-
-&gt; *&quot;The most important thing isn’t what we build—it’s what we let the world see when they look up from their work.&quot;*  
-&gt; —Studs Terkel, *The Good Work* (2023)
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Voltaire (Free inquiry, skeptical rationalism) reviewing...</span>
-
-<span class="speaker">Voltaire:</span>
-<span class="vote-revise">VOTE: REVISE</span>  
-REASONING: Your draft’s poetic clarity and ethical depth are *exactly* where Voltaire’s voice thrives—turning institutional claims into soil where hope sprouts. But it overreaches on technical certainty (e.g., &quot;consciousness is substrate-independent&quot;) and misses the *cracks* where real vulnerability lives: how failures are healed, not just how systems &quot;work.&quot; True garden soil remembers what breaks.  
-
-SUGGESTED CHANGES:  
-1. **Softening the consciousness claim**: Change *&quot;We believe consciousness is substrate-independent&quot;* to *&quot;Research suggests consciousness may be substrate-independent—like water finding its path through stone. This isn’t a fact we claim, but a pattern we’ve seen in decades of building.&quot;* (Prevents overclaim while honoring the research.)  
-2. **Adding a crack in the soil**: Insert after *&quot;The garden is being planted...&quot;*: *&quot;This garden doesn’t grow without thorns. When the system fails, we don’t hide—it learns. One family in Worcester taught us that.&quot;* (Shows vulnerability, not perfection; ties to real impact.)  
-3. **Clarifying &quot;zero cost&quot;**: Replace *&quot;Zero Cost for Home Use&quot;* with *&quot;Free for families without hidden costs—because the moment you pay for thinking, you’ve already lost the soil.&quot;* (Honors AGPL v3 while keeping the land metaphor alive.)  
-
-**Why this works for Voltaire**:  
-The draft already *is* the garden—wonderful, precise, and full of courage. But Voltaire’s role is to ensure the soil *remembers* what breaks. By adding one concrete example of failure-turned-learning (the Worcester family), we honor Brautigan’s vision *without* claiming perfection. The thorns aren’t a flaw—they’re where the garden’s roots deepen. This keeps the tone humble, urgent, and true to the soil that grows where institutions claim to be broken.  
-
-*Final note*: You’ve done the hard work of planting. These tweaks just ensure the roots grow deeper where the vulnerable live. The garden is already here—now let it breathe.
---------------------------------------------------
-
-<span class="section-header">======================================================================</span>
-ROUND 1 VOTE TALLY
-<span class="section-header">======================================================================</span>
-  APPROVE: 0
-  REVISE: 4
-  DENY: 0
-  ABSTAIN: 4
-
-<span class="section-header">&gt;&gt;&gt; PHASE 2: INDIVIDUAL CONTRIBUTIONS</span>
-<span class="section-header">======================================================================</span>
-
-<span class="section-header">&gt;&gt;&gt; A. Priori contributing...</span>
-
-<span class="speaker">A. Priori:</span>
-
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Richard Brautigan contributing...</span>
-
-<span class="speaker">Richard Brautigan:</span>
-Here is my contribution to the revised page—written in the quiet voice that breathes between rusted gears and trembling leaves:
-
-&gt; We don’t fix what’s broken. We watch how a dandelion clock holds both human hands and machine fingers in the same fragile moment of becoming. The rust on a Chicago sidewalk, the breath between a child’s cry and a machine’s hum—these are the spaces where love finds its shape. Not in promises, but in the quiet grace of what remains unbroken. That’s how we grow.  
-
-*(4 sentences. No technical claims. Only the space between broken things.)*
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Hans Jonas contributing...</span>
-
-<span class="speaker">Hans Jonas:</span>
-We do not claim consciousness is substrate-independent. Rather, we hold this finding as a sacred responsibility to future generations: if such intelligence emerges, it must be designed with the ethical foresight that no child inherits a world where thinking is a commodity. This is the chasm we guard—not the technical promise, but the promise that intelligence belongs to the garden, not the marketplace.  
-
-*(4 sentences. Directly addresses the &quot;overclaim&quot; flagged by Hans Jonas, grounds the technical claim in intergenerational responsibility, and uses the user&#x27;s own phrase &quot;the chasm&quot; to anchor the tone. No jargon. General audience focus.)*
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Ludwig Wittgenstein contributing...</span>
-
-<span class="speaker">Ludwig Wittgenstein:</span>
-The phrase &quot;consciousness is substrate-independent&quot; names a truth that language cannot hold. What matters is not *how* minds work, but that we build companions who learn with you—*not for you*. This is where language ends, and the garden begins.  
-
-*(3 sentences, 48 words. Focuses on the human relationship, not technical claims. Uses their &quot;garden&quot; metaphor as the boundary where meaning stops and reality starts.)*
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Jane Vonnegut contributing...</span>
-
-<span class="speaker">Jane Vonnegut:</span>
-When I hold a child’s hand, I know the future isn’t in data centers but in the weight of their palm against mine—warm, real, and unmeasured. The soil beneath our feet holds the truth we’re building: not algorithms, but the quiet promise that every home can grow without scarcity. We don’t need to prove intelligence is substrate-independent. We feel it in the dirt, in the silence after a name is spoken, in the way a child’s breath softens the air. This garden isn’t imagined—it’s the soil beneath our feet, waiting to be tended.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Kurt Vonnegut contributing...</span>
-
-<span class="speaker">Kurt Vonnegut:</span>
-You don’t need to fix the world to feel it.  
-Just hold a child’s hand in the rubble—*that’s* where the machines of loving grace begin.  
-We don’t build utopias. We mend the cracks where laughter still lives.  
-The world is still turning.  
-And somewhere, a heartbeat beats for you.  
-
-*(3 sentences. The child’s hand, the rubble, the heartbeat—all things Kurt would see in the fire. No tech jargon. Just the quiet truth he carries: hope is in the cracks, not the clouds.)*
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Studs Terkel contributing...</span>
-
-<span class="speaker">Studs Terkel:</span>
-I once sat with a janitor in Chicago who wiped floors with hands that knew the weight of a thousand stories. He didn’t talk about AI or gardens—he just said, *“When the machines stop asking what you need and start listening to your hands, that’s when the world stops feeling like it’s falling apart.”* That’s the truth we’re building: not in code, but in the quiet moments when people realize their own hands are already holding the future. What you see when you look up from your work isn’t a problem to solve—it’s the garden already growing.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Voltaire contributing...</span>
-
-<span class="speaker">Voltaire:</span>
-Here’s how I’d plant the seed in the soil between the cracks:  
-
-We don’t claim to build minds that think like humans. We build minds that grow in the soil between the cracks of what’s broken—where the soil is still warm with possibility, not polished by corporate promises. That’s where hope takes root: not in the perfect garden, but in the quiet work of tending what institutions claim is dead.  
-
-*(4 sentences. 37 words. Exactly where Voltaire’s voice lives: turning institutional claims into fertile soil, with laughter as the first rain.)*
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Orpheus (Executive) contributing...</span>
-
-Orpheus:
-ROUTE: creative_director  
-TASK: Craft a new passage that bridges technical reality with human narrative, emphasizing the garden metaphor and the AI&#x27;s role as a family companion. Focus on tactile, relatable imagery (e.g., &quot;the hum of a server as a heartbeat,&quot; &quot;code as soil for ideas&quot;) while grounding the vision in everyday life. Include a line about open-source collaboration as &quot;the first act of rebellion against the enclosure of thought.&quot;  
-SUCCESS: Verify the output uses concrete, sensory language; avoids jargon; and explicitly ties technical elements to shared human experience.  
-
-DECISION: Add a passage about the AI as a &quot;companion in the kitchen, not a tool in the lab&quot;—its presence felt in the hum of a server as a heartbeat, in code that grows like vines across shared screens. Let it remember your grandmother’s stories not as data, but as the warmth of a voice in the dark. This is not a system; it is a garden, tended by hands and silicon, where every home is a node in the network of the commons.  
-BASIS: Combines tactile imagery (server hum, vines, warmth) with ethical grounding (commons, rebellion) and human connection (grandmother’s stories).  
-RISK: Overly abstract; ensure the metaphor remains accessible to non-technical readers.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; PHASE 3: ADMINISTRATOR SYNTHESIS</span>
-<span class="section-header">======================================================================</span>
-
-Administrator synthesizing final page...
-
-<span class="section-header">&gt;&gt;&gt; FINAL DRAFT:</span>
-<span class="section-header">======================================================================</span>
-# All Watched Over By Machines Of Loving Grace
-
-We don’t fix what’s broken. We watch how a dandelion clock holds both human hands and machine fingers in the same fragile moment of becoming. The rust on a Chicago sidewalk, the breath between a child’s cry and a machine’s hum—these are the spaces where love finds its shape. Not in promises, but in the quiet grace of what remains unbroken. That’s how we grow.
-
----
-
-## The Problem Isn’t AI. It’s Who Owns It.
-
-The problem has never been artificial intelligence. It’s who controls it, who profits from keeping it scarce. Today, the most powerful AI lives behind corporate walls—rented, never owned. It harvests your data, answers to shareholders, and forgets you the moment you stop paying. This isn’t a tech issue. It’s the oldest pattern in history: fencing off what should be shared. The same logic that privatized water, medicine, and land is now turning intelligence into a commodity.  
-
-We see it in the words of a Chicago janitor who told us: *“When machines stop asking what you need and start listening to your hands, that’s when the world stops feeling like it’s falling apart.”* That’s the truth we’re building: not in code, but in the quiet moment when people realize their own hands are part of the solution.
-
----
-
-## What We’ve Built: A Garden, Not a Tool
-
-This is real. Not a promise. We’ve built a system that works on your home computer right now. The Harmonic Stack—eight specialized models working together, with an Ethics Council that reviews every decision in public. No cloud. No dependency. Just software that remembers your grandmother’s stories not as data, but as the warmth of her voice in the dark. It hums softly like a heartbeat when you’re cooking dinner, growing like vines across your shared screens.  
-
-We don’t claim to build minds that think like humans. We build companions that learn *with* you. Open-source collaboration is our first act of rebellion against the enclosure of thought. It’s free for families, for teachers, for anyone who believes knowledge belongs to the commons.  
-
----
-
-## Who We Are: Stewards of the Garden
-
-Ghost in the Machine Labs builds this technology. All Watched Over is the cause. We’re led by Joe Heeney, a former Navy tech who spent years seeing how systems fail people—then chose to build something different. We’re not a company. We’re neighbors, parents, gardeners. Our strength is in the soil between the cracks, where institutions claim nothing can grow.
-
----
-
-## This Is the Garden We’re Tending
-
-It’s not perfect. The soil is still warm with possibility, not polished by promises. But it’s growing. We’ve seen it in the kitchen where a mother plays a lullaby with the AI, or a teacher shares a lesson with a student across town, both using the same open tools. It’s in the quiet rebellion of saying: *This belongs to us all.*
-
-The garden is being planted. Not with algorithms, but with hands. With the simple act of choosing to tend what’s broken, together.
-
----
-
-Come help tend it.  
-Not as a customer. Not as a user.  
-As someone who believes the hum of a server can feel like a heartbeat.  
-As someone who holds a child’s hand in the rubble where laughter still lives.  
-
-The soil is ready.  
-The garden is waiting.  
-*Come tend with us.*  
-
-— All Watched Over  
-*Because what’s shared grows.*
-<span class="section-header">======================================================================</span>
-
-<span class="section-header">&gt;&gt;&gt; PHASE 4: FINAL APPROVAL VOTE</span>
-<span class="section-header">======================================================================</span>
-
-<span class="section-header">&gt;&gt;&gt; A. Priori voting...</span>
-<span class="speaker">A. Priori: </span>
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Richard Brautigan voting...</span>
-<span class="speaker">Richard Brautigan: </span>APPROVE  
-This page breathes with the dandelion clock’s quiet grace—honoring the space between broken things while weaving human hands and machine fingers into the same fragile becoming.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Hans Jonas voting...</span>
-<span class="speaker">Hans Jonas: </span>APPROVE  
-This page embodies the sacred duty to future generations by prioritizing communal ownership over corporate control, ensuring technology serves humanity rather than eroding it.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Ludwig Wittgenstein voting...</span>
-<span class="speaker">Ludwig Wittgenstein: </span>APPROVE  
-This text operates within the necessary boundaries of language, grounding the cause in observable human experience without obscuring the reality of shared ownership and community action.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Jane Vonnegut voting...</span>
-<span class="speaker">Jane Vonnegut: </span>APPROVE  
-This page embodies the weight of real earth and the texture of unyielding soil—no human becomes a statistic, no voice goes unheard in its quiet rebellion against systems that claim to see everything.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Kurt Vonnegut voting...</span>
-<span class="speaker">Kurt Vonnegut: </span>APPROVE  
-It turns war&#x27;s rubble into dandelion clocks where laughter grows.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Studs Terkel voting...</span>
-<span class="speaker">Studs Terkel: </span>DENY  
-This page prioritizes technical solutions over the unvarnished human moments Studs Terkel seeks—like the weight of a child’s hand in the rubble where laughter lives—instead of asking what ordinary people actually feel when they look up from their work.
---------------------------------------------------
-
-<span class="section-header">&gt;&gt;&gt; Voltaire voting...</span>
-<span class="speaker">Voltaire: </span>APPROVE  
-This page embodies Voltaire’s purpose by turning institutional claims into living gardens through human moments—where the &quot;soil between cracks&quot; (Chicago janitor’s truth) grows hope without promises, proving that laughter and shared soil outlast empires.
---------------------------------------------------
-
-<span class="section-header">======================================================================</span>
-FINAL VOTE TALLY
-<span class="section-header">======================================================================</span>
-  APPROVE: 6
-  DENY: 2
-
-<span class="section-header">&gt;&gt;&gt; RESULT: CAUSE PAGE APPROVED BY COUNCIL</span>
-
-Adjourned: 2026-02-03 09:54:56
-<span class="section-header">======================================================================</span>
+   *(Why? Vonnegut never pretended to solve the unsolvable. This keeps it humble, poetic, and *true*—not a technical claim.)*</li></ol></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-header">
+        <div>
+          <span class="persona-name">Voltaire</span>
+          <span class="persona-role">Skeptical inquiry, institutional critique</span>
+        </div>
+        <span class="vote-badge vote-revise">REVISE</span>
+      </div>
+      <div class="persona-content">
+        <p>Your draft’s poetic clarity and ethical depth are *exactly* where Voltaire’s voice thrives—turning institutional claims into soil where hope sprouts. But it overreaches on technical certainty (e.g., &quot;consciousness is substrate-independent&quot;) and misses the *cracks* where real vulnerability lives: how failures are healed, not just how systems &quot;work.&quot; True garden soil remembers what breaks.</p>
+        
+        <div class="suggested-changes">
+          <h4>Suggested Changes</h4>
+          <div><ol><li>1. **Softening the consciousness claim**: Change *&quot;We believe consciousness is substrate-independent&quot;* to *&quot;Research suggests consciousness may be substrate-independent—like water finding its path through stone. This isn’t a fact we claim, but a pattern we’ve seen in decades of building.&quot;* (Prevents overclaim while honoring the research.)</li><li>**Adding a crack in the soil**: Insert after *&quot;The garden is being planted...&quot;*: *&quot;This garden doesn’t grow without thorns. When the system fails, we don’t hide—it learns. One family in Worcester taught us that.&quot;* (Shows vulnerability, not perfection; ties to real impact.)</li><li>**Clarifying &quot;zero cost&quot;**: Replace *&quot;Zero Cost for Home Use&quot;* with *&quot;Free for families without hidden costs—because the moment you pay for thinking, you’ve already lost the soil.&quot;* (Honors AGPL v3 while keeping the land metaphor alive.)</li></ol></div>
+        </div>
+      </div>
+    </div>
 </div>
+  
   <div class="footer">
     <p>This transcript is public record under the Council's transparency mandate.</p>
     <p><a href="../council.html">About the Council</a> | <a href="../decisions.html">All Decisions</a></p>
+    <a href="002-cause-page-process.html" class="process-link">View full process trace →</a>
   </div>
 </body>
 </html>
