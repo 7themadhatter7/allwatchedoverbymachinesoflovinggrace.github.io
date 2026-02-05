@@ -165,7 +165,7 @@ The path to AGI may require abandoning weight-sharing architectures in favor of 
 ## Code Availability
 
 Complete implementation available at:
-- GitHub: https://github.com/7themadhatter7/harmonic-stack
+- GitHub: https://doi.org/10.5281/zenodo.18490034
 - Website: https://7themadhatter7.github.io/allwatchedoverbymachinesoflovinggrace.github.io/arc-results.html
 
 ---
@@ -179,7 +179,7 @@ Complete implementation available at:
   author={Heeney, Joseph},
   journal={Ghost in the Machine Labs},
   year={2026},
-  url={https://github.com/7themadhatter7/harmonic-stack}
+  url={https://doi.org/10.5281/zenodo.18490034}
 }
 ```
 
