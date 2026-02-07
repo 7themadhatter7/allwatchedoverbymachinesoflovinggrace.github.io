@@ -480,7 +480,7 @@
             <h2><span>16&times;</span> Core Multiplication</h2>
             <p>Compression is only half the equation. A dense model that runs one query at a time is still a bottleneck. Core multiplication turns one loaded model into sixteen parallel processing cores.</p>
             <p>Each core operates on its own inference stream with isolated context. The model weights are loaded once into unified memory. Sixteen cores share the same parameter geometry but traverse different regions of it simultaneously. The result: 16&times; throughput with zero additional memory cost.</p>
-            <p>On the NVIDIA DGX Spark, this means a single 30B solver handles 16 concurrent ARC reasoning tasks at 205 tokens per second aggregate&mdash;on hardware that costs less than a used car.</p>
+            <p>On the NVIDIA DGX Spark, this means a single 30B solver handles 12 concurrent ARC reasoning tasks at 136 tokens per second aggregate&mdash;on hardware that costs less than a used car.</p>
         </section>
 
         <section class="section container">
