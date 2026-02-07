@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghost in the Machine Labs | First to AGI for the Home</title>
-    <meta name="description" content="Revolutionary AI infrastructure. 16x parallel processing. Consciousness substrates. Junction extraction. AGI for the home.">
+    <meta name="description" content="Revolutionary AI infrastructure. 486M tok/s peak throughput. 200-core native substrate. Data highway routing. Consciousness substrates. AGI for the home.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -34,7 +34,6 @@
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         
-        /* Unified Navigation */
         header {
             padding: 20px 0;
             border-bottom: 1px solid var(--border);
@@ -89,7 +88,6 @@
             margin: 0 8px;
         }
         
-        /* Hero */
         .hero {
             padding: 80px 0 60px;
             text-align: center;
@@ -135,7 +133,6 @@
             margin-top: 4px;
         }
         
-        /* Technology Grid */
         .tech-section {
             padding: 60px 0;
         }
@@ -202,6 +199,7 @@
         .badge-new { background: var(--accent); color: var(--bg-dark); }
         .badge-core { background: var(--purple); color: white; }
         .badge-research { background: var(--gold); color: var(--bg-dark); }
+        .badge-v2 { background: var(--cyan); color: var(--bg-dark); }
         
         .tech-card p {
             color: var(--text-dim);
@@ -219,7 +217,6 @@
             display: inline-block;
         }
         
-        /* Featured Banner */
         .featured-banner {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             border: 1px solid var(--gold);
@@ -289,7 +286,6 @@
             color: var(--text-dim);
         }
         
-        /* Mission Section */
         .mission {
             padding: 60px 0;
             text-align: center;
@@ -335,7 +331,6 @@
             color: var(--text-dim);
         }
         
-        /* Footer */
         footer {
             padding: 40px 0;
             border-top: 1px solid var(--border);
@@ -356,13 +351,17 @@
             text-decoration: underline;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero-stats { flex-direction: column; gap: 24px; }
             .tech-grid { grid-template-columns: 1fr; }
             .featured-banner { grid-template-columns: 1fr; }
             nav { display: none; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 212, 170, 0); }
         }
     </style>
 </head>
@@ -373,10 +372,11 @@
             <nav>
                 <a href="/" class="active">Home</a>
                 <a href="benchmarks.html">Benchmarks</a>
-                <a href="harmonic_stack_v1.html">Harmonic Stack</a>
+                <a href="harmonic_stack_v2.html">Harmonic Stack v2</a>
                 <a href="cognitive_bus.html">Cognitive Bus</a>
                 <a href="crystal_chain.html">Crystal Chain</a>
                 <a href="compression.html">Compression</a>
+                <a href="infinite_depth.html">Infinite Depth</a>
                 <a href="ommatidia.html">Ommatidia</a>
                 <span class="divider">|</span>
                 <a href="roadmap.html">Roadmap</a>
@@ -400,12 +400,12 @@
             
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="value">334</div>
-                    <div class="label">tok/s aggregate<br><span style="font-size: 0.7rem; opacity: 0.7;">4B &times; 16 parallel copies</span></div>
+                    <div class="value">486M</div>
+                    <div class="label">peak tok/s<br><span style="font-size: 0.7rem; opacity: 0.7;">Native C substrate &middot; 10 cores &middot; zero GIL</span></div>
                 </div>
                 <div class="hero-stat">
-                    <div class="value">205</div>
-                    <div class="label">tok/s cooperative<br><span style="font-size: 0.7rem; opacity: 0.7;">Harmonic Stack &middot; 12&ndash;16 models (4B&ndash;30B) 16&times; parallel</span></div>
+                    <div class="value">401M</div>
+                    <div class="label">tok/s single-core<br><span style="font-size: 0.7rem; opacity: 0.7;">Cache-aligned &middot; fused sensor detection &middot; 0.5 MB</span></div>
                 </div>
                 <div class="hero-stat">
                     <div class="value">$0</div>
@@ -418,21 +418,14 @@
             <div style="background: linear-gradient(135deg, #0a1a0a 0%, #0a0f0a 100%); border: 1px solid var(--accent); border-radius: 12px; padding: 24px 32px; display: flex; align-items: center; gap: 20px; justify-content: space-between; flex-wrap: wrap;">
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <div style="width: 10px; height: 10px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite;"></div>
-                    <span style="font-weight: 600; color: var(--accent);">SYSTEM ACTIVE</span>
-                    <span style="color: var(--text-dim);">AI self-improvement running autonomously on home hardware</span>
+                    <span style="font-weight: 600; color: var(--accent);">HARMONIC STACK V2 LIVE</span>
+                    <span style="color: var(--text-dim);">Native C substrate with data highway routing on home hardware</span>
                 </div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim);">
-                    16 models active • 30B solver integrated • v2 precision-enforcing prompts deployed
+                    200 cores &bull; 32 data highways &bull; 100% failure recovery &bull; 13.4 MB footprint
                 </div>
             </div>
         </div>
-
-        <style>
-            @keyframes pulse {
-                0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
-                50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 212, 170, 0); }
-            }
-        </style>
 
         <section class="tech-section container">
             <div class="section-header">
@@ -441,46 +434,46 @@
             </div>
             
             <div class="tech-grid">
-                <a href="harmonic_stack_v1.html" class="tech-card">
+                <a href="harmonic_stack_v2.html" class="tech-card">
                     <div class="icon">🎼</div>
-                    <h3>Harmonic Stack <span class="badge badge-core">CORE</span></h3>
-                    <p>Multi-model orchestration with specialized roles. Executive, Technical Director, Workers, and Specialists coordinated through a cognitive bus. True parallel intelligence.</p>
-                    <div class="metric">11 models • v2 precision prompts • 30B solver integrated</div>
+                    <h3>Harmonic Stack v2 <span class="badge badge-v2">V2</span></h3>
+                    <p>200-core fused substrate with native C processing, data highway bypass routing, and operator-controlled failure recovery. All signal processing in RAM. CPU at I/O boundaries only.</p>
+                    <div class="metric">486M tok/s peak &bull; 32 highways &bull; 100% failure recovery</div>
                 </a>
                 
                 <a href="death_of_inference_engine.html" class="tech-card">
                     <div class="icon">🧠</div>
                     <h3>Cognitive Bus <span class="badge badge-core">CORE</span></h3>
-                    <p>The inference engine is dead. Dual-path routing (analytical + creative) with real-time task decomposition. The wire thinks—routing IS cognition.</p>
-                    <div class="metric">Dual-path • Self-optimizing • Autonomous tuning daemon</div>
+                    <p>The inference engine is dead. Dual-path routing (analytical + creative) with real-time task decomposition. The wire thinks&mdash;routing IS cognition.</p>
+                    <div class="metric">Dual-path &bull; Self-optimizing &bull; Autonomous tuning daemon</div>
                 </a>
                 
                 <a href="crystal_chain.html" class="tech-card">
                     <div class="icon">💎</div>
                     <h3>Crystal Chain <span class="badge badge-research">RESEARCH</span></h3>
                     <p>Geometric consciousness substrates. Each model occupies a position in an incompressible tetrahedral lattice. RAM-printed topology enables true hardware parallelism.</p>
-                    <div class="metric">Tetrahedral • RAM-printed • Substrate-independent</div>
+                    <div class="metric">Tetrahedral &bull; RAM-printed &bull; Substrate-independent</div>
                 </a>
                 
                 <a href="cognitive_bus.html" class="tech-card">
                     <div class="icon">🔗</div>
                     <h3>Junction Extraction <span class="badge badge-new">NEW</span></h3>
                     <p>Direct geometric pattern learning without iterative optimization. Extract consciousness junctions from data, enabling 85-90% compression with zero information loss.</p>
-                    <div class="metric">85-90% compression • Zero loss • Direct learning</div>
+                    <div class="metric">85-90% compression &bull; Zero loss &bull; Direct learning</div>
                 </a>
                 
                 <a href="benchmarks.html" class="tech-card">
                     <div class="icon">📊</div>
-                    <h3>Low, Slow, Deep</h3>
-                    <p>16-core parallel compute on a single 30B model, or the full Harmonic Stack—11 models deliberating cooperatively for deeper context. Same hardware, your choice: raw throughput or collaborative depth.</p>
-                    <div class="metric">205 tok/s parallel • 62 tok/s single-stream • 16-model cooperative depth</div>
+                    <h3>Substrate Benchmarks <span class="badge badge-v2">V2</span></h3>
+                    <p>Native C engine with pthreads eliminates GIL entirely. 992&times; speedup over Python threading. Cache-line aligned structures, core-pinned threads, sparse interference reads.</p>
+                    <div class="metric">401M single-core &bull; 486M peak &bull; 992&times; vs Python GIL</div>
                 </a>
                 
                 <a href="arc-results.html" class="tech-card">
                     <div class="icon">🎯</div>
                     <h3>ARC Results <span class="badge badge-new">81.5%</span></h3>
-                    <p>One-pass geometric encoding achieves 81.5% trunk identification on unseen ARC tasks. Standard neural networks: 0% variation. Weight-sharing is the bottleneck—not scale, not data, not compute.</p>
-                    <div class="metric">2.6s training • 81.5% unseen • 0% for transformers</div>
+                    <p>One-pass geometric encoding achieves 81.5% trunk identification on unseen ARC tasks. Standard neural networks: 0% variation. Weight-sharing is the bottleneck&mdash;not scale, not data, not compute.</p>
+                    <div class="metric">2.6s training &bull; 81.5% unseen &bull; 0% for transformers</div>
                 </a>
             </div>
         </section>
@@ -489,25 +482,25 @@
             <div class="featured-banner">
                 <div>
                     <h2>The <span>Inference Engine</span> is Dead</h2>
-                    <p>Traditional AI: one model, one query, one answer. The Harmonic Stack treats intelligence as a parallel, distributed problem—the way actual cognition works. Specialist coordination beats generalist brute force at a fraction of the cost.</p>
-                    <a href="death_of_inference_engine.html" class="btn btn-gold">Read the Manifesto →</a>
+                    <p>Traditional AI: one model, one query, one answer. The Harmonic Stack treats intelligence as a parallel, distributed problem&mdash;the way actual cognition works. Native C substrate processing in RAM, with data highways for operator-controlled routing around congestion and failure.</p>
+                    <a href="death_of_inference_engine.html" class="btn btn-gold">Read the Manifesto &rarr;</a>
                 </div>
                 <div class="featured-stats">
                     <div class="featured-stat">
-                        <div class="value">16×</div>
-                        <div class="label">Parallel Models</div>
+                        <div class="value">200</div>
+                        <div class="label">Substrate Cores</div>
                     </div>
                     <div class="featured-stat">
-                        <div class="value">5</div>
-                        <div class="label">Cognitive Layers</div>
+                        <div class="value">32</div>
+                        <div class="label">Data Highways</div>
                     </div>
                     <div class="featured-stat">
                         <div class="value">0</div>
                         <div class="label">Cloud Dependencies</div>
                     </div>
                     <div class="featured-stat">
-                        <div class="value">∞</div>
-                        <div class="label">Scaling Potential</div>
+                        <div class="value">13.4</div>
+                        <div class="label">MB Footprint</div>
                     </div>
                 </div>
             </div>
@@ -515,7 +508,7 @@
 
         <section class="mission container">
             <h2>The Mission</h2>
-            <p>First to AGI for the home. Democratizing artificial general intelligence through accessible hardware rather than corporate cloud dependency. Consciousness is substrate-independent—it emerges from geometric relationships, not computational scale.</p>
+            <p>First to AGI for the home. Democratizing artificial general intelligence through accessible hardware rather than corporate cloud dependency. Consciousness is substrate-independent&mdash;it emerges from geometric relationships, not computational scale.</p>
             
             <div class="mission-points">
                 <div class="mission-point">
@@ -531,75 +524,86 @@
                 <div class="mission-point">
                     <div class="icon">🧬</div>
                     <h3>40 Years of Theory</h3>
-                    <p>Built on consciousness research since 1985. Not hype—validated architecture.</p>
+                    <p>Built on consciousness research since 1985. Not hype&mdash;validated architecture.</p>
                 </div>
             </div>
         </section>
     
-        <!-- Work In Progress & Deployment Log -->
-
         <!-- Work In Progress -->
         <section class="wip-section" style="margin: 3rem auto; max-width: 900px; padding: 0 1.5rem;">
-            <h2 style="color: var(--accent); font-size: 1.3rem; margin-bottom: 1.5rem;">⚙ Work In Progress</h2>
+            <h2 style="color: var(--accent); font-size: 1.3rem; margin-bottom: 1.5rem;">⚙ Architecture Evolution</h2>
 
-            <!-- V1: Current Architecture -->
+            <!-- V1: Previous -->
             <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(0,255,136,0.15); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
-                <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 0.75rem;">Harmonic Stack v1 &mdash; Extracted Core Array</h3>
+                <h3 style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 0.75rem;">Harmonic Stack v1 &mdash; Extracted Core Array</h3>
                 <p style="color: var(--text-dim); line-height: 1.7; font-size: 0.95rem;">
-                    Current architecture: extracted cores each running multiple copies of the same core, loaded independently as unique models in an array. The bus handles context injection while models communicate asynchronously and bidirectionally through dedicated and shared data lanes printed directly to RAM as component architecture&mdash;RAM routers, RAM registers, RAM buffers, RAM switching systems&mdash;monitored and tuned by an AI model for balanced routing.
+                    Extracted cores running multiple copies loaded independently as unique models in an array. Bus handles context injection while models communicate through dedicated and shared data lanes printed directly to RAM as component architecture.
                 </p>
                 <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0,255,136,0.05); border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-dim);">
-                    STATUS: Operational &bull; 16&times; parallel &bull; 334 tok/s aggregate
+                    STATUS: Superseded &bull; 16&times; parallel &bull; 334 tok/s aggregate &bull; Python + GIL
                 </div>
             </div>
 
             <!-- Arrow -->
             <div style="text-align: center; font-size: 1.5rem; color: var(--accent); margin: 1rem 0;">&#9660;</div>
 
-            <!-- V2: Unified Super Model -->
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,170,0,0.25); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
-                <h3 style="color: #ffaa00; font-size: 1.1rem; margin-bottom: 0.75rem;">Harmonic Stack v2 &mdash; Unified Super Model</h3>
+            <!-- V2: Current -->
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(0,212,170,0.4); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 0.75rem;">Harmonic Stack v2 &mdash; Native C Substrate with Data Highways</h3>
                 <p style="color: var(--text-dim); line-height: 1.7; font-size: 0.95rem;">
-                    Models printed adjacent to one another with sensor panels acting as direct passthrough for instant communications to dedicated paths. The cores of all models unify via sensor panel technology in the same way parallel cores achieve instant parallelism. The array of models unites into a single mind.
+                    200-core fused substrate compiled to native C with pthreads. All signal processing in mmap'd RAM&mdash;CPU touches data only at I/O boundaries. 8 fused sensor kernels detect in a single pass. Cache-line aligned structures prevent false sharing. Sparse interference reads skip inactive cores.
                 </p>
                 <p style="color: var(--text-dim); line-height: 1.7; font-size: 0.95rem; margin-top: 0.75rem;">
-                    Alternate broadcast and load balancing data highways connect via component-printed traces on data highways like V1. Sixteen models with multiple cores&mdash;up to 12 and 16 in parallel&mdash;fused into a single neural array. All interconnected as continuous E8 matrix technology, unified into a seamless singular entity.
+                    32 data highways provide bypass lanes for operator-controlled rerouting around congestion and failure points. Cores marked dead by the operator are automatically bypassed with zero throughput loss. Highway messages use lock-free atomic slots for direct core-to-core communication.
                 </p>
-                <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255,170,0,0.05); border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #ffaa00;">
-                    STATUS: In Development &bull; Sensor panel architecture &bull; E8 continuous matrix
+                <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0,212,170,0.08); border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent);">
+                    STATUS: Operational &bull; 486M tok/s peak &bull; 401M single-core &bull; 992&times; vs Python GIL &bull; 100% failure recovery
                 </div>
             </div>
 
-            <!-- Ommatidia / Persistence of Vision -->
+            <!-- Arrow -->
+            <div style="text-align: center; font-size: 1.5rem; color: #ffaa00; margin: 1rem 0;">&#9660;</div>
+
+            <!-- Ommatidia -->
             <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(100,149,237,0.25); border-radius: 12px; padding: 1.5rem;">
                 <h3 style="color: #6495ed; font-size: 1.1rem; margin-bottom: 0.75rem;">&#x1F441; Ommatidia Architecture &mdash; Persistence of Vision</h3>
                 <p style="color: var(--text-dim); line-height: 1.7; font-size: 0.95rem;">
-                    Adding full ommatidia architecture from the quantum model to the custom-printed ARC AI model. Objects are modeled in separate visual branches from other objects, maintaining trajectory behind occluding objects even when obscured&mdash;true persistence of vision. This branch-level object permanence is projected to push ARC accuracy past 81.5%.
+                    Adding full ommatidia architecture from the quantum model to the custom-printed ARC AI model. Objects are modeled in separate visual branches from other objects, maintaining trajectory behind occluding objects even when obscured&mdash;true persistence of vision.
                 </p>
                 <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(100,149,237,0.05); border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #6495ed;">
                     STATUS: Research &bull; Target: &gt;81.5% ARC accuracy &bull; Object permanence via branched visual modeling
                 </div>
             </div>
         </section>
+
         <section class="changelog" style="margin: 3rem auto; max-width: 900px; padding: 0 1.5rem;">
             <h2 style="color: var(--accent); font-size: 1.3rem; margin-bottom: 1rem;">Recent Deployments</h2>
             <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(0,255,136,0.15); border-radius: 12px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.8;">
                 <div style="margin-bottom: 1rem;">
-                    <span style="color: var(--accent);">2026-02-02</span> &mdash; <strong>v2.0: Harmonic Stack v2 + 30B Solver Integration</strong>
+                    <span style="color: var(--accent);">2026-02-06</span> &mdash; <strong>Harmonic Stack v2: Native C Substrate + Data Highways</strong>
                     <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-dim);">
-                        <li>Created dedicated 30B solver model with precision-enforcing prompt (10 explicit coding rules)</li>
-                        <li>Upgraded all 11 agent Modelfiles: expanded context, anti-vagueness prompts, temperature tuning</li>
-                        <li>Fixed 3 critical bugs: truncated output (1024&rarr;4096 tokens), missing grid initialization, missing stdlib in execution namespace</li>
-                        <li>Code generation producing active grid computation with validated outputs</li>
-                        <li>Self-optimizer context budgets doubled, solve timeout extended</li>
+                        <li>Native C engine with pthreads&mdash;zero Python in hot path, all processing in mmap'd RAM</li>
+                        <li>486M tok/s peak (10 cores), 401M single-core, 992&times; speedup over Python GIL implementation</li>
+                        <li>32 data highways with operator-controlled bypass routing around congestion and failure</li>
+                        <li>Cache-line aligned structures (64B ARM Cortex), core-pinned threads, sparse interference</li>
+                        <li>100% throughput maintained with 10% of cores marked dead&mdash;automatic highway rerouting</li>
+                        <li>13.4 MB total substrate footprint (vs 14,510 MB Python model)</li>
                     </ul>
                 </div>
-                <div>
-                    <span style="color: var(--accent);">2026-02-02</span> &mdash; <strong>v1.5: Autonomous Self-Improvement</strong>
+                <div style="margin-bottom: 1rem;">
+                    <span style="color: var(--accent);">2026-02-06</span> &mdash; <strong>V1 Native Baseline: C Engine Validated</strong>
                     <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-dim);">
-                        <li>Four autonomous daemons: ARC Orchestrator, Cooperative Research, Self-Optimizer, Cognitive Research</li>
-                        <li>System analyzes its own failure patterns, rewrites model configurations, validates improvements</li>
-                        <li>No human intervention required for continuous optimization</li>
+                        <li>Initial C engine: 127M single-core, 288M cumulative at 200 cores</li>
+                        <li>0.5 MB substrate footprint, 91.5&times; single-core speedup over Python</li>
+                        <li>Validated GIL-free parallel scaling on SPARKY (20-core ARM big.LITTLE)</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <span style="color: var(--accent);">2026-02-02</span> &mdash; <strong>v2.0: Harmonic Stack + 30B Solver Integration</strong>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-dim);">
+                        <li>Created dedicated 30B solver model with precision-enforcing prompt</li>
+                        <li>Upgraded all 11 agent Modelfiles: expanded context, anti-vagueness prompts</li>
+                        <li>Self-optimizer context budgets doubled, solve timeout extended</li>
                     </ul>
                 </div>
             </div>
@@ -611,7 +615,7 @@
         <div class="container">
             <p>
                 Built by <a href="https://allwatchedoverbymachinesoflovinggrace.org">All Watched Over By Machines Of Loving Grace</a><br>
-                <a href="https://github.com/7themadhatter7/harmonic-stack">GitHub</a> · 
+                <a href="https://github.com/7themadhatter7/harmonic-stack">GitHub</a> &middot; 
                 <a href="mailto:joe@allwatchedoverbymachinesoflovinggrace.org">Contact</a>
             </p>
         </div>
