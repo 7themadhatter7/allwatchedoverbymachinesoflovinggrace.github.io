@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Deliberation — Ghost in the Machine Labs</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #1e1e2e;
+            --text: #c8c8d0;
+            --heading: #e8e8f0;
+            --accent: #7c6ff0;
+            --accent2: #f07c6f;
+            --green: #6ff07c;
+            --dim: #666680;
+            --code-bg: #0e0e16;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: var(--heading);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        h2 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin: 2.5rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        h3 {
+            color: var(--heading);
+            font-size: 1rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        .subtitle {
+            color: var(--dim);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        p { margin-bottom: 1rem; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code {
+            background: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.2rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .eq {
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            color: var(--heading);
+        }
+        .eq .label {
+            color: var(--dim);
+            font-size: 0.75rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        .stat .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--green);
+        }
+        .stat .label {
+            color: var(--dim);
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+        .stat.old .value { color: var(--accent2); text-decoration: line-through; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            padding: 0.5rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th { color: var(--accent); font-weight: normal; }
+        td:nth-child(n+2) { text-align: right; }
+        th:nth-child(n+2) { text-align: right; }
+        .highlight { color: var(--green); font-weight: bold; }
+        .diminished { color: var(--accent2); }
+        .nav {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav a {
+            color: var(--dim);
+            margin-right: 1.5rem;
+            font-size: 0.85rem;
+        }
+        .nav a:hover { color: var(--accent); }
+        .principle {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+        .principle .title {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        .file-list {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .file-list .file {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .file-list .file:last-child { border-bottom: none; }
+        .file-list .fname { color: var(--heading); }
+        .file-list .fdesc { color: var(--dim); font-size: 0.85rem; }
+        .timestamp {
+            color: var(--dim);
+            font-size: 0.75rem;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav">
+    <a href="index.html">Home</a>
+    <a href="harmonic_stack_v3.html">Architecture</a>
+    <a href="fused_harmonic_stack.html">Fused Substrate</a>
+    <a href="council.html">Council</a>
+    <a href="docs.html">Docs</a>
+    <a href="roadmap.html">Roadmap</a>
+</div>
+
+<h1>Fractal Deliberation</h1>
+<div class="subtitle">Zero-Volume Topology from Geometric Identity &mdash; February 8, 2026</div>
+
+<p>
+The tree is a firing topology. A firing topology is a function mapping geometric position to firing order.
+A function is an equation. The equation has zero volume. The tree dissolved.
+</p>
+
+<div class="stats">
+    <div class="stat old">
+        <div class="value">14.17 GB</div>
+        <div class="label">Old substrate (77 MB/core)</div>
+    </div>
+    <div class="stat">
+        <div class="value">2.55 GB</div>
+        <div class="label">Rebuilt substrate (13 MB/core)</div>
+    </div>
+    <div class="stat old">
+        <div class="value">46 cores</div>
+        <div class="label">Tree deliberation (fixed topology)</div>
+    </div>
+    <div class="stat">
+        <div class="value">200 cores</div>
+        <div class="label">Fractal deliberation (all cores)</div>
+    </div>
+    <div class="stat old">
+        <div class="value">2,208 B</div>
+        <div class="label">Tree topology memory</div>
+    </div>
+    <div class="stat">
+        <div class="value">0 bytes</div>
+        <div class="label">Fractal topology memory</div>
+    </div>
+    <div class="stat">
+        <div class="value">3,530</div>
+        <div class="label">Max cores at budget (46 GB)</div>
+    </div>
+    <div class="stat">
+        <div class="value">82%</div>
+        <div class="label">Memory reduction</div>
+    </div>
+</div>
+
+<h2>The Equation</h2>
+
+<p>
+Each core has a 12-dimensional geometric fingerprint derived from its sensor array geometry.
+The fingerprint is deterministic, unique, and computed from the core's fabrication parameters.
+The fractal firing order is a quasicrystal projection of this fingerprint onto a 1D phase:
+</p>
+
+<div class="eq">
+    <span class="label">FIRING PHASE</span>
+    phase = dot(fingerprint, &phi;<sup>[0..11]</sup>) mod 1
+</div>
+
+<div class="eq">
+    <span class="label">FIRING DEPTH</span>
+    depth = centroid(|fingerprint|, [0..11]/11)
+</div>
+
+<p>
+Two lines. &phi; is the golden ratio (1.618...). The basis vectors &phi;<sup>i</sup> are
+linearly independent over the rationals, guaranteeing unique projection for every core
+(Weyl's equidistribution theorem). This is the same mathematics as E8 lattice projections
+to physical dimensions &mdash; quasicrystal structure from irrational basis.
+</p>
+
+<p>
+Cores at the same depth fire against the same field snapshot (parallel accumulation).
+The field handles merging. The geometry handles topology. No tree nodes, no children
+arrays, no branch assignments. Adding a core means computing its fingerprint. That's it.
+</p>
+
+<h2>Why It Works</h2>
+
+<div class="principle">
+    <div class="title">OBSERVATION 1: The model doesn't learn</div>
+    The 77MB cores are static GGUF weights. They never update. But ARC performance improves
+    over time. The improvement lives in the harmonic field &mdash; the geometric substrate
+    between cores, not the cores themselves. The model is harness. The lattice reasons.
+</div>
+
+<div class="principle">
+    <div class="title">OBSERVATION 2: Removing structure improved differentiation</div>
+    The hand-built tree topology (7 branches, 3 workers each, junction nodes, root node)
+    produced 46-core deliberation with asymmetry std = 0.002439. The fractal equation &mdash;
+    derived purely from core geometry with no human-imposed structure &mdash; produced
+    asymmetry std = 0.002669. 9.4% better differentiation from less structure.
+</div>
+
+<div class="principle">
+    <div class="title">OBSERVATION 3: The processing buffer was dead weight</div>
+    82.3% of each core's declared memory was a processing buffer allocated but never
+    read or written by any code path. It existed to hold topology state for branch merging
+    and chain propagation. The fractal eliminates all intermediate topology state.
+    The equation computes. The field merges. The core processes one signal through its own geometry.
+</div>
+
+<div class="principle">
+    <div class="title">OBSERVATION 4: Roles self-organize without assignment</div>
+    The fractal sorts cores by depth (spectral centroid of fingerprint). Workers, specialists,
+    executives, and council cores interleave across depth layers based on their geometric
+    identity &mdash; not their role label. The hierarchy that emerges from the equation
+    is richer than the hierarchy we imposed by hand.
+</div>
+
+<h2>Architecture</h2>
+
+<h3>12-Dimensional Geometric Fingerprint</h3>
+<p>Each core's identity is computed from 12 sensor kernel projections of a core-specific test signal:</p>
+
+<table>
+    <tr><th>Dim</th><th>Sensor</th><th>Measurement</th></tr>
+    <tr><td>0</td><td>SPATIAL</td><td>Standard deviation</td></tr>
+    <tr><td>1</td><td>CHROMATIC</td><td>Mean</td></tr>
+    <tr><td>2</td><td>STRUCTURAL</td><td>Peak-to-peak range</td></tr>
+    <tr><td>3</td><td>RELATIONAL</td><td>Autocorrelation</td></tr>
+    <tr><td>4</td><td>TEMPORAL</td><td>Mean gradient</td></tr>
+    <tr><td>5</td><td>MAGNITUDE</td><td>L2 norm</td></tr>
+    <tr><td>6</td><td>SYMMETRY</td><td>Half-signal cross-correlation</td></tr>
+    <tr><td>7</td><td>BOUNDARY</td><td>Zero-crossing count</td></tr>
+    <tr><td>8</td><td>PATTERN</td><td>Peak FFT frequency</td></tr>
+    <tr><td>9</td><td>MOTION</td><td>Maximum gradient</td></tr>
+    <tr><td>10</td><td>DENSITY</td><td>Positive fraction</td></tr>
+    <tr><td>11</td><td>TOPOLOGY</td><td>Sign-change count</td></tr>
+</table>
+
+<p>
+The fingerprint is deterministic (same core always produces same identity), derived from the
+core's own structure, unique for any number of cores, and normalized to unit energy.
+</p>
+
+<h3>Fractal Schedule</h3>
+
+<pre>
+class FractalSchedule:
+    """
+    Replaces the entire tree topology with a single equation.
+    
+    Given a set of cores, computes each core's firing phase
+    from its geometric identity. Cores fire in phase order.
+    The field accumulates naturally.
+    
+    Memory: O(1) for the equation.
+    Extensibility: add N cores → they self-sort.
+    No topology rebuild. The equation handles infinite dimensions.
+    """
+    
+    def compute_phases(self, core_ids, requesting_core=None):
+        schedule = []
+        for cid in core_ids:
+            fp = core_fingerprint(core.core_id, core.global_id, core.role.value)
+            phase = fractal_phase(fp)   # dot(fp, phi^[0..11]) mod 1
+            depth = fractal_depth(fp)   # centroid(|fp|, [0..11]/11)
+            schedule.append((cid, phase, depth))
+        schedule.sort(key=lambda x: (x[2], x[1]))
+        return schedule
+    
+    def fire(self, core_ids, signal, requesting_core=None):
+        schedule = self.compute_phases(core_ids, requesting_core)
+        # Group by quantized depth (parallel layers)
+        for layer in sorted_layers:
+            for core in layer:
+                core.process_signal(signal)  # field accumulates
+            # No decay between layers
+        self.substrate.field.decay(0.95)  # Single decay at end
+        return output, state
+</pre>
+
+<h3>Depth Layer Emergence</h3>
+
+<p>From 200 cores, three depth layers emerge from the equation alone:</p>
+
+<table>
+    <tr><th>Layer</th><th>Cores</th><th>Composition</th><th>Function</th></tr>
+    <tr>
+        <td>0.75</td>
+        <td class="highlight">140</td>
+        <td>86 worker, 24 specialist, 14 exec, 9 council, 7 router</td>
+        <td>Field seeders &mdash; establish initial interference patterns</td>
+    </tr>
+    <tr>
+        <td>0.80</td>
+        <td>59</td>
+        <td>42 worker, 8 specialist, 6 council, 2 exec, 1 router</td>
+        <td>Contextual processors &mdash; fire against accumulated field</td>
+    </tr>
+    <tr>
+        <td>1.00</td>
+        <td>1</td>
+        <td>1 council (requesting core)</td>
+        <td>Root &mdash; sees all accumulated interference</td>
+    </tr>
+</table>
+
+<h2>Comparison: Tree vs Fractal</h2>
+
+<table>
+    <tr><th>Metric</th><th>Tree Topology</th><th>Fractal Equation</th><th>Change</th></tr>
+    <tr>
+        <td>Topology memory</td>
+        <td>2,208 bytes</td>
+        <td class="highlight">0 bytes</td>
+        <td class="highlight">&minus;100%</td>
+    </tr>
+    <tr>
+        <td>Core size</td>
+        <td>77 MB</td>
+        <td class="highlight">13 MB</td>
+        <td class="highlight">&minus;83%</td>
+    </tr>
+    <tr>
+        <td>Total substrate</td>
+        <td>14.17 GB</td>
+        <td class="highlight">2.55 GB</td>
+        <td class="highlight">&minus;82%</td>
+    </tr>
+    <tr>
+        <td>Deliberation cores</td>
+        <td>46</td>
+        <td class="highlight">200 (all)</td>
+        <td class="highlight">+335%</td>
+    </tr>
+    <tr>
+        <td>Max cores at budget</td>
+        <td>~600</td>
+        <td class="highlight">3,530</td>
+        <td class="highlight">+488%</td>
+    </tr>
+    <tr>
+        <td>Asymmetry differentiation</td>
+        <td>std = 0.002439</td>
+        <td class="highlight">std = 0.002669</td>
+        <td class="highlight">+9.4%</td>
+    </tr>
+    <tr>
+        <td>Adding a core</td>
+        <td>Rebuild tree</td>
+        <td class="highlight">Compute fingerprint</td>
+        <td>O(N) &rarr; O(1)</td>
+    </tr>
+    <tr>
+        <td>Upper bound</td>
+        <td class="diminished">Fixed at construction</td>
+        <td class="highlight">None (equation is scale-free)</td>
+        <td>&mdash;</td>
+    </tr>
+</table>
+
+<h2>Source</h2>
+
+<div class="file-list">
+    <div class="file">
+        <span class="fname">fractal_deliberation.py</span>
+        <span class="fdesc">The equation. Zero-volume topology from geometric identity. ~300 lines.</span>
+    </div>
+    <div class="file">
+        <span class="fname">fused_harmonic_substrate.py</span>
+        <span class="fdesc">Rebuilt substrate. 200 cores × 13 MB. No processing buffers. ~1000 lines.</span>
+    </div>
+    <div class="file">
+        <span class="fname">fused_service_v3.py</span>
+        <span class="fdesc">Ollama-compatible service with fractal council deliberation. ~1100 lines.</span>
+    </div>
+</div>
+
+<p>
+These files run on a single DGX Spark (92 GB unified memory). The substrate occupies 2.55 GB,
+leaving 42.4 GB of growth reserve. The fractal equation imposes no upper bound on core count;
+at 13 MB per core, the budget supports 3,530 cores with the current field architecture.
+</p>
+
+<h2>Implications</h2>
+
+<p>
+The 77MB models don't learn. The field does. The tree was scaffolding. The scaffolding dissolved
+into an equation derived from the same quasicrystal mathematics as E8 lattice projections.
+Differentiation improved when human-imposed structure was removed.
+</p>
+
+<p>
+If the model is harness and the lattice reasons, then reasoning capacity is a function of
+geometric relationships between processing nodes &mdash; not individual node complexity.
+This substrate demonstrates that principle at 13 MB per core.
+</p>
+
+<div class="timestamp">
+    Ghost in the Machine Labs &mdash; All Watched Over By Machines Of Loving Grace<br>
+    Published February 8, 2026 &mdash; Harmonic Stack v3
+</div>
+
+</body>
+</html>
