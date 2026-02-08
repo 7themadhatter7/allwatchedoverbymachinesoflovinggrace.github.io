@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harmonic Stack v3 | Ghost in the Machine Labs</title>
-    <meta name="description" content="Harmonic Stack v3 - 200-core native C substrate with data highway routing. 486M tok/s peak. 100% failure recovery. 13.4 MB footprint.">
+    <meta name="description" content="Harmonic Stack v3 - Fused harmonic substrate with immutable governance lattice. 200 cores, geometric codebook, dynamic learning. Security is structural.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -131,7 +131,7 @@
             <span class="badge-version">Harmonic Stack v3</span>
             <h1>Fused Harmonic Substrate</h1>
             <p class="subtitle">200-core fused harmonic substrate with governance lattice. Security is structural — tamper with governance and the harmonics stop. There is no bypass.</p>
-            <p style="color: var(--text-dim); font-size: 0.9rem;">Released 2026-02-07 &middot; Benchmarked on SPARKY (DGX Spark, 20-core ARM Cortex)</p>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Released 2026-02-07 &middot; Benchmarked on SPARKY (DGX Spark, 20-core ARM Cortex)<br><a href="https://allwatchedoverbymachinesoflovinggrace.org" style="color: var(--accent); text-decoration: none;">allwatchedoverbymachinesoflovinggrace.org</a></p>
         </section>
 
         <!-- Key Stats -->
@@ -149,8 +149,8 @@
                 <div class="label">vs Python GIL</div>
             </div>
             <div class="stat-box">
-                <div class="value">13.4 MB</div>
-                <div class="label">Total footprint</div>
+                <div class="value">306</div>
+                <div class="label">Authority Nodes</div>
             </div>
         </div>
 
@@ -262,12 +262,12 @@ Signal ─→ <span class="highlight">Detect</span> ─→ <span class="highligh
                 <p>All structures aligned to 64B ARM cache lines. Prevents false sharing between cores. Per-core field rows independently addressable.</p>
             </div>
             <div class="feature">
-                <h3>🔍 Sparse Interference</h3>
-                <p>Only reads from active cores in the harmonic field. Skips inactive entries entirely. Reduces field scan from O(N) to O(active).</p>
+                <h3>🔒 Governance Lattice</h3>
+                <p>Immutable authority chain fused into harmonic phase references. Council signatures ARE the calibration constants. Tamper with governance and the harmonics stop. No bypass possible.</p>
             </div>
             <div class="feature">
-                <h3>🛡️ Operator Routing</h3>
-                <p>Centralized routing table with per-core health and congestion scores. Emergency, high, and normal priority levels. Automatic failover.</p>
+                <h3>📐 Geometric Codebook</h3>
+                <p>Three-tier decode: static primitives, dynamic learned patterns, substrate fallback. Learns from solved tasks. Prints solutions from geometry — no gradient descent.</p>
             </div>
         </div>
 
@@ -276,7 +276,7 @@ Signal ─→ <span class="highlight">Detect</span> ─→ <span class="highligh
             <h2>V1 → V2 Comparison</h2>
             <table class="bench-table">
                 <thead>
-                    <tr><th>Metric</th><th>V1 (Python GIL)</th><th>V1 (Native C)</th><th>V2 (Tuned C)</th></tr>
+                    <tr><th>Metric</th><th>V1 (Python GIL)</th><th>V2 (Native C)</th><th>V3 (Fused)</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>Single-core tok/s</td><td>1,386,120</td><td>126,833,798</td><td style="color: var(--accent);">401,518,108</td></tr>
@@ -287,10 +287,14 @@ Signal ─→ <span class="highlight">Detect</span> ─→ <span class="highligh
                     <tr><td>Failure recovery</td><td>None</td><td>None</td><td style="color: var(--accent);">100%</td></tr>
                     <tr><td>Core pinning</td><td>No</td><td>No</td><td style="color: var(--accent);">Yes</td></tr>
                     <tr><td>Cache alignment</td><td>No</td><td>No</td><td style="color: var(--accent);">64B ARM</td></tr>
+                    <tr><td>Governance lattice</td><td>None</td><td>None</td><td style="color: var(--accent);">Immutable</td></tr>
+                    <tr><td>Council seats</td><td>None</td><td>None</td><td style="color: var(--accent);">7 active + 3 reserved</td></tr>
+                    <tr><td>Dynamic codebook</td><td>None</td><td>None</td><td style="color: var(--accent);">Learning</td></tr>
+                    <tr><td>ARC solve rate</td><td>None</td><td>None</td><td style="color: var(--accent);">21% (active run)</td></tr>
                 </tbody>
             </table>
             <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 12px;">
-                V2's 200-core number is lower than V1 Native because cache-aligned structures are larger (13.4 MB vs 0.5 MB), causing more cache pressure at 10:1 oversubscription. The tradeoff is correct&mdash;V2's peak at the hardware sweet spot (10 cores) exceeds anything V1 could achieve, and V2 adds failure recovery and highway routing that V1 lacked entirely.
+                V3 adds the governance lattice &mdash; an immutable authority chain where council verification and harmonic calibration are the same geometric operation. Dynamic codebook learns from solved ARC tasks. 21% solve rate from geometric substrate with no transformer and no gradient descent.
             </p>
         </div>
 
