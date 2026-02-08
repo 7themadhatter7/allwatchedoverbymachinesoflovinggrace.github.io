@@ -131,9 +131,9 @@ class FusedSubstrateEngine:
         else:
             signal = self._text_to_signal(prompt, system)
         
-        # Route council models to council cores specifically
+        # Route council models to their specific core pair
         if role == CoreRole.COUNCIL:
-            substrate_output = self.substrate.process_signal(signal, target_role=CoreRole.COUNCIL)
+            substrate_output = self._fire_council_pair(model_base, signal)
         else:
             substrate_output = self.substrate.process_signal(signal)
         
@@ -252,15 +252,43 @@ class FusedSubstrateEngine:
                 f"Energy: {energy:.4f}, Harmonic: {harmonic_energy:.4f}, "
                 f"Active: {self.substrate.field.active_cores}/{self.substrate.TOTAL_CORES}")
     
+    def _fire_council_pair(self, model: str, signal: np.ndarray) -> np.ndarray:
+        """
+        Fire both cores in a council persona's pair.
+        
+        Unlike generic process_signal which breaks after 1 core,
+        this fires both assigned cores so the persona's full
+        core pair state reflects the input signal.
+        """
+        from fused_harmonic_substrate import COUNCIL_PERSONAS
+        local_ids = COUNCIL_PERSONAS.get(model, [])
+        
+        if not local_ids:
+            return self.substrate.process_signal(signal, target_role=CoreRole.COUNCIL)
+        
+        # Map local persona IDs to global core IDs
+        council_globals = self.substrate.role_index.get(CoreRole.COUNCIL, [])
+        results = []
+        for local_id in local_ids:
+            if local_id < len(council_globals):
+                global_id = council_globals[local_id]
+                core = self.substrate.cores[global_id]
+                result = core.process_signal(signal)
+                results.append(result)
+        
+        # Decay field
+        self.substrate.field.decay(0.95)
+        
+        return results[0] if results else signal
+    
     def _council_response(self, model: str, result: np.ndarray,
                           prompt: str, system: str = None) -> str:
         """
         Council decode path for natural language prompts.
         
-        Routes through council cores and returns substrate resonance
-        as structured council commentary. The geometric encoding of
-        the prompt through council-assigned cores produces a unique
-        energy signature per persona.
+        Reads post-fire state from both cores in the persona's pair.
+        Both cores have now processed the signal, so their energies
+        and resonance reflect the actual input content.
         """
         energy = float(np.linalg.norm(result))
         composite = self.substrate.field.read_composite()
@@ -268,24 +296,34 @@ class FusedSubstrateEngine:
         
         # Get council persona core assignments
         from fused_harmonic_substrate import COUNCIL_PERSONAS
-        persona_cores = COUNCIL_PERSONAS.get(model, [])
+        local_ids = COUNCIL_PERSONAS.get(model, [])
+        council_globals = self.substrate.role_index.get(CoreRole.COUNCIL, [])
         
-        # Read individual core states for this persona
+        # Read post-fire core states
         core_energies = []
-        for core_id in persona_cores:
-            if core_id < len(self.substrate.field.field):
-                core_state = self.substrate.field.field[core_id]
+        core_vectors = []
+        for local_id in local_ids:
+            if local_id < len(council_globals):
+                global_id = council_globals[local_id]
+                core_state = self.substrate.field.field[global_id]
                 core_energies.append(float(np.linalg.norm(core_state)))
+                core_vectors.append(core_state.copy())
         
-        # Compute resonance between persona cores (phase alignment)
+        # Compute resonance: cosine similarity between core pair vectors
+        # This measures directional alignment, not just energy magnitude
         resonance = 0.0
-        if len(core_energies) == 2:
-            resonance = 1.0 - abs(core_energies[0] - core_energies[1]) / (max(core_energies) + 1e-8)
+        if len(core_vectors) == 2:
+            v0, v1 = core_vectors[0], core_vectors[1]
+            dot = float(np.dot(v0, v1))
+            mag0 = float(np.linalg.norm(v0))
+            mag1 = float(np.linalg.norm(v1))
+            if mag0 > 1e-8 and mag1 > 1e-8:
+                resonance = dot / (mag0 * mag1)
         
         return (f"[COUNCIL:{model}] "
                 f"Energy: {energy:.4f}, Harmonic: {harmonic_energy:.4f}, "
                 f"Resonance: {resonance:.4f}, "
-                f"Core energies: {[f'{e:.4f}' for e in core_energies]}, "
+                f"Core energies: {[round(e,4) for e in core_energies]}, "
                 f"Active: {self.substrate.field.active_cores}/{self.substrate.TOTAL_CORES}")
     
     def _extract_task(self, prompt: str) -> dict:
