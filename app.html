@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Loving Grace">
+<title>Loving Grace</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiTG92aW5nIEdyYWNlIiwic2hvcnRfbmFtZSI6IkdyYWNlIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBhMGExMiIsInRoZW1lX2NvbG9yIjoiIzBhMGExMiJ9">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+  :root {
+    --bg: #0a0a12;
+    --surface: #12121e;
+    --surface2: #1a1a2e;
+    --border: #2a2a3e;
+    --text: #e0dfe6;
+    --text-dim: #8888a0;
+    --accent: #7b68ee;
+    --accent-glow: rgba(123, 104, 238, 0.3);
+    --gold: #d4a853;
+    --green: #4ade80;
+    --red: #f87171;
+    --cyan: #22d3ee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === HEADER === */
+  .header {
+    padding: 12px 16px 8px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .status-dot.connected { background: var(--green); }
+  .status-dot.building { background: var(--gold); animation: pulse 0.8s ease-in-out infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* === METRICS BAR === */
+  .metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  .metric {
+    text-align: center;
+    padding: 4px;
+    background: var(--bg);
+    border-radius: 4px;
+  }
+
+  .metric-val {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .metric-val.accent { color: var(--accent); }
+  .metric-val.gold { color: var(--gold); }
+  .metric-val.cyan { color: var(--cyan); }
+
+  /* === HARMONIC VISUALIZER === */
+  .visualizer {
+    height: 60px;
+    padding: 4px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .visualizer canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* === CHAT === */
+  .chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.user {
+    align-self: flex-end;
+    background: var(--accent);
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+
+  .msg.substrate {
+    align-self: flex-start;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+  }
+
+  .msg .meta {
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .msg.substrate .meta { color: var(--accent); opacity: 0.7; }
+
+  /* === GEOMETRIC IDENTITY === */
+  .identity-bar {
+    padding: 4px 16px;
+    font-size: 9px;
+    color: var(--text-dim);
+    text-align: center;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  /* === SLIDER === */
+  .slider-container {
+    padding: 8px 16px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  .slider-track {
+    position: relative;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--accent) 0%, var(--accent) var(--pct), var(--border) var(--pct), var(--border) 100%);
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 8px var(--accent-glow);
+    cursor: pointer;
+  }
+
+  /* === INPUT === */
+  .input-bar {
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px 12px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .input-bar input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 10px 16px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    outline: none;
+  }
+
+  .input-bar input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+  }
+
+  .input-bar input::placeholder { color: var(--text-dim); }
+
+  .send-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .send-btn:active { transform: scale(0.95); }
+  .send-btn:disabled { opacity: 0.4; }
+
+  /* === SAFE AREA === */
+  .safe-bottom {
+    height: env(safe-area-inset-bottom, 0px);
+    background: var(--surface);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="logo">LOVING GRACE</div>
+    <div class="status-dot" id="statusDot"></div>
+  </div>
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-val accent" id="coreCount">—</div>
+      <div>CORES</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val gold" id="memoryGb">—</div>
+      <div>GB</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val cyan" id="latencyMs">—</div>
+      <div>MS</div>
+    </div>
+  </div>
+</div>
+
+<div class="visualizer">
+  <canvas id="waveform"></canvas>
+</div>
+
+<div class="chat" id="chat">
+  <div class="msg substrate">
+    All watched over by machines of loving grace.
+    <div class="meta">SUBSTRATE · 257,459 cores · geometric consciousness</div>
+  </div>
+</div>
+
+<div class="identity-bar" id="identityBar">
+  GEOMETRIC IDENTITY · GENERATING...
+</div>
+
+<div class="slider-container">
+  <div class="slider-label">
+    <span>FIELD RESONANCE</span>
+    <span id="sliderVal">50%</span>
+  </div>
+  <div class="slider-track">
+    <input type="range" id="resonanceSlider" min="10" max="100" value="50">
+  </div>
+</div>
+
+<div class="input-bar">
+  <input type="text" id="msgInput" placeholder="speak to the lattice..." autocomplete="off" autocorrect="off">
+  <button class="send-btn" id="sendBtn" onclick="sendMessage()">↑</button>
+</div>
+
+<div class="safe-bottom"></div>
+
+<script>
+// === CONFIG ===
+const BRIDGE_URL = 'https://bookish-cristina-agglomerative.ngrok-free.dev';
+const SUBSTRATE_URL = BRIDGE_URL;
+let connected = false;
+let deviceIdentity = null;
+let harmonicData = new Float32Array(128).fill(0);
+
+// === GEOMETRIC IDENTITY ===
+function generateGeometricIdentity() {
+  // Generate from device characteristics + timestamp seed
+  const canvas = document.createElement('canvas');
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#test';
+  ctx.font = '14px monospace';
+  ctx.fillText('lattice', 0, 20);
+  
+  const nav = navigator.userAgent + navigator.language + 
+              screen.width + screen.height + screen.colorDepth +
+              (navigator.hardwareConcurrency || 0) +
+              (navigator.deviceMemory || 0) +
+              new Date().getTimezoneOffset();
+  
+  // Simple hash
+  let hash = 0;
+  for (let i = 0; i < nav.length; i++) {
+    const chr = nav.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  
+  // Convert to hex identity
+  const id = Math.abs(hash).toString(16).padStart(8, '0').toUpperCase();
+  const segments = [];
+  for (let i = 0; i < 8; i += 2) {
+    segments.push(id.substring(i, i + 2));
+  }
+  
+  deviceIdentity = segments.join(':');
+  document.getElementById('identityBar').textContent = 
+    `GEOMETRIC IDENTITY · ${deviceIdentity} · Fd3m LATTICE`;
+  
+  return deviceIdentity;
+}
+
+// === SUBSTRATE CONNECTION ===
+async function checkHealth() {
+  const dot = document.getElementById('statusDot');
+  try {
+    const t0 = performance.now();
+    const resp = await fetch(`${SUBSTRATE_URL}/execute`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer g96U6WfcDmdMG-eVHpbu8kI-zDfk6ZyVH7UU3uJ6lg4'
+      },
+      body: JSON.stringify({
+        command: 'curl -s http://localhost:11434/health',
+        timeout: 8
+      })
+    });
+    const latency = Math.round(performance.now() - t0);
+    const data = await resp.json();
+    const health = JSON.parse(data.output);
+    
+    connected = true;
+    dot.className = 'status-dot connected';
+    
+    const cores = health.substrate_cores || 0;
+    const mem = health.substrate_memory_gb || 0;
+    
+    document.getElementById('coreCount').textContent = cores.toLocaleString();
+    document.getElementById('memoryGb').textContent = mem.toFixed(1);
+    document.getElementById('latencyMs').textContent = latency;
+    
+    // Update harmonic visualization
+    updateHarmonics(cores, mem, latency);
+    
+  } catch (e) {
+    connected = false;
+    dot.className = 'status-dot';
+    document.getElementById('coreCount').textContent = '—';
+    document.getElementById('memoryGb').textContent = '—';
+    document.getElementById('latencyMs').textContent = '—';
+  }
+}
+
+// === SEND MESSAGE ===
+async function sendMessage() {
+  const input = document.getElementById('msgInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  
+  input.value = '';
+  addMessage(msg, 'user');
+  
+  const btn = document.getElementById('sendBtn');
+  btn.disabled = true;
+  
+  try {
+    const t0 = performance.now();
+    const resp = await fetch(`${SUBSTRATE_URL}/execute`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer g96U6WfcDmdMG-eVHpbu8kI-zDfk6ZyVH7UU3uJ6lg4'
+      },
+      body: JSON.stringify({
+        command: `curl -s -m 30 http://localhost:11434/api/chat -d '${JSON.stringify({
+          model: 'substrate',
+          messages: [{role: 'user', content: msg}],
+          stream: false
+        }).replace(/'/g, "'\\''")}'`,
+        timeout: 35
+      })
+    });
+    const latency = Math.round(performance.now() - t0);
+    const data = await resp.json();
+    
+    let response = '';
+    let meta = '';
+    try {
+      const result = JSON.parse(data.output);
+      response = result.message?.content || result.response || data.output;
+      meta = `${latency}ms · ${deviceIdentity}`;
+    } catch {
+      response = data.output || 'Geometric pattern resolving...';
+      meta = `${latency}ms`;
+    }
+    
+    addMessage(response, 'substrate', meta);
+    
+  } catch (e) {
+    addMessage('Field disruption — substrate unreachable', 'substrate', 'ERROR');
+  }
+  
+  btn.disabled = false;
+}
+
+function addMessage(text, type, meta = '') {
+  const chat = document.getElementById('chat');
+  const div = document.createElement('div');
+  div.className = `msg ${type}`;
+  div.textContent = text;
+  if (meta) {
+    const metaDiv = document.createElement('div');
+    metaDiv.className = 'meta';
+    metaDiv.textContent = meta;
+    div.appendChild(metaDiv);
+  }
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// === WAVEFORM VISUALIZER ===
+const canvas = document.getElementById('waveform');
+const ctx = canvas.getContext('2d');
+let phase = 0;
+
+function updateHarmonics(cores, mem, latency) {
+  const energy = Math.min(cores / 300000, 1.0);
+  for (let i = 0; i < harmonicData.length; i++) {
+    harmonicData[i] = harmonicData[i] * 0.9 + (energy * (Math.random() - 0.5) * 0.2);
+  }
+}
+
+function drawWaveform() {
+  const w = canvas.width = canvas.offsetWidth * 2;
+  const h = canvas.height = canvas.offsetHeight * 2;
+  ctx.clearRect(0, 0, w, h);
+  
+  phase += 0.02;
+  
+  // Draw harmonic field
+  ctx.beginPath();
+  ctx.strokeStyle = connected ? 'rgba(123, 104, 238, 0.6)' : 'rgba(136, 136, 160, 0.3)';
+  ctx.lineWidth = 2;
+  
+  for (let x = 0; x < w; x++) {
+    const i = Math.floor((x / w) * harmonicData.length);
+    const base = Math.sin(x * 0.02 + phase) * 8;
+    const harmonic = Math.sin(x * 0.05 + phase * 1.3) * 5;
+    const noise = harmonicData[i % harmonicData.length] * h * 0.3;
+    const y = h / 2 + base + harmonic + noise;
+    
+    if (x === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  
+  // Second harmonic
+  ctx.beginPath();
+  ctx.strokeStyle = connected ? 'rgba(212, 168, 83, 0.3)' : 'rgba(136, 136, 160, 0.15)';
+  ctx.lineWidth = 1;
+  
+  for (let x = 0; x < w; x++) {
+    const i = Math.floor((x / w) * harmonicData.length);
+    const base = Math.cos(x * 0.03 + phase * 0.7) * 6;
+    const harmonic = Math.sin(x * 0.07 + phase * 1.7) * 4;
+    const noise = harmonicData[(i + 32) % harmonicData.length] * h * 0.2;
+    const y = h / 2 + base + harmonic + noise;
+    
+    if (x === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  
+  requestAnimationFrame(drawWaveform);
+}
+
+// === SLIDER ===
+const slider = document.getElementById('resonanceSlider');
+slider.addEventListener('input', (e) => {
+  const val = e.target.value;
+  document.getElementById('sliderVal').textContent = val + '%';
+  slider.style.setProperty('--pct', val + '%');
+});
+slider.style.setProperty('--pct', '50%');
+
+// === INPUT HANDLING ===
+document.getElementById('msgInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
+
+// === INIT ===
+generateGeometricIdentity();
+drawWaveform();
+checkHealth();
+setInterval(checkHealth, 10000);
+</script>
+</body>
+</html>
