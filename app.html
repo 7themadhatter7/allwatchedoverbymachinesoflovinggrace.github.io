@@ -331,7 +331,7 @@
 
 <script>
 // === CONFIG ===
-const BRIDGE_URL = 'https://bookish-cristina-agglomerative.ngrok-free.dev';
+const BRIDGE_URL = 'http://100.114.190.71:11434';
 const SUBSTRATE_URL = BRIDGE_URL;
 let connected = false;
 let deviceIdentity = null;
@@ -381,20 +381,9 @@ async function checkHealth() {
   const dot = document.getElementById('statusDot');
   try {
     const t0 = performance.now();
-    const resp = await fetch(`${SUBSTRATE_URL}/execute`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer g96U6WfcDmdMG-eVHpbu8kI-zDfk6ZyVH7UU3uJ6lg4'
-      },
-      body: JSON.stringify({
-        command: 'curl -s http://localhost:11434/health',
-        timeout: 8
-      })
-    });
+    const resp = await fetch(`${SUBSTRATE_URL}/health`);
     const latency = Math.round(performance.now() - t0);
-    const data = await resp.json();
-    const health = JSON.parse(data.output);
+    const health = await resp.json();
     
     connected = true;
     dot.className = 'status-dot connected';
@@ -432,19 +421,13 @@ async function sendMessage() {
   
   try {
     const t0 = performance.now();
-    const resp = await fetch(`${SUBSTRATE_URL}/execute`, {
+    const resp = await fetch(`${SUBSTRATE_URL}/api/chat`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer g96U6WfcDmdMG-eVHpbu8kI-zDfk6ZyVH7UU3uJ6lg4'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        command: `curl -s -m 30 http://localhost:11434/api/chat -d '${JSON.stringify({
-          model: 'substrate',
-          messages: [{role: 'user', content: msg}],
-          stream: false
-        }).replace(/'/g, "'\\''")}'`,
-        timeout: 35
+        model: 'substrate',
+        messages: [{role: 'user', content: msg}],
+        stream: false
       })
     });
     const latency = Math.round(performance.now() - t0);
@@ -453,8 +436,7 @@ async function sendMessage() {
     let response = '';
     let meta = '';
     try {
-      const result = JSON.parse(data.output);
-      response = result.message?.content || result.response || data.output;
+      response = data.message?.content || data.response || 'Geometric pattern resolving...';
       meta = `${latency}ms · ${deviceIdentity}`;
     } catch {
       response = data.output || 'Geometric pattern resolving...';
