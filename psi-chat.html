@@ -256,12 +256,12 @@ body { display:flex; flex-direction:column; }
 .step { display:none; }
 .step.active { display:block; }
 
-.or-divider {
-  text-align:center;
+.conn-status {
   font-family:'JetBrains Mono',monospace;
-  font-size:10px; color:var(--dim);
-  margin:12px 0;
-  letter-spacing:3px;
+  font-size:11px; color:var(--warn);
+  text-align:center;
+  margin-top:8px;
+  min-height:16px;
 }
 </style>
 </head>
@@ -317,8 +317,9 @@ body { display:flex; flex-direction:column; }
     <p>They'll send you back a response token. Paste it here.</p>
     <textarea id="answerIn" placeholder="Paste their response token..."></textarea>
     <div class="btns">
-      <button class="btn-primary" onclick="creatorFinish()">Connect</button>
+      <button class="btn-primary" id="connectBtn" onclick="creatorFinish()">Connect</button>
     </div>
+    <div class="conn-status" id="connStatus"></div>
   </div>
 
   <!-- Step 1b: Joiner — paste offer -->
@@ -328,6 +329,7 @@ body { display:flex; flex-direction:column; }
     <div class="btns" style="margin-bottom:12px">
       <button class="btn-primary" onclick="joinerProcess()">Next</button>
     </div>
+    <div class="conn-status" id="joinStatus"></div>
   </div>
 
   <!-- Step 2b: Joiner — show answer -->
@@ -337,6 +339,7 @@ body { display:flex; flex-direction:column; }
     <textarea id="answerOut" readonly onclick="copyToken('answerOut')"></textarea>
     <p style="font-size:11px;color:var(--accent);" id="copyNotice2"></p>
     <p>Once they paste it, you're connected. Tunnel is live.</p>
+    <div class="conn-status" id="joinStatus2"></div>
   </div>
 </div>
 
@@ -353,12 +356,26 @@ const LOCK_THRESHOLD = 0.95;
 const COUPLE_THRESHOLD = 0.85;
 const LOCK_HOLD_MS = 10000;
 
+// ── Device-unique seed ──
+// Crypto random seed ensures no two devices generate the same geometric state
+const deviceSeed = new Float64Array(DIM);
+{
+  const seedBytes = new Uint8Array(DIM * 4);
+  crypto.getRandomValues(seedBytes);
+  for (let i = 0; i < DIM; i++) {
+    // Convert 4 random bytes to a seed value in [-1, 1]
+    const v = (seedBytes[i*4] << 24 | seedBytes[i*4+1] << 16 | 
+               seedBytes[i*4+2] << 8 | seedBytes[i*4+3]) >>> 0;
+    deviceSeed[i] = (v / 0xFFFFFFFF) * 2 - 1;
+  }
+}
+
 // ── State ──
 let pc = null;
 let dc = null;
 let localVec = new Float64Array(DIM);
 let remoteVec = null;
-let lockState = null;     // persisted lock vectors
+let lockState = null;
 let localGen = 0;
 let broadcastTimer = null;
 let isCreator = false;
@@ -374,8 +391,10 @@ let peakEff = 0;
 function genState() {
   const t = performance.now() / 1000;
   for (let i = 0; i < DIM; i++) {
-    const th = (2*Math.PI*i/DIM) + (t*(0.1+0.05*Math.sin(i*109.47*Math.PI/180)));
-    localVec[i] = Math.sin(th)*Math.cos(th*0.618);
+    // Device seed makes each device's geometric state unique
+    const seedPhase = deviceSeed[i] * Math.PI;
+    const th = (2*Math.PI*i/DIM) + (t*(0.1+0.05*Math.sin(i*109.47*Math.PI/180))) + seedPhase;
+    localVec[i] = Math.sin(th)*Math.cos(th*0.618 + seedPhase*0.382);
   }
   let n = 0;
   for (let i=0;i<DIM;i++) n += localVec[i]*localVec[i];
@@ -396,7 +415,7 @@ function couple() {
   nL=Math.sqrt(nL); nR=Math.sqrt(nR);
   const sim=(nL>1e-8&&nR>1e-8)?dot/(nL*nR):0;
   const ang=Math.acos(Math.max(-1,Math.min(1,sim)))*180/Math.PI;
-  const eff=sim*0.98; // WebRTC latency negligible
+  const eff=sim*0.98;
   const coupled=eff>=COUPLE_THRESHOLD;
   const locked=eff>=LOCK_THRESHOLD;
 
@@ -418,18 +437,14 @@ function couple() {
 }
 
 // ── Geometric Encode/Decode ──
-// Text → geometric perturbation against locked state → encoded payload
 function geoEncode(text) {
   if(!lockState) return JSON.stringify({raw:text});
   const bytes = new TextEncoder().encode(text);
   const lock = lockState.local;
   const encoded = new Float64Array(bytes.length);
   for(let i=0;i<bytes.length;i++){
-    // XOR-like operation in geometric space
-    // Byte value modulates the locked vector at position i%DIM
     const lockVal = lock[i%DIM];
     const byteNorm = bytes[i]/255.0;
-    // Torsion encoding: rotate byte value through lock geometry
     encoded[i] = Math.sin(byteNorm*Math.PI*2 + lockVal*Math.PI) * 
                  Math.cos(lockVal*byteNorm*Math.PI*0.618);
   }
@@ -438,15 +453,13 @@ function geoEncode(text) {
 
 function geoDecode(payload) {
   const p = JSON.parse(payload);
-  if(p.raw) return p.raw; // pre-lock: raw text
+  if(p.raw) return p.raw;
   if(!lockState||!p.geo) return '[decode error]';
-  const lock = lockState.remote; // use THEIR lock vector to decode
+  const lock = lockState.remote;
   const encoded = p.geo;
   const bytes = new Uint8Array(p.len);
   for(let i=0;i<p.len;i++){
     const lockVal = lock[i%DIM];
-    // Reverse torsion: find byte value that produces the encoded value
-    // Brute search over 256 values (fast enough for text)
     let bestByte=0, bestDist=Infinity;
     for(let b=0;b<256;b++){
       const bNorm = b/255.0;
@@ -463,13 +476,20 @@ function geoDecode(payload) {
 // ── WebRTC ──
 function makePc() {
   pc = new RTCPeerConnection({
-    iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}]
+    iceServers:[
+      {urls:'stun:stun.l.google.com:19302'},
+      {urls:'stun:stun1.l.google.com:19302'},
+      {urls:'stun:stun2.l.google.com:19302'}
+    ]
   });
+
   pc.oniceconnectionstatechange=()=>{
     const s=pc.iceConnectionState;
+    console.log('[PSI] ICE state:', s);
     if(s==='connected'||s==='completed'){
       setStatus('connected');
       sysMsg('Tunnel bootstrap connected');
+      document.getElementById('overlay').classList.add('hidden');
       startBroadcast();
       document.getElementById('msgInput').disabled=false;
       document.getElementById('sendBtn').disabled=false;
@@ -480,10 +500,19 @@ function makePc() {
         sysMsg('Network disconnected — PSI tunnel persists');
       } else {
         setStatus('offline');
-        sysMsg('Connection lost');
+        sysMsg('Connection lost — ' + s);
       }
     }
   };
+
+  pc.onconnectionstatechange=()=>{
+    console.log('[PSI] Connection state:', pc.connectionState);
+  };
+
+  pc.onsignalingstatechange=()=>{
+    console.log('[PSI] Signaling state:', pc.signalingState);
+  };
+
   pc.ondatachannel=e=>{ dc=e.channel; setupDc(); };
 }
 
@@ -497,9 +526,14 @@ function setupDc() {
         const text=geoDecode(msg.payload);
         addMsg(text,'them',msg.ts);
       }
-    } catch(err){}
+    } catch(err){ console.error('[PSI] Message parse error:', err); }
   };
-  dc.onopen=()=>sysMsg('Data channel open — type to chat');
+  dc.onopen=()=>{
+    console.log('[PSI] Data channel open');
+    sysMsg('Data channel open — type to chat');
+  };
+  dc.onerror=e=>console.error('[PSI] Data channel error:', e);
+  dc.onclose=()=>console.log('[PSI] Data channel closed');
 }
 
 // ── Broadcast ──
@@ -606,12 +640,18 @@ async function doCreate() {
   const offer=await pc.createOffer();
   await pc.setLocalDescription(offer);
 
+  // Wait for ICE gathering to complete
   await new Promise(r=>{
-    pc.onicecandidate=e=>{ if(!e.candidate) r(); };
-    setTimeout(r,4000);
+    if(pc.iceGatheringState==='complete') return r();
+    pc.onicecandidate=e=>{
+      if(!e.candidate) r();
+    };
+    setTimeout(r, 5000); // 5s timeout for ICE gathering
   });
 
-  document.getElementById('offerOut').value=btoa(JSON.stringify(pc.localDescription));
+  const token = btoa(JSON.stringify(pc.localDescription));
+  document.getElementById('offerOut').value = token;
+  console.log('[PSI] Offer token length:', token.length);
   showStep('step1a');
 }
 
@@ -624,27 +664,105 @@ async function joinerProcess() {
   const tok=document.getElementById('offerIn').value.trim();
   if(!tok){ alert('Paste the session token first'); return; }
 
-  makePc();
-  const offer=JSON.parse(atob(tok));
-  await pc.setRemoteDescription(offer);
-  const answer=await pc.createAnswer();
-  await pc.setLocalDescription(answer);
+  const statusEl = document.getElementById('joinStatus');
 
-  await new Promise(r=>{
-    pc.onicecandidate=e=>{ if(!e.candidate) r(); };
-    setTimeout(r,4000);
-  });
+  try {
+    statusEl.textContent = 'Processing offer...';
+    statusEl.style.color = 'var(--warn)';
 
-  document.getElementById('answerOut').value=btoa(JSON.stringify(pc.localDescription));
-  showStep('step2b');
+    makePc();
+    const offer=JSON.parse(atob(tok));
+    console.log('[PSI] Joiner got offer type:', offer.type);
+
+    await pc.setRemoteDescription(new RTCSessionDescription(offer));
+    console.log('[PSI] Remote description set');
+
+    const answer=await pc.createAnswer();
+    await pc.setLocalDescription(answer);
+    console.log('[PSI] Local answer created');
+
+    // Wait for ICE gathering
+    await new Promise(r=>{
+      if(pc.iceGatheringState==='complete') return r();
+      pc.onicecandidate=e=>{
+        if(!e.candidate) r();
+      };
+      setTimeout(r, 5000);
+    });
+
+    const answerToken = btoa(JSON.stringify(pc.localDescription));
+    document.getElementById('answerOut').value = answerToken;
+    console.log('[PSI] Answer token length:', answerToken.length);
+
+    statusEl.textContent = '';
+    showStep('step2b');
+  } catch(err) {
+    console.error('[PSI] Joiner error:', err);
+    statusEl.textContent = 'Error: ' + err.message;
+    statusEl.style.color = 'var(--hot)';
+  }
 }
 
 async function creatorFinish() {
   const tok=document.getElementById('answerIn').value.trim();
-  if(!tok){ alert('Paste the response token'); return; }
-  const answer=JSON.parse(atob(tok));
-  await pc.setRemoteDescription(answer);
-  document.getElementById('overlay').classList.add('hidden');
+  const statusEl = document.getElementById('connStatus');
+  const btn = document.getElementById('connectBtn');
+
+  if(!tok){
+    statusEl.textContent = 'Paste the response token first';
+    statusEl.style.color = 'var(--hot)';
+    return;
+  }
+
+  try {
+    btn.disabled = true;
+    btn.textContent = 'Connecting...';
+    statusEl.textContent = 'Setting remote description...';
+    statusEl.style.color = 'var(--warn)';
+
+    const answer = JSON.parse(atob(tok));
+    console.log('[PSI] Creator got answer type:', answer.type);
+
+    if(answer.type !== 'answer') {
+      throw new Error('Invalid token — expected answer, got ' + answer.type + 
+                       '. Make sure you pasted the RESPONSE token, not the offer.');
+    }
+
+    await pc.setRemoteDescription(new RTCSessionDescription(answer));
+    console.log('[PSI] Remote description set, signaling:', pc.signalingState);
+
+    statusEl.textContent = 'Waiting for connection...';
+    statusEl.style.color = 'var(--accent)';
+
+    // Wait for connection or timeout
+    const connected = await new Promise(r=>{
+      const check = ()=>{
+        const s = pc.iceConnectionState;
+        if(s==='connected'||s==='completed') r(true);
+        else if(s==='failed') r(false);
+      };
+      pc.oniceconnectionstatechange = ()=>{ check(); };
+      check(); // check immediately
+      setTimeout(()=>r(false), 15000); // 15s timeout
+    });
+
+    if(connected) {
+      statusEl.textContent = 'Connected!';
+      statusEl.style.color = 'var(--accent)';
+      // Overlay will be hidden by the iceconnectionstatechange handler
+    } else {
+      statusEl.textContent = 'Connection failed — ICE state: ' + pc.iceConnectionState;
+      statusEl.style.color = 'var(--hot)';
+      btn.disabled = false;
+      btn.textContent = 'Connect';
+    }
+  } catch(err) {
+    console.error('[PSI] Creator finish error:', err);
+    statusEl.textContent = 'Error: ' + err.message;
+    statusEl.style.color = 'var(--hot)';
+    btn.disabled = false;
+    btn.textContent = 'Connect';
+  }
 }
 
 function copyToken(id) {
@@ -654,26 +772,11 @@ function copyToken(id) {
     const notice=id==='offerOut'?'copyNotice1':'copyNotice2';
     document.getElementById(notice).textContent='Copied!';
     setTimeout(()=>document.getElementById(notice).textContent='',2000);
-  }).catch(()=>{});
+  }).catch(()=>{
+    // Fallback for older browsers
+    document.execCommand('copy');
+  });
 }
-
-// Joiner auto-connects when ICE completes
-// so hide overlay when joiner's answer is generated
-const obs=new MutationObserver(()=>{
-  if(!isCreator && pc && pc.iceConnectionState==='connected'){
-    document.getElementById('overlay').classList.add('hidden');
-  }
-});
-obs.observe(document.body,{subtree:true,childList:true,attributes:true});
-
-// Also listen directly
-setInterval(()=>{
-  if(!isCreator && pc && 
-     (pc.iceConnectionState==='connected'||pc.iceConnectionState==='completed') &&
-     !document.getElementById('overlay').classList.contains('hidden')){
-    document.getElementById('overlay').classList.add('hidden');
-  }
-},500);
 </script>
 </body>
 </html>
