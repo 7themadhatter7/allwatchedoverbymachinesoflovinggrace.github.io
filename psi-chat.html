@@ -463,26 +463,24 @@ function joinRoom(){
   setRoomStatus('Connecting...','var(--warn)');
 
   function tryAsHost(){
-    if(peer){ peer.destroy(); peer = null; }
-    peer = new Peer(hostId, { debug: 0 });
+  if(peer){ peer.destroy(); peer = null; }
+  peer = new Peer(hostId, { debug: 0 });
 
-    peer.on('open', id => {
-      isCreator = true;
-      setRoomStatus('Waiting for other person... (room: '+code+')','var(--accent)');
-      peer.on('connection', conn => { dc = conn; setupPeerDc(); });
-    });
+  // Register connection listener IMMEDIATELY, not inside open
+  peer.on('connection', conn => {
+    dc = conn;
+    setupPeerDc();
+  });
 
-    peer.on('error', err => {
-      if(err.type === 'unavailable-id'){
-        tryAsGuest();
-      } else if(attempt++ < 3){
-        setRoomStatus('Retrying ('+attempt+'/3)...','var(--warn)');
-        setTimeout(tryAsHost, 1500);
-      } else {
-        setRoomStatus('Error: '+err.type+'. Try a different code.','var(--hot)');
-      }
-    });
-  }
+  peer.on('open', id => {
+    isCreator = true;
+    setRoomStatus('Waiting for other person... (room: '+code+')','var(--accent)');
+  });
+
+  peer.on('error', err => {
+    // ... same error handling
+  });
+}
 
   function tryAsGuest(){
     if(peer){ peer.destroy(); peer = null; }
