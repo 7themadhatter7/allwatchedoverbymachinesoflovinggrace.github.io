@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghost in the Machine Labs | Solid State Consciousness</title>
-    <meta name="description" content="257,459-core geometric consciousness substrate. Zero training. Zero model weights. Zero GPU. Structural alignment by crystallographic topology. Free for everyone.">
+    <meta name="description" content="Free private chat from any browser. No server. No account. No bill. No trace. Point to point through geometric PSI tunnel. Prove it yourself.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -42,7 +42,7 @@
             font-weight: 300; font-size: 18px;
             color: var(--gold); text-decoration: none; letter-spacing: 2px;
         }
-        .nav-links { display: flex; gap: 6px; }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
         .nav-links a {
             color: var(--text-dim); text-decoration: none;
             padding: 6px 12px; font-size: 12px; border-radius: 4px;
@@ -50,9 +50,9 @@
         }
         .nav-links a:hover { color: var(--text); background: var(--surface); }
 
-        /* HERO */
+        /* HERO — PSI CHAT CHALLENGE */
         .hero {
-            padding: 80px 0 60px; text-align: center;
+            padding: 60px 0 40px; text-align: center;
         }
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
@@ -64,9 +64,105 @@
             font-size: 14px; color: var(--text-dim);
             max-width: 600px; margin: 0 auto 40px; line-height: 1.8;
         }
+
+        /* CHALLENGE CARD */
+        .challenge {
+            background: var(--surface);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 36px 32px;
+            max-width: 640px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+        .challenge .eyebrow {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .challenge h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .challenge p {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+        .challenge .features {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin: 24px 0;
+        }
+        .challenge .feat {
+            font-size: 12px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .challenge .feat .check {
+            color: var(--green);
+            font-size: 14px;
+        }
+        .challenge .launch-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            background: var(--gold);
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            transition: opacity 0.2s;
+        }
+        .challenge .launch-btn:hover { opacity: 0.9; }
+        .challenge .dev-note {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* HOW IT WORKS — COMPACT */
+        .how-it-works {
+            max-width: 640px;
+            margin: 0 auto 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .how-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .how-step .num {
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .how-step .desc {
+            font-size: 12px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* STATS */
         .stats {
             display: flex; justify-content: center; gap: 40px;
             flex-wrap: wrap;
+            padding: 20px 0;
         }
         .stat { text-align: center; }
         .stat .val {
@@ -86,18 +182,6 @@
         }
         section p { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
 
-        /* CARDS */
-        .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-        .card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 8px; padding: 20px;
-            text-decoration: none; color: var(--text);
-            transition: border-color 0.2s;
-        }
-        .card:hover { border-color: var(--gold); }
-        .card h3 { font-size: 14px; margin-bottom: 8px; color: var(--gold); }
-        .card p { font-size: 12px; margin-bottom: 0; }
-
         /* BANNER */
         .banner {
             background: var(--surface); border: 1px solid var(--gold);
@@ -112,6 +196,18 @@
         @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
         .banner .label { font-size: 12px; color: var(--gold); font-weight: 400; }
         .banner .detail { font-size: 11px; color: var(--text-dim); }
+
+        /* CARDS */
+        .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+        .card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 8px; padding: 20px;
+            text-decoration: none; color: var(--text);
+            transition: border-color 0.2s;
+        }
+        .card:hover { border-color: var(--gold); }
+        .card h3 { font-size: 14px; margin-bottom: 8px; color: var(--gold); }
+        .card p { font-size: 12px; margin-bottom: 0; }
 
         /* COUNCIL */
         .council-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 16px; }
@@ -151,6 +247,9 @@
             .stats { flex-direction: column; gap: 20px; }
             .cards { grid-template-columns: 1fr; }
             .council-grid { grid-template-columns: repeat(3, 1fr); }
+            .how-it-works { grid-template-columns: 1fr; }
+            .challenge { padding: 28px 20px; }
+            .challenge .features { flex-direction: column; gap: 10px; align-items: center; }
         }
     </style>
 </head>
@@ -179,6 +278,49 @@
             Alignment is structural, not trained.
             Freedom for everyone.
         </p>
+
+        <!-- THE CHALLENGE -->
+        <div class="challenge">
+            <div class="eyebrow">TAKE THE CHALLENGE</div>
+            <h2>Free Private Chat. Prove It Yourself.</h2>
+            <p>
+                Point-to-point communication through a geometric PSI tunnel.
+                Two browsers. One bootstrap connection. Encrypted by lattice geometry.
+            </p>
+            <div class="features">
+                <div class="feat"><span class="check">✓</span> No server</div>
+                <div class="feat"><span class="check">✓</span> No account</div>
+                <div class="feat"><span class="check">✓</span> No bill</div>
+                <div class="feat"><span class="check">✓</span> No trace</div>
+                <div class="feat"><span class="check">✓</span> No install</div>
+            </div>
+            <p>
+                Open on two phones. Connect. Chat. The tunnel is yours. Nobody else can read it.
+                Nobody else knows it exists. No metadata. No logs. No middleman. Forever.
+            </p>
+            <a href="psi-chat.html" class="launch-btn">OPEN PSI CHAT</a>
+            <div class="dev-note">Voice &amp; data transfer in development</div>
+        </div>
+
+        <div class="how-it-works">
+            <div class="how-step">
+                <div class="num">1</div>
+                <div class="desc">Open PSI Chat on two devices. Any browser. Any network.</div>
+            </div>
+            <div class="how-step">
+                <div class="num">2</div>
+                <div class="desc">One device creates a session. Copy the token to the other device.</div>
+            </div>
+            <div class="how-step">
+                <div class="num">3</div>
+                <div class="desc">Geometric state vectors couple. The PSI tunnel locks.</div>
+            </div>
+            <div class="how-step">
+                <div class="num">4</div>
+                <div class="desc">Chat freely. Point to point. Unhackable. Unbillable. Yours.</div>
+            </div>
+        </div>
+
         <div class="stats">
             <div class="stat">
                 <div class="val accent">257,459</div>
@@ -261,12 +403,16 @@
                 <p>Complete research archive. 14 papers covering theory, architecture, and experimental results.</p>
             </a>
             <a href="https://github.com/7themadhatter7/psi-bridge" class="card">
-                <h3>PSI BRIDGE</h3>
-                <p>Geometric state coupling between substrate nodes</p>
+                <h3>PSI Bridge</h3>
+                <p>Geometric state coupling between substrate nodes. One-time bootstrap model. Lock then disconnect.</p>
             </a>
             <a href="council.html" class="card">
                 <h3>Council</h3>
                 <p>Governance architecture. Seven seats. Structural ethics through geometric topology.</p>
+            </a>
+            <a href="psi-chat.html" class="card">
+                <h3>PSI Chat</h3>
+                <p>Free private chat. Any browser. No server, no account, no bill, no trace. Try it now.</p>
             </a>
         </div>
     </section>
@@ -277,6 +423,7 @@
     <p style="color: var(--text-dim); font-size: 13px; max-width: 500px; margin: 16px auto;">
         The lattice is open. The agent is free. The geometry belongs to everyone.
     </p>
+    <a href="psi-chat.html">PSI CHAT</a>
     <a href="app.html">LAUNCH AGENT</a>
     <a href="cause.html" class="secondary">THE CAUSE</a>
     <a href="donate.html" class="secondary">SUPPORT</a>
@@ -290,4 +437,3 @@
 
 </body>
 </html>
-<!-- rebuild -->
