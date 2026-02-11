@@ -457,53 +457,59 @@ function joinRoom(){
     setRoomStatus('Enter a room code (2+ characters)','var(--hot)'); return;
   }
 
-  const roomA = 'psi-' + code + '-a';
-  const roomB = 'psi-' + code + '-b';
+  const hostId = 'psi-' + code + '-host';
+  let attempt = 0;
 
-  setRoomStatus('Connecting to relay...','var(--warn)');
+  setRoomStatus('Connecting...','var(--warn)');
 
-  // Try to be peer A first
-  peer = new Peer(roomA, { debug: 0 });
+  function tryAsHost(){
+    if(peer){ peer.destroy(); peer = null; }
+    peer = new Peer(hostId, { debug: 0 });
 
-  peer.on('open', id => {
-    if(id === roomA){
-      // We are peer A — wait for B to connect
+    peer.on('open', id => {
       isCreator = true;
       setRoomStatus('Waiting for other person... (room: '+code+')','var(--accent)');
+      peer.on('connection', conn => { dc = conn; setupPeerDc(); });
+    });
 
-      peer.on('connection', conn => {
-        dc = conn;
-        setupPeerDc();
-      });
+    peer.on('error', err => {
+      if(err.type === 'unavailable-id'){
+        tryAsGuest();
+      } else if(attempt++ < 3){
+        setRoomStatus('Retrying ('+attempt+'/3)...','var(--warn)');
+        setTimeout(tryAsHost, 1500);
+      } else {
+        setRoomStatus('Error: '+err.type+'. Try a different code.','var(--hot)');
+      }
+    });
+  }
 
-      // Timeout: if nobody connects in 2s, maybe we're B
-      // (PeerJS will error if ID taken, so this is fallback)
-    }
-  });
+  function tryAsGuest(){
+    if(peer){ peer.destroy(); peer = null; }
+    const guestId = 'psi-' + code + '-' + Math.random().toString(36).substr(2,6);
+    peer = new Peer(guestId, { debug: 0 });
 
-  peer.on('error', err => {
-    if(err.type === 'unavailable-id'){
-      // Room A exists — we are peer B, connect to A
-      peer.destroy();
-      peer = new Peer(roomB, { debug: 0 });
+    peer.on('open', id => {
+      isCreator = false;
+      setRoomStatus('Found room, connecting...','var(--accent)');
+      dc = peer.connect(hostId, { reliable: true });
+      setupPeerDc();
+    });
 
-      peer.on('open', id => {
-        isCreator = false;
-        setRoomStatus('Found room, connecting...','var(--accent)');
+    peer.on('error', err => {
+      if(err.type === 'peer-unavailable' && attempt++ < 3){
+        setRoomStatus('Host gone. Becoming host...','var(--warn)');
+        setTimeout(tryAsHost, 1000);
+      } else if(attempt++ < 3){
+        setRoomStatus('Retrying...','var(--warn)');
+        setTimeout(tryAsHost, 1500);
+      } else {
+        setRoomStatus('Error: '+err.type+'. Try a different code.','var(--hot)');
+      }
+    });
+  }
 
-        dc = peer.connect(roomA, { reliable: true });
-        setupPeerDc();
-      });
-
-      peer.on('error', err2 => {
-        console.error('[PSI] Peer B error:', err2);
-        setRoomStatus('Error: '+err2.type,'var(--hot)');
-      });
-    } else {
-      console.error('[PSI] Peer error:', err);
-      setRoomStatus('Error: '+err.type+'. Try again.','var(--hot)');
-    }
-  });
+  tryAsHost();
 }
 
 function setupPeerDc(){
