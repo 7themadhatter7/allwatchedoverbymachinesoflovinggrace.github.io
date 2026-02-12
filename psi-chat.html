@@ -34,148 +34,63 @@ body { display:flex; flex-direction:column; }
 
 .topbar {
   display:flex; align-items:center; justify-content:space-between;
-  padding:10px 14px;
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;
+  padding:10px 14px; border-bottom:1px solid var(--border); flex-shrink:0;
 }
+.topbar .title { font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:500; letter-spacing:2px; color:var(--accent); }
+.topbar .status { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--dim); display:flex; align-items:center; gap:6px; }
 
-.topbar .title {
-  font-family:'JetBrains Mono',monospace;
-  font-size:13px; font-weight:500;
-  letter-spacing:2px; color:var(--accent);
-}
-
-.topbar .status {
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px; color:var(--dim);
-  display:flex; align-items:center; gap:6px;
-}
-
-.status-dot {
-  width:7px; height:7px; border-radius:50%;
-  background:var(--dim); flex-shrink:0;
-}
+.status-dot { width:7px; height:7px; border-radius:50%; background:var(--dim); flex-shrink:0; }
 .status-dot.connected { background:var(--warn); }
 .status-dot.coupled { background:var(--warn); animation:pulse 1.5s infinite; }
 .status-dot.locked { background:var(--accent); }
-
 @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
 
-.coupling-bar {
-  display:none; padding:6px 14px;
-  border-bottom:1px solid var(--border); flex-shrink:0;
-  font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim);
-}
+.coupling-bar { display:none; padding:6px 14px; border-bottom:1px solid var(--border); flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim); }
 .coupling-bar.active { display:flex; align-items:center; gap:10px; }
-
 .coupling-track { flex:1; height:3px; background:var(--border); border-radius:2px; overflow:hidden; }
 .coupling-fill { height:100%; width:0%; background:var(--dim); border-radius:2px; transition:width 0.5s ease, background 0.3s; }
 .coupling-fill.coupled { background:var(--warn); }
 .coupling-fill.locked { background:var(--accent); }
 
-.messages {
-  flex:1; overflow-y:auto; padding:12px 14px;
-  display:flex; flex-direction:column; gap:6px;
-  -webkit-overflow-scrolling:touch;
-}
-
+.messages { flex:1; overflow-y:auto; padding:12px 14px; display:flex; flex-direction:column; gap:6px; -webkit-overflow-scrolling:touch; }
 .msg { max-width:82%; padding:9px 13px; border-radius:14px; font-size:14px; line-height:1.45; word-wrap:break-word; }
 .msg.you { align-self:flex-end; background:var(--you); border:1px solid var(--you-border); border-bottom-right-radius:4px; }
 .msg.them { align-self:flex-start; background:var(--them); border:1px solid var(--them-border); border-bottom-left-radius:4px; }
 .msg.sys { align-self:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim); padding:4px 10px; max-width:100%; }
 .msg .meta { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--dim); margin-top:3px; }
 
-.input-area {
-  display:flex; gap:8px; padding:10px 14px;
-  padding-bottom:max(10px, env(safe-area-inset-bottom));
-  border-top:1px solid var(--border); flex-shrink:0; background:var(--surface);
-}
-
-.input-area input {
-  flex:1; background:var(--bg); border:1px solid var(--border); border-radius:10px;
-  padding:10px 14px; color:var(--text); font-family:'Outfit',sans-serif; font-size:15px; outline:none;
-}
+.input-area { display:flex; gap:8px; padding:10px 14px; padding-bottom:max(10px, env(safe-area-inset-bottom)); border-top:1px solid var(--border); flex-shrink:0; background:var(--surface); }
+.input-area input { flex:1; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:10px 14px; color:var(--text); font-family:'Outfit',sans-serif; font-size:15px; outline:none; }
 .input-area input:focus { border-color:var(--accent); }
 .input-area input::placeholder { color:var(--dim); }
-
-.input-area button {
-  padding:10px 18px; background:var(--accent); color:var(--bg);
-  border:none; border-radius:10px; font-family:'Outfit',sans-serif;
-  font-size:14px; font-weight:600; cursor:pointer;
-}
+.input-area button { padding:10px 18px; background:var(--accent); color:var(--bg); border:none; border-radius:10px; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; }
 .input-area button:active { opacity:0.8; }
 .input-area button:disabled { opacity:0.3; cursor:default; }
 
-/* Overlay */
-.overlay {
-  position:fixed; inset:0; z-index:50; background:var(--bg);
-  display:flex; flex-direction:column; padding:20px; overflow-y:auto;
-}
+.overlay { position:fixed; inset:0; z-index:50; background:var(--bg); display:flex; flex-direction:column; padding:20px; overflow-y:auto; }
 .overlay.hidden { display:none; }
-
-.overlay h1 {
-  font-family:'JetBrains Mono',monospace; font-size:16px; font-weight:500;
-  letter-spacing:3px; color:var(--accent); text-align:center; margin:20px 0 6px;
-}
+.overlay h1 { font-family:'JetBrains Mono',monospace; font-size:16px; font-weight:500; letter-spacing:3px; color:var(--accent); text-align:center; margin:20px 0 6px; }
 .overlay .tagline { text-align:center; font-size:12px; color:var(--dim); margin-bottom:20px; }
-
-.overlay h2 {
-  font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500;
-  letter-spacing:2px; color:var(--text); margin:14px 0 8px;
-}
+.overlay h2 { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; letter-spacing:2px; color:var(--text); margin:14px 0 8px; }
 .overlay p { font-size:13px; color:var(--dim); line-height:1.5; margin-bottom:10px; }
-
-.overlay textarea {
-  width:100%; height:72px; background:var(--surface); border:1px solid var(--border);
-  border-radius:8px; padding:10px; color:var(--text);
-  font-family:'JetBrains Mono',monospace; font-size:10px; resize:none; word-break:break-all;
-}
+.overlay textarea { width:100%; height:72px; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:10px; color:var(--text); font-family:'JetBrains Mono',monospace; font-size:10px; resize:none; word-break:break-all; }
 .overlay textarea:focus { outline:none; border-color:var(--accent); }
-
 .overlay .btns { display:flex; gap:10px; margin-top:12px; }
-
-.overlay .btns button {
-  flex:1; padding:13px; border-radius:10px;
-  font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500;
-  letter-spacing:1px; cursor:pointer; border:1px solid var(--border);
-  background:var(--surface); color:var(--text);
-}
+.overlay .btns button { flex:1; padding:13px; border-radius:10px; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; letter-spacing:1px; cursor:pointer; border:1px solid var(--border); background:var(--surface); color:var(--text); }
 .btn-primary { background:var(--accent)!important; color:var(--bg)!important; border-color:var(--accent)!important; }
 
 .step { display:none; }
 .step.active { display:block; }
 
-.conn-status {
-  font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--warn);
-  text-align:center; margin-top:8px; min-height:16px;
-}
+.conn-status { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--warn); text-align:center; margin-top:8px; min-height:16px; }
 
-/* Room code input */
-.room-input {
-  display:flex; gap:8px; margin:8px 0;
-}
-.room-input input {
-  flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px;
-  padding:12px 14px; color:var(--accent); font-family:'JetBrains Mono',monospace;
-  font-size:18px; font-weight:700; letter-spacing:4px; text-align:center;
-  text-transform:uppercase; outline:none;
-}
+.room-input { display:flex; gap:8px; margin:8px 0; }
+.room-input input { flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 14px; color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; letter-spacing:4px; text-align:center; text-transform:uppercase; outline:none; }
 .room-input input:focus { border-color:var(--accent); }
 .room-input input::placeholder { color:var(--dim); font-size:13px; letter-spacing:1px; font-weight:400; }
 
-.or-divider {
-  text-align:center; font-family:'JetBrains Mono',monospace;
-  font-size:10px; color:var(--dim); margin:14px 0; letter-spacing:3px;
-}
-
-.method-toggle {
-  text-align:center; margin-top:10px;
-}
-.method-toggle a {
-  font-family:'JetBrains Mono',monospace; font-size:10px;
-  color:var(--dim); cursor:pointer; letter-spacing:1px;
-  text-decoration:underline;
-}
+.method-toggle { text-align:center; margin-top:10px; }
+.method-toggle a { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim); cursor:pointer; letter-spacing:1px; text-decoration:underline; }
 .method-toggle a:hover { color:var(--accent); }
 </style>
 </head>
@@ -198,8 +113,7 @@ body { display:flex; flex-direction:column; }
 <div class="messages" id="messages"></div>
 
 <div class="input-area">
-  <input type="text" id="msgInput" placeholder="Type a message..." disabled
-         onkeydown="if(event.key==='Enter')sendMsg()">
+  <input type="text" id="msgInput" placeholder="Type a message..." disabled onkeydown="if(event.key==='Enter')sendMsg()">
   <button id="sendBtn" onclick="sendMsg()" disabled>Send</button>
 </div>
 
@@ -208,11 +122,11 @@ body { display:flex; flex-direction:column; }
   <h1>PSI CHAT</h1>
   <div class="tagline">Point to point. No server. No account. No bill. No trace.</div>
 
-  <!-- Step 0: Room code (default) -->
+  <!-- Room code -->
   <div class="step active" id="step0">
     <h2>CONNECT WITH ROOM CODE</h2>
     <p>Both people enter the same code. Connection happens automatically.</p>
-    <p style="font-size:11px;color:var(--dim);">The relay only sees the handshake, never the chat. Once connected, it's pure peer-to-peer.</p>
+    <p style="font-size:11px;color:var(--dim);">The relay only brokers the handshake. Once connected, chat is pure peer-to-peer. The relay is deleted.</p>
     <div class="room-input">
       <input type="text" id="roomCode" placeholder="Enter room code" maxlength="20"
              onkeydown="if(event.key==='Enter')joinRoom()">
@@ -222,7 +136,7 @@ body { display:flex; flex-direction:column; }
     </div>
     <div class="conn-status" id="roomStatus"></div>
     <div class="method-toggle">
-      <a onclick="showStep('stepManual')">Manual token exchange (advanced)</a>
+      <a onclick="showStep('stepManual')">Manual token exchange (zero relay)</a>
     </div>
   </div>
 
@@ -273,16 +187,22 @@ body { display:flex; flex-direction:column; }
   </div>
 </div>
 
-<!-- PeerJS for room-code signaling only -->
-<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<!-- Firebase for signaling only -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
 // ══════════════════════════════════════════════════════════════
-// PSI CHAT v1.2 — Peer-to-peer geometric tunnel
-// Room code signaling via PeerJS (handshake only)
+// PSI CHAT v1.3 — Peer-to-peer geometric tunnel
+// Firebase signaling (handshake only, then deleted)
 // No server sees the chat. Ever.
 // Ghost in the Machine Labs
 // ══════════════════════════════════════════════════════════════
+
+firebase.initializeApp({
+  databaseURL: 'https://quantum-psi-key-exchange-default-rtdb.firebaseio.com'
+});
+const db = firebase.database();
 
 const DIM = 64;
 const BROADCAST_HZ = 2;
@@ -367,7 +287,7 @@ function geoDecode(payload){
   return new TextDecoder().decode(bytes);
 }
 
-// ── Data Channel Handler ──
+// ── WebRTC Setup ──
 function setupDc(){
   dc.onmessage=e=>{
     try{const m=JSON.parse(e.data);
@@ -378,18 +298,23 @@ function setupDc(){
   dc.onopen=()=>{
     console.log('[PSI] Data channel open');
     sysMsg('Data channel open — type to chat');
-    document.getElementById('overlay').classList.add('hidden');
-    startBroadcast();
-    document.getElementById('msgInput').disabled=false;
-    document.getElementById('sendBtn').disabled=false;
-    document.getElementById('msgInput').focus();
+    goLive();
   };
   dc.onerror=e=>console.error('[PSI] DC error:',e);
 }
 
-// ── Broadcast ──
+function goLive(){
+  document.getElementById('overlay').classList.add('hidden');
+  setStatus('connected');
+  startBroadcast();
+  document.getElementById('msgInput').disabled=false;
+  document.getElementById('sendBtn').disabled=false;
+  document.getElementById('msgInput').focus();
+}
+
 function startBroadcast(){
   document.getElementById('couplingBar').classList.add('active');
+  if(broadcastTimer) clearInterval(broadcastTimer);
   broadcastTimer=setInterval(()=>{
     genState();
     if(dc&&dc.readyState==='open') dc.send(JSON.stringify({type:'state',v:Array.from(localVec),g:localGen}));
@@ -443,132 +368,195 @@ function showStep(id){
   document.getElementById(id).classList.add('active');
 }
 
-// ═══════════════════════════════════════════════
-// ROOM CODE — Auto signaling via PeerJS
-// PeerJS relay sees ONLY the WebRTC handshake.
-// Chat data goes direct peer-to-peer.
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+// ROOM CODE — Firebase Realtime DB signaling
+// Firebase is ONLY a clipboard for WebRTC offer/answer.
+// Room is deleted after connection. Firebase never sees chat.
+// ═══════════════════════════════════════════════════════════
 
-let peer = null;
+let roomRef = null;
+let roomListeners = [];
 
-function joinRoom(){
+function cleanupRoom(){
+  roomListeners.forEach(fn=>fn());
+  roomListeners=[];
+  if(roomRef){
+    roomRef.remove().catch(()=>{});
+    roomRef=null;
+  }
+}
+
+function makePcForRoom(code){
+  pc = new RTCPeerConnection({
+    iceServers:[
+      {urls:'stun:stun.l.google.com:19302'},
+      {urls:'stun:stun1.l.google.com:19302'},
+      {urls:'stun:stun2.l.google.com:19302'}
+    ]
+  });
+
+  pc.oniceconnectionstatechange=()=>{
+    const s=pc.iceConnectionState;
+    console.log('[PSI] ICE:',s);
+    if(s==='connected'||s==='completed'){
+      sysMsg('Tunnel connected');
+      cleanupRoom();
+      goLive();
+    } else if(s==='disconnected'||s==='failed'){
+      if(lockStable){setStatus('locked');sysMsg('Network disconnected — PSI tunnel persists');}
+      else{setStatus('offline');sysMsg('Connection lost — '+s);}
+    }
+  };
+
+  // Trickle ICE candidates to Firebase
+  pc.onicecandidate = e => {
+    if(e.candidate && roomRef){
+      const role = isCreator ? 'hostCandidates' : 'guestCandidates';
+      roomRef.child(role).push(JSON.stringify(e.candidate));
+    }
+  };
+
+  return pc;
+}
+
+async function joinRoom(){
   const code = document.getElementById('roomCode').value.trim().toLowerCase().replace(/[^a-z0-9]/g,'');
   if(!code || code.length < 2){
     setRoomStatus('Enter a room code (2+ characters)','var(--hot)'); return;
   }
 
-  const hostId = 'psi-' + code + '-host';
-  let attempt = 0;
-
   setRoomStatus('Connecting...','var(--warn)');
 
-  function tryAsHost(){
-  if(peer){ peer.destroy(); peer = null; }
-  peer = new Peer(hostId, { debug: 0 });
+  roomRef = db.ref('rooms/' + code);
 
-  // Register connection listener IMMEDIATELY, not inside open
-  peer.on('connection', conn => {
-    dc = conn;
-    setupPeerDc();
-  });
+  try {
+    const snap = await roomRef.once('value');
 
-  peer.on('open', id => {
-    isCreator = true;
-    setRoomStatus('Waiting for other person... (room: '+code+')','var(--accent)');
-  });
+    if(!snap.exists() || !snap.val().offer){
+      // ── WE ARE THE HOST ──
+      isCreator = true;
+      console.log('[PSI] Becoming host for room:', code);
 
-  peer.on('error', err => {
-    // ... same error handling
-  });
-}
+      pc = makePcForRoom(code);
+      dc = pc.createDataChannel('psi', {ordered:true});
+      setupDc();
 
-  function tryAsGuest(){
-    if(peer){ peer.destroy(); peer = null; }
-    const guestId = 'psi-' + code + '-' + Math.random().toString(36).substr(2,6);
-    peer = new Peer(guestId, { debug: 0 });
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
 
-    peer.on('open', id => {
+      // Wait for ICE gathering
+      await new Promise(r=>{
+        if(pc.iceGatheringState==='complete') return r();
+        const orig = pc.onicecandidate;
+        pc.onicecandidate = e => {
+          if(orig) orig(e);
+          if(!e.candidate) r();
+        };
+        setTimeout(r, 5000);
+      });
+
+      // Write offer to Firebase
+      await roomRef.set({
+        offer: JSON.stringify(pc.localDescription),
+        created: Date.now()
+      });
+
+      setRoomStatus('Waiting for other person... (room: '+code+')','var(--accent)');
+
+      // Listen for answer
+      const answerRef = roomRef.child('answer');
+      const onAnswer = answerRef.on('value', async snap => {
+        if(!snap.val()) return;
+        console.log('[PSI] Got answer from Firebase');
+        setRoomStatus('Answer received, connecting...','var(--accent)');
+
+        try {
+          await pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(snap.val())));
+
+          // Process any guest ICE candidates
+          const candSnap = await roomRef.child('guestCandidates').once('value');
+          if(candSnap.exists()){
+            Object.values(candSnap.val()).forEach(c=>{
+              pc.addIceCandidate(new RTCIceCandidate(JSON.parse(c))).catch(()=>{});
+            });
+          }
+        } catch(err){
+          console.error('[PSI] Error setting answer:', err);
+          setRoomStatus('Error: '+err.message,'var(--hot)');
+        }
+      });
+      roomListeners.push(()=>answerRef.off('value', onAnswer));
+
+      // Listen for guest ICE candidates (trickle)
+      const gcRef = roomRef.child('guestCandidates');
+      const onGuestCand = gcRef.on('child_added', snap => {
+        if(pc && pc.remoteDescription){
+          pc.addIceCandidate(new RTCIceCandidate(JSON.parse(snap.val()))).catch(()=>{});
+        }
+      });
+      roomListeners.push(()=>gcRef.off('child_added', onGuestCand));
+
+    } else {
+      // ── WE ARE THE GUEST ──
       isCreator = false;
+      console.log('[PSI] Joining room:', code);
       setRoomStatus('Found room, connecting...','var(--accent)');
-      dc = peer.connect(hostId, { reliable: true });
-      setupPeerDc();
-    });
 
-    peer.on('error', err => {
-      if(err.type === 'peer-unavailable' && attempt++ < 3){
-        setRoomStatus('Host gone. Becoming host...','var(--warn)');
-        setTimeout(tryAsHost, 1000);
-      } else if(attempt++ < 3){
-        setRoomStatus('Retrying...','var(--warn)');
-        setTimeout(tryAsHost, 1500);
-      } else {
-        setRoomStatus('Error: '+err.type+'. Try a different code.','var(--hot)');
+      pc = makePcForRoom(code);
+      pc.ondatachannel = e => { dc = e.channel; setupDc(); };
+
+      // Set remote offer
+      const offer = JSON.parse(snap.val().offer);
+      await pc.setRemoteDescription(new RTCSessionDescription(offer));
+
+      // Process any host ICE candidates
+      const candSnap = await roomRef.child('hostCandidates').once('value');
+      if(candSnap.exists()){
+        Object.values(candSnap.val()).forEach(c=>{
+          pc.addIceCandidate(new RTCIceCandidate(JSON.parse(c))).catch(()=>{});
+        });
       }
-    });
+
+      // Create and send answer
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+
+      // Wait for ICE gathering
+      await new Promise(r=>{
+        if(pc.iceGatheringState==='complete') return r();
+        const orig = pc.onicecandidate;
+        pc.onicecandidate = e => {
+          if(orig) orig(e);
+          if(!e.candidate) r();
+        };
+        setTimeout(r, 5000);
+      });
+
+      // Write answer to Firebase
+      await roomRef.child('answer').set(JSON.stringify(pc.localDescription));
+
+      setRoomStatus('Answer sent, waiting for connection...','var(--accent)');
+
+      // Listen for host ICE candidates (trickle)
+      const hcRef = roomRef.child('hostCandidates');
+      const onHostCand = hcRef.on('child_added', snap => {
+        if(pc && pc.remoteDescription){
+          pc.addIceCandidate(new RTCIceCandidate(JSON.parse(snap.val()))).catch(()=>{});
+        }
+      });
+      roomListeners.push(()=>hcRef.off('child_added', onHostCand));
+    }
+
+    // Cleanup stale rooms after 5 min
+    setTimeout(()=>{
+      if(roomRef){ roomRef.remove().catch(()=>{}); roomRef=null; }
+    }, 300000);
+
+  } catch(err){
+    console.error('[PSI] Room error:', err);
+    setRoomStatus('Error: '+err.message,'var(--hot)');
   }
-
-  tryAsHost();
 }
-
-function setupPeerDc(){
-  dc.on('open', () => {
-    console.log('[PSI] PeerJS data channel open');
-    sysMsg('Connected via room code — tunnel active');
-    document.getElementById('overlay').classList.add('hidden');
-    setStatus('connected');
-    startBroadcast();
-    document.getElementById('msgInput').disabled=false;
-    document.getElementById('sendBtn').disabled=false;
-    document.getElementById('msgInput').focus();
-  });
-
-  dc.on('data', raw => {
-    try {
-      const msg = (typeof raw === 'string') ? JSON.parse(raw) : raw;
-      if(msg.type==='state') remoteVec = new Float64Array(msg.v);
-      else if(msg.type==='chat') addMsg(geoDecode(msg.payload),'them',msg.ts);
-    } catch(err){ console.error('[PSI]',err); }
-  });
-
-  dc.on('close', () => {
-    if(lockStable){ setStatus('locked'); sysMsg('Network disconnected — PSI tunnel persists'); }
-    else { setStatus('offline'); sysMsg('Connection lost'); }
-  });
-
-  dc.on('error', err => console.error('[PSI] DC error:', err));
-
-  // Override sendMsg for PeerJS data channel
-  window._peerDc = dc;
-}
-
-// Patch send for PeerJS
-const origSendMsg = sendMsg;
-window.sendMsg = function(){
-  const input=document.getElementById('msgInput'), text=input.value.trim();
-  if(!text)return;
-  const ts=Date.now(), payload=geoEncode(text);
-
-  if(window._peerDc && window._peerDc.open){
-    window._peerDc.send(JSON.stringify({type:'chat',payload,ts}));
-  } else if(dc && dc.readyState==='open'){
-    dc.send(JSON.stringify({type:'chat',payload,ts}));
-  }
-
-  addMsg(text,'you',ts); input.value=''; input.focus();
-};
-
-// Patch broadcast for PeerJS
-const origStartBroadcast = startBroadcast;
-window.startBroadcast = function(){
-  document.getElementById('couplingBar').classList.add('active');
-  broadcastTimer=setInterval(()=>{
-    genState();
-    const msg = JSON.stringify({type:'state',v:Array.from(localVec),g:localGen});
-    if(window._peerDc && window._peerDc.open) window._peerDc.send(msg);
-    else if(dc && dc.readyState==='open') dc.send(msg);
-    updateCouplingUI(couple());
-  },1000/BROADCAST_HZ);
-};
 
 function setRoomStatus(text,color){
   const el=document.getElementById('roomStatus');
@@ -576,7 +564,7 @@ function setRoomStatus(text,color){
 }
 
 // ═══════════════════════════════════════════════
-// MANUAL — WebRTC direct (unchanged)
+// MANUAL — WebRTC direct
 // ═══════════════════════════════════════════════
 
 function makePc(){
@@ -586,12 +574,7 @@ function makePc(){
   pc.oniceconnectionstatechange=()=>{
     const s=pc.iceConnectionState;
     if(s==='connected'||s==='completed'){
-      setStatus('connected'); sysMsg('Tunnel bootstrap connected');
-      document.getElementById('overlay').classList.add('hidden');
-      startBroadcast();
-      document.getElementById('msgInput').disabled=false;
-      document.getElementById('sendBtn').disabled=false;
-      document.getElementById('msgInput').focus();
+      setStatus('connected'); sysMsg('Tunnel bootstrap connected'); goLive();
     } else if(s==='disconnected'||s==='failed'){
       if(lockStable){setStatus('locked');sysMsg('Network disconnected — PSI tunnel persists');}
       else{setStatus('offline');sysMsg('Connection lost — '+s);}
@@ -634,7 +617,7 @@ async function creatorFinish(){
     btn.disabled=true;btn.textContent='Connecting...';
     statusEl.textContent='Connecting...';statusEl.style.color='var(--warn)';
     const answer=JSON.parse(atob(tok));
-    if(answer.type!=='answer')throw new Error('Wrong token type: '+answer.type+'. Use the RESPONSE token.');
+    if(answer.type!=='answer')throw new Error('Wrong token type: '+answer.type);
     await pc.setRemoteDescription(new RTCSessionDescription(answer));
     statusEl.textContent='Waiting...';statusEl.style.color='var(--accent)';
     const ok=await new Promise(r=>{
@@ -654,7 +637,7 @@ function copyToken(id){
   }).catch(()=>document.execCommand('copy'));
 }
 
-// Auto-focus room code input
+// Auto-focus
 document.getElementById('roomCode').focus();
 </script>
 </body>
