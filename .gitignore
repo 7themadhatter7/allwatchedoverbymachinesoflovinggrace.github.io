@@ -1,2 +1,8 @@
 vault/
 vault.json.backup
+__pycache__/
+*.pyc
+*.bak
+fused_service_v3.py.backup
+fused_service_v3.py.backup2
+*.pre_parallel.bak

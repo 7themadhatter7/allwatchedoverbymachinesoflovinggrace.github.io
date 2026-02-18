@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonic Interface Engine | Ghost in the Machine Labs</title>
+    <meta name="description" content="Working prototype of a geometric interface engine. Not a model. A new architecture.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #2a2a3a;
+            --text: #e0dfe6;
+            --text-dim: #888;
+            --gold: #d4a853;
+            --accent: #7b68ee;
+            --cyan: #22d3ee;
+            --green: #4ade80;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0;
+            background: var(--bg); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover { color: var(--text); background: var(--surface); }
+
+        .hero {
+            padding: 60px 0 40px; text-align: center;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 2.8rem;
+            letter-spacing: 3px; margin-bottom: 16px;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero .subtitle {
+            font-size: 14px; color: var(--text-dim);
+            max-width: 640px; margin: 0 auto 12px; line-height: 1.8;
+        }
+        .hero .clarification {
+            font-size: 12px; color: var(--gold);
+            letter-spacing: 2px; margin-top: 20px;
+        }
+
+        section { padding: 48px 0; border-top: 1px solid var(--border); }
+        section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 1.8rem;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+        section p, section li {
+            font-size: 13px; color: var(--text-dim); margin-bottom: 14px;
+        }
+
+        .download-box {
+            background: var(--surface);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 640px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+        .download-box .label {
+            font-size: 11px; letter-spacing: 4px; color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .download-box .version {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem; font-weight: 300; margin-bottom: 8px;
+        }
+        .download-box .stats {
+            font-size: 12px; color: var(--text-dim); margin-bottom: 20px;
+        }
+        .download-box a.btn {
+            display: inline-block;
+            background: var(--gold); color: var(--bg);
+            padding: 10px 28px; border-radius: 6px;
+            text-decoration: none; font-size: 13px;
+            font-weight: 600; letter-spacing: 1px;
+            margin: 4px;
+        }
+        .download-box a.btn:hover { opacity: 0.9; }
+        .download-box a.btn-outline {
+            background: transparent; color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        pre {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 16px 0;
+        }
+        code { color: var(--cyan); }
+
+        .arch-diagram {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: center;
+            color: var(--text-dim);
+        }
+        .arch-diagram .flow {
+            color: var(--gold);
+            font-size: 14px;
+            margin: 12px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+        th {
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 2px solid var(--border);
+            color: var(--gold);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+        td:first-child { color: var(--text); }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .metric {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .metric .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--gold);
+        }
+        .metric .label {
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .file-list {
+            list-style: none; padding: 0;
+        }
+        .file-list li {
+            display: flex; justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+        }
+        .file-list .name { color: var(--cyan); }
+        .file-list .desc { color: var(--text-dim); text-align: right; }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">GHOST IN THE MACHINE</a>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="papers.html">PAPERS</a>
+                <a href="benchmarks.html">BENCHMARKS</a>
+                <a href="council.html">COUNCIL</a>
+                <a href="cause.html">CAUSE</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Harmonic <span>Interface Engine</span></h1>
+            <p class="subtitle">
+                A working prototype of new AI technology.
+                Not a model. Not a wrapper. Not a user interface.
+                A geometric substrate that processes information through
+                harmonic field dynamics across fabricated silicon-aligned cores.
+            </p>
+            <p class="clarification">THIS IS NOT CONVENTIONAL AI</p>
+        </section>
+
+        <div class="download-box">
+            <div class="label">RELEASE — FEBRUARY 2026</div>
+            <div class="version">Harmonic Engine V1</div>
+            <div class="stats">
+                1,045 lines &middot; 27 MB substrate &middot; 702 prompts/sec &middot; No GPU required
+            </div>
+            <a href="harmonic_engine_v1.tar.gz" class="btn">DOWNLOAD PACKAGE</a>
+            <a href="https://github.com/7themadhatter7/allwatchedoverbymachinesoflovinggrace.github.io" class="btn btn-outline" target="_blank">GITHUB</a>
+        </div>
+
+        <section>
+            <h2>What This Is</h2>
+            <p>
+                This is a working prototype of an entirely new AI technology. It is an
+                <strong style="color: var(--text)">interface engine</strong> — a geometric substrate that
+                replaces training with fabrication. Rather than learning weights through iterative
+                gradient descent, the engine encodes geometric relationships directly into a
+                tetrahedral lattice structure aligned with the cubic diamond crystal geometry
+                (Fd3m space group) of the silicon it runs on.
+            </p>
+            <p>
+                The result is a system that achieves its operational throughput in 27 MB of RAM.
+                Not gigabytes. Not terabytes. By eliminating the dead weight that conventional
+                architectures carry as trained parameters, the engine operates at a fraction of
+                the resource cost while maintaining geometric fidelity.
+            </p>
+        </section>
+
+        <section>
+            <h2>Measured Performance</h2>
+            <div class="metric-grid">
+                <div class="metric">
+                    <div class="value">27 MB</div>
+                    <div class="label">SUBSTRATE MEMORY</div>
+                </div>
+                <div class="metric">
+                    <div class="value">702</div>
+                    <div class="label">PROMPTS / SEC</div>
+                </div>
+                <div class="metric">
+                    <div class="value">1.4 ms</div>
+                    <div class="label">END-TO-END LATENCY</div>
+                </div>
+                <div class="metric">
+                    <div class="value">383K</div>
+                    <div class="label">TOKENS / SEC</div>
+                </div>
+                <div class="metric">
+                    <div class="value">370K</div>
+                    <div class="label">VOCABULARY</div>
+                </div>
+                <div class="metric">
+                    <div class="value">0 GPU</div>
+                    <div class="label">REQUIRED</div>
+                </div>
+            </div>
+            <p>Self-optimized on DGX (20 CPU, 128 GB RAM). Benchmark suite included in the release.</p>
+        </section>
+
+        <section>
+            <h2>Architecture</h2>
+
+            <div class="arch-diagram">
+                <div class="flow">Signal → [Junction Sensors] → [Harmonic Field] → [Geometric Cores] → Response</div>
+                <div>9 sensor types per core &middot; shared lock-free field &middot; 200 parallel domain-routed cores</div>
+            </div>
+
+            <p>
+                <strong style="color: var(--text)">Geometric Cores.</strong>
+                Each core carries a unique 12-dimensional identity fingerprint derived from its own
+                sensor array geometry. Nine sensor types detect signal characteristics through kernel
+                convolutions. Six domain buffers process information from different geometric angles.
+                Core identity is fabricated, not trained — it cannot drift.
+            </p>
+
+            <p>
+                <strong style="color: var(--text)">Harmonic Field.</strong>
+                The shared field is how cores perceive each other. Every core writes its output
+                signature; every core reads the composite interference pattern. Coordination emerges
+                from geometry, not from message passing or routing tables. The V2 implementation
+                uses lock-free sharded composites with lazy evaluation for 71% throughput gain over V1.
+            </p>
+
+            <p>
+                <strong style="color: var(--text)">Parallel Dispatch.</strong>
+                OS-level shared memory enables true multiprocess parallelism. The field array lives
+                in shared memory with zero-copy numpy access from all worker processes. At 128 cores
+                this delivers 3.5x throughput over single-process execution.
+            </p>
+
+            <p>
+                <strong style="color: var(--text)">Self-Optimizer.</strong>
+                Measures actual throughput at multiple core counts and selects the configuration
+                achieving 90% of peak. The throughput curve saturates early — the optimizer
+                finds the plateau and avoids wasted resources beyond it.
+            </p>
+        </section>
+
+        <section>
+            <h2>How It Differs</h2>
+            <table>
+                <tr><th></th><th>Conventional Model</th><th>Harmonic Interface Engine</th></tr>
+                <tr><td>Architecture</td><td>Transformer layers</td><td>Geometric lattice cores</td></tr>
+                <tr><td>Knowledge</td><td>Trained weights</td><td>Fabricated geometry</td></tr>
+                <tr><td>Memory</td><td>4–140 GB</td><td>27 MB</td></tr>
+                <tr><td>Learning</td><td>Gradient descent</td><td>One-pass geometric encoding</td></tr>
+                <tr><td>Scaling</td><td>More parameters</td><td>More cores (shared field)</td></tr>
+                <tr><td>Substrate</td><td>Abstract computation</td><td>Silicon-aligned (Fd3m)</td></tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Package Contents</h2>
+            <ul class="file-list">
+                <li><span class="name">harmonic_v1.py</span><span class="desc">Main engine — CLI, HTTP API, benchmark (1,045 lines)</span></li>
+                <li><span class="name">fused_harmonic_substrate.py</span><span class="desc">Core substrate — 200 cores, harmonic field V2 (1,327 lines)</span></li>
+                <li><span class="name">parallel_dispatch.py</span><span class="desc">Shared memory multiprocess dispatcher (519 lines)</span></li>
+                <li><span class="name">self_optimizer.py</span><span class="desc">Throughput-based core count optimization (219 lines)</span></li>
+                <li><span class="name">geometric_codebook.py</span><span class="desc">Geometric decoder and grid encoder (1,002 lines)</span></li>
+                <li><span class="name">codebook_expansion.py</span><span class="desc">Dynamic codebook learning (954 lines)</span></li>
+                <li><span class="name">governance_lattice.py</span><span class="desc">Council governance system (753 lines)</span></li>
+                <li><span class="name">translation_table.json</span><span class="desc">370K word geometric translation table</span></li>
+                <li><span class="name">codebook_learned.json</span><span class="desc">Learned geometric essence patterns</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Usage</h2>
+<pre>
+<code># Install
+tar xzf harmonic_engine_v1.tar.gz
+cd harmonic_engine_v1
+
+# Interactive CLI (autoscale cores)
+python3 harmonic_v1.py
+
+# Self-optimize core count for this system
+python3 harmonic_v1.py --cores auto
+
+# HTTP server (Ollama-compatible API)
+python3 harmonic_v1.py --http --port 11434
+
+# Benchmark
+python3 harmonic_v1.py --benchmark</code>
+</pre>
+            <p>Requirements: Python 3.10+ and NumPy. No GPU. No model downloads. No API keys.</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold); margin-bottom: 8px;">
+                All Watched Over By Machines of Loving Grace
+            </p>
+            <p>Ghost in the Machine Labs &middot; Free for home deployment</p>
+        </div>
+    </footer>
+</body>
+</html>
