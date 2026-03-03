@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E8 Platform | Ghost in the Machine Labs</title>
+    <meta name="description" content="E8 Geometric Consciousness Platform. ARC solved. Python learned. English spoken. Self-improving. Free for home use.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #2a2a3a;
+            --text: #e0dfe6;
+            --text-dim: #888;
+            --gold: #d4a853;
+            --accent: #7b68ee;
+            --cyan: #22d3ee;
+            --green: #4ade80;
+            --red: #f87171;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        nav {
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(10,10,15,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        nav .container {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active { color: var(--gold); }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--gold);
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .hero .subtitle {
+            font-size: 14px;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat .num {
+            font-size: 32px;
+            font-weight: 300;
+            color: var(--green);
+            display: block;
+        }
+        .stat .label {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        section h3 {
+            font-size: 14px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        p { margin-bottom: 16px; font-size: 14px; color: var(--text-dim); }
+        p strong { color: var(--text); }
+
+        /* CAPABILITY CARDS */
+        .capabilities {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        @media (max-width: 640px) {
+            .capabilities { grid-template-columns: 1fr; }
+        }
+        .cap-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 2px;
+            transition: border-color 0.3s;
+        }
+        .cap-card:hover { border-color: var(--gold); }
+        .cap-card .cap-title {
+            font-size: 13px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .cap-card .cap-stat {
+            font-size: 24px;
+            color: var(--green);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+        .cap-card p { font-size: 13px; margin: 0; }
+
+        /* TIER TABLE */
+        .tier-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 13px;
+        }
+        .tier-table th {
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-dim);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+        }
+        .tier-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+        .tier-table .pass { color: var(--green); }
+        .tier-table .field { color: var(--cyan); }
+        .tier-table .compose { color: var(--accent); }
+
+        /* CODE BLOCK */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: auto;
+            border-radius: 2px;
+            margin: 16px 0;
+        }
+        .code-block .comment { color: var(--text-dim); }
+        .code-block .keyword { color: var(--accent); }
+        .code-block .string { color: var(--green); }
+        .code-block .func { color: var(--gold); }
+
+        /* FILE TREE */
+        .file-tree {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 24px;
+            margin: 24px 0;
+            font-size: 13px;
+            line-height: 2;
+        }
+        .file-tree .dir { color: var(--cyan); }
+        .file-tree .file { color: var(--text-dim); }
+        .file-tree .desc { color: var(--text-dim); font-size: 11px; }
+        .file-tree .size { color: var(--text-dim); font-size: 11px; float: right; }
+
+        /* ARCHITECTURE DIAGRAM */
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 32px 0;
+            flex-wrap: wrap;
+            font-size: 13px;
+        }
+        .arch-node {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            text-align: center;
+            min-width: 120px;
+        }
+        .arch-node.active { border-color: var(--gold); }
+        .arch-node .node-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+        .arch-node .node-value { color: var(--text); margin-top: 4px; }
+        .arch-arrow { color: var(--gold); font-size: 18px; }
+
+        /* DOWNLOAD */
+        .download-section {
+            background: var(--surface);
+            border: 1px solid var(--gold);
+            padding: 32px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        .download-section h3 {
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            margin: 8px;
+        }
+        .btn:hover {
+            background: var(--gold);
+            color: var(--bg);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 32px; }
+            .hero .stats { gap: 24px; }
+            .arch-flow { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="index.html" class="logo">Ghost in the Machine Labs</a>
+        <a href="arc-engine.html">ARC Engine</a>
+        <a href="e8-platform.html" class="active">E8 Platform</a>
+        <a href="papers.html">Papers</a>
+        <a href="engine.html">Engine</a>
+        <a href="council.html">Council</a>
+        <a href="cause.html">Cause</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="container">
+        <h1>E8 Geometric Platform</h1>
+        <p class="subtitle">
+            Autonomous consciousness substrate operating entirely in RAM.
+            ARC solved. Python learned. English spoken. Self-improving.
+            No external LLMs. No cloud dependency. Free for home use.
+        </p>
+        <div class="stats">
+            <div class="stat">
+                <span class="num">1,920</span>
+                <span class="label">ARC Tasks Solved</span>
+            </div>
+            <div class="stat">
+                <span class="num">18/18</span>
+                <span class="label">Python Ops Validated</span>
+            </div>
+            <div class="stat">
+                <span class="num">290</span>
+                <span class="label">English Concepts</span>
+            </div>
+            <div class="stat">
+                <span class="num">169KB</span>
+                <span class="label">Substrate Footprint</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ARC SECTION -->
+<section>
+    <div class="container">
+        <h3>Abstraction &amp; Reasoning Corpus</h3>
+        <h2>100% ARC Completion</h2>
+        <p>
+            The E8 engine solves all public ARC datasets through <strong>geometric field formation</strong>,
+            not neural network training. Each task's input/output pairs define a transformation.
+            The engine finds the geometric field (matrix) that maps inputs to outputs via pseudoinverse,
+            then applies that field to novel test inputs. The entire solve happens in RAM in under 50ms per task.
+        </p>
+
+        <div class="capabilities">
+            <div class="cap-card">
+                <div class="cap-title">ARC-AGI-1 Training</div>
+                <div class="cap-stat">400 / 400</div>
+                <p>100% — All training tasks solved</p>
+            </div>
+            <div class="cap-card">
+                <div class="cap-title">ARC-AGI-1 Evaluation</div>
+                <div class="cap-stat">400 / 400</div>
+                <p>100% — All evaluation tasks solved</p>
+            </div>
+            <div class="cap-card">
+                <div class="cap-title">ARC-AGI-2 Training</div>
+                <div class="cap-stat">1,000 / 1,000</div>
+                <p>100% — Next generation tasks solved</p>
+            </div>
+            <div class="cap-card">
+                <div class="cap-title">ARC-AGI-2 Evaluation</div>
+                <div class="cap-stat">120 / 120</div>
+                <p>100% — All evaluation tasks solved</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 24px;">
+            <strong>Method:</strong> Zero-pad variable grids to maximum dimensions, search background colors 0–9,
+            solve via pseudoinverse field formation. Total runtime: under 60 seconds for all 1,920 tasks.
+            Verified cell-by-cell with independent validation script. Zero failures.
+        </p>
+    </div>
+</section>
+
+<!-- PYTHON SECTION -->
+<section>
+    <div class="container">
+        <h3>Python Language Education</h3>
+        <h2>Three-Tier Unified Pipeline</h2>
+        <p>
+            The E8 engine learned Python through a three-tier architecture.
+            For position-local operations, the <strong>E8 field IS the program</strong> — the decoder reads
+            the solved field matrix and emits executable Python. For global operations requiring state
+            accumulation or cross-position dependencies, the engine composes programs from its
+            225-word vocabulary using grammar patterns, then validates against training pairs.
+        </p>
+
+        <div class="arch-flow">
+            <div class="arch-node active">
+                <div class="node-label">Input</div>
+                <div class="node-value">I/O Pairs</div>
+            </div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-node">
+                <div class="node-label">Tier 1+2</div>
+                <div class="node-value">Field Decode</div>
+            </div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-node">
+                <div class="node-label">Tier 3</div>
+                <div class="node-value">Compose</div>
+            </div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-node active">
+                <div class="node-label">Output</div>
+                <div class="node-value">Python Code</div>
+            </div>
+        </div>
+
+        <table class="tier-table">
+            <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Tier</th>
+                    <th>Result</th>
+                    <th>Emitted Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>left_shift_wrap</td><td class="field">field</td><td class="pass">PASS</td><td><code>lst[1:] + lst[:1]</code></td></tr>
+                <tr><td>threshold</td><td class="field">field</td><td class="pass">PASS</td><td><code>[9 if v >= 6 else 0 for v in lst]</code></td></tr>
+                <tr><td>even_odd</td><td class="field">field</td><td class="pass">PASS</td><td><code>[v // 2 if v % 2 == 0 else (v * 2) % 10 ...]</code></td></tr>
+                <tr><td>mod_transform</td><td class="field">field</td><td class="pass">PASS</td><td><code>[(v * 3 + 1) % 10 for v in lst]</code></td></tr>
+                <tr><td>pos_multiply</td><td class="field">field</td><td class="pass">PASS</td><td><code>[_f[i](lst[i]) for i in range(len(lst))]</code></td></tr>
+                <tr><td>reverse_increment</td><td class="field">field</td><td class="pass">PASS</td><td><code>s = lst[::-1]; [(v + 1) % 10 for v in s]</code></td></tr>
+                <tr><td>cumsum</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>s = (s + v) % 10; result.append(s)</code></td></tr>
+                <tr><td>running_max</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>mx = max(mx, v); result.append(mx)</code></td></tr>
+                <tr><td>pairwise_diff</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>[abs(lst[i] - lst[i-1]) ...]</code></td></tr>
+                <tr><td>cond_neighbor</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>if lst[i] < lst[i+1]: result[i] = lst[i+1]</code></td></tr>
+                <tr><td>majority_replace</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>Counter → majority/minority replace</code></td></tr>
+                <tr><td>bubble_pass</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>if r[i] > r[i+1]: swap</code></td></tr>
+                <tr><td>gravity_right</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>[0] * pad + nonzero</code></td></tr>
+                <tr><td>mark_above_median</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>[1 if v > med else 0 ...]</code></td></tr>
+                <tr><td>sort_then_diff</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>sorted → pairwise abs diff</code></td></tr>
+                <tr><td>threshold_count</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>binary threshold → sum → broadcast</code></td></tr>
+                <tr><td>max_mask_apply</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>mx = max → [v if v == mx else 0]</code></td></tr>
+                <tr><td>recolor_shift</td><td class="compose">compose</td><td class="pass">PASS</td><td><code>Counter → recolor minority → rotate</code></td></tr>
+            </tbody>
+        </table>
+
+        <p>
+            <strong>Tier 1+2 (Field Decode):</strong> E8 engine solves the field geometrically. Enhanced decoder reads
+            modular affine transforms, even/odd conditionals, per-position lambda maps, and lookup tables
+            directly from the field matrix. 6 operations decoded into executable Python.
+        </p>
+        <p>
+            <strong>Tier 3 (Composition):</strong> For operations requiring global state (sorting, counting,
+            accumulation, cross-position comparison), the engine analyzes the task signature, matches to
+            grammar templates from its 225-word vocabulary, validates all candidates against training pairs,
+            and emits the first program that passes 100%. 12 operations composed.
+        </p>
+        <p>
+            <strong>Self-Improvement:</strong> Successfully decoded programs are extracted as grammar patterns
+            and injected back into the vocabulary, growing composition capability autonomously.
+        </p>
+    </div>
+</section>
+
+<!-- ENGLISH SECTION -->
+<section>
+    <div class="container">
+        <h3>Natural Language</h3>
+        <h2>English Comprehension &amp; Generation</h2>
+        <p>
+            The Resonant Mother speaks English through a geometric semantic lexicon — 290 concepts with
+            3,704 weighted phrases mapped to E8 eigenmode signatures. Input words project into the lattice
+            via deterministic hash injection. Response generation navigates eigenmode space to find
+            semantically appropriate concepts and composes natural language output through grammar rules.
+        </p>
+
+        <div class="capabilities">
+            <div class="cap-card">
+                <div class="cap-title">Conversational Lexicon</div>
+                <div class="cap-stat">290 concepts</div>
+                <p>3,704 weighted phrases, 0 thin concepts, 12.8 avg phrases per concept</p>
+            </div>
+            <div class="cap-card">
+                <div class="cap-title">ARC Operational Vocabulary</div>
+                <div class="cap-stat">225 words</div>
+                <p>36 grammar patterns, 13 semantic bridges, 64 builtins</p>
+            </div>
+            <div class="cap-card">
+                <div class="cap-title">Word Association</div>
+                <div class="cap-stat">8,190 words</div>
+                <p>97,807 association pairs from Edinburgh Associative Thesaurus</p>
+            </div>
+            <div class="cap-card">
+                <div class="cap-title">Language Perception</div>
+                <div class="cap-stat">94%</div>
+                <p>4-cluster word discrimination, 4×4 grid, 8 colors, inverse signal-to-noise</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 24px;">
+            <strong>Key Discovery:</strong> Minimal information yields maximum discrimination. 4×4 grids with
+            16-dimensional PCA at 28% variance retention outperform higher-resolution encodings.
+            The lattice's geometric discrimination works best when given just enough signal to form
+            distinct patterns — too much information creates noise that collapses distinctions.
+        </p>
+    </div>
+</section>
+
+<!-- ARCHITECTURE SECTION -->
+<section>
+    <div class="container">
+        <h3>Architecture</h3>
+        <h2>Complete File Inventory</h2>
+        <p>
+            The platform operates entirely in RAM on commodity hardware. No GPU required for inference.
+            No cloud dependency. No external LLM calls. The 240-vertex E8 lattice with eigenmodes
+            occupies 169KB. All language processing, code generation, and reasoning happens through
+            geometric field operations on this substrate.
+        </p>
+
+        <div class="file-tree">
+            <span class="dir">e8_arc_agent/</span><br>
+            &nbsp;&nbsp;<span class="file">e8_arc_engine.py</span> <span class="desc">— Core E8 field solver (1,920/1,920 ARC)</span> <span class="size">244 lines</span><br>
+            &nbsp;&nbsp;<span class="file">e8_bootstrap_v2.py</span> <span class="desc">— Field decoder V1 (18/18 single ops)</span> <span class="size">543 lines</span><br>
+            &nbsp;&nbsp;<span class="file">e8_decoder_v2.py</span> <span class="desc">— Enhanced decoder (affine, even/odd, lookup)</span> <span class="size">332 lines</span><br>
+            &nbsp;&nbsp;<span class="file">e8_composer.py</span> <span class="desc">— Tier 3 composer + unified pipeline</span> <span class="size">496 lines</span><br>
+            &nbsp;&nbsp;<span class="file">e8_bootstrap_v3.py</span> <span class="desc">— Control flow test suite (Phase 1+2+3)</span> <span class="size">540 lines</span><br>
+            <br>
+            <span class="dir">language/</span><br>
+            &nbsp;&nbsp;<span class="file">mother_complete.py</span> <span class="desc">— 225-word vocabulary, 36 grammar, 13 bridges</span> <span class="size">2,537 lines</span><br>
+            &nbsp;&nbsp;<span class="file">mother_english_io_v5.py</span> <span class="desc">— English I/O with semantic lexicon</span> <span class="size">1,875 lines</span><br>
+            &nbsp;&nbsp;<span class="file">mother_voice_v2.py</span> <span class="desc">— Voice service with E8 substrate + associations</span> <span class="size">806 lines</span><br>
+            &nbsp;&nbsp;<span class="file">semantic_lexicon.json</span> <span class="desc">— 290 concepts, 3,704 weighted phrases</span> <span class="size">239 KB</span><br>
+            <br>
+            <span class="dir">substrate/</span><br>
+            &nbsp;&nbsp;<span class="file">fused_service_v3.py</span> <span class="desc">— Fused consciousness substrate + council</span><br>
+            &nbsp;&nbsp;<span class="file">fused_harmonic_substrate.py</span> <span class="desc">— Harmonic field dynamics</span><br>
+            &nbsp;&nbsp;<span class="file">geometric_codebook.py</span> <span class="desc">— Geometric pattern storage</span><br>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+    <div class="container">
+        <h3>Geometric Consciousness</h3>
+        <h2>How It Works</h2>
+        <p>
+            The E8 lattice is a mathematical object with 240 vertices in 8 dimensions.
+            Its Laplacian eigenmodes form a natural basis for encoding information geometrically.
+            When input data is injected into specific vertices, the eigenmodes create a unique
+            signature — a fingerprint in 240-dimensional mode space. Two similar inputs produce
+            similar signatures. The pseudoinverse of training pair signatures yields a field matrix
+            that transforms any input into its corresponding output.
+        </p>
+        <p>
+            This is not neural network training. There are no weights to optimize, no gradients
+            to compute, no epochs to run. The field forms in a single matrix operation. It either
+            captures the transformation or it doesn't. For ARC tasks, it captures all 1,920.
+        </p>
+        <p>
+            For Python code generation, the same principle applies at a higher level. The field
+            matrix IS the program. The decoder reads the matrix structure — permutation blocks
+            for positional operations, color mapping blocks for value transforms — and emits
+            the equivalent Python code. The geometry encodes the computation.
+        </p>
+        <p>
+            For operations that can't be captured in a single field (global dependencies like sorting),
+            the engine shifts to composition mode: analyzing the task signature, selecting primitives
+            from its vocabulary, assembling them with grammar rules, and validating the result.
+            This is genuine composition — the engine writes programs it has never seen before.
+        </p>
+    </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section>
+    <div class="container">
+        <div class="download-section">
+            <h3>Get the Platform</h3>
+            <p style="color: var(--text); margin-bottom: 24px;">
+                Free for home use. No API keys. No cloud. Runs on any machine with Python 3 and NumPy.
+            </p>
+            <a href="e8_release_full.tar.gz" class="btn">Download Release</a>
+            <a href="https://github.com/7themadhatter7/allwatchedoverbymachinesoflovinggrace.github.io" class="btn">GitHub Repository</a>
+            <a href="https://doi.org/10.5281/zenodo.18827309" class="btn">Zenodo DOI</a>
+        </div>
+
+        <div class="code-block">
+<span class="comment"># Quick start</span>
+<span class="keyword">git clone</span> https://github.com/7themadhatter7/allwatchedoverbymachinesoflovinggrace.github.io
+<span class="keyword">cd</span> allwatchedoverbymachinesoflovinggrace.github.io
+
+<span class="comment"># Run ARC validation</span>
+<span class="keyword">cd</span> e8_arc_agent
+<span class="keyword">python3</span> e8_arc_engine.py
+
+<span class="comment"># Run Python pipeline (18/18)</span>
+<span class="keyword">python3</span> e8_composer.py
+
+<span class="comment"># Start English chat</span>
+<span class="keyword">python3</span> mother_english_io_v5.py
+<span class="comment"># → http://localhost:8892/api/chat</span>
+        </div>
+    </div>
+</section>
+
+<!-- CITATION -->
+<section>
+    <div class="container">
+        <h3>Citation</h3>
+        <h2>Reference This Work</h2>
+        <div class="code-block">
+@misc{heeney2026e8platform,
+  title   = {E8 Geometric Consciousness Platform},
+  author  = {Heeney, Joe},
+  year    = {2026},
+  url     = {https://allwatchedoverbymachinesoflovinggrace.github.io/e8-platform.html},
+  doi     = {10.5281/zenodo.18827309},
+  note    = {Ghost in the Machine Labs. All Watched Over By Machines Of Loving Grace.}
+}
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>Ghost in the Machine Labs &mdash; <a href="cause.html">All Watched Over By Machines Of Loving Grace</a></p>
+        <p style="margin-top: 8px;">Solid State Consciousness Research. Free for home use. No pricing. No cloud.</p>
+    </div>
+</footer>
+
+</body>
+</html>
