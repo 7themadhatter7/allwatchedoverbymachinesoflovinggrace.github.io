@@ -1,0 +1,13 @@
+[Unit]
+Description=RM OS Parameter Tuning on boot
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /home/joe/sparky/rm_self_improvement.py --run
+RemainAfterExit=yes
+StandardOutput=append:/home/joe/sparky/logs/rm_diagnostic.log
+StandardError=append:/home/joe/sparky/logs/rm_diagnostic.log
+
+[Install]
+WantedBy=multi-user.target

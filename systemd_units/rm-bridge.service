@@ -1,0 +1,16 @@
+[Unit]
+Description=RM Bridge Server ngrok external access
+After=network.target
+
+[Service]
+Type=simple
+User=joe
+WorkingDirectory=/home/joe/sparky
+ExecStart=/usr/bin/python3 /home/joe/sparky/bridge_server.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/joe/sparky/logs/bridge.log
+StandardError=append:/home/joe/sparky/logs/bridge.log
+
+[Install]
+WantedBy=multi-user.target

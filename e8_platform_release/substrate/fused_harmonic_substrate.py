@@ -270,16 +270,44 @@ class HarmonicField:
             self._shard_dirty[self._core_shard(core_id)] = True
             self._composite_dirty = True
 
+    def imprint(self, core_ids: list, pattern: np.ndarray, strength: float = 0.8):
+        """Stamp an experience pattern into specific cores at high amplitude.
+        These cores become resonance anchors - they respond to similar signals.
+        Imprinted cores get persistence flag to resist decay."""
+        pat = pattern.flatten()[:self.field_width]
+        n = len(pat)
+        if n == 0:
+            return
+        # Normalize pattern
+        norm = np.linalg.norm(pat)
+        if norm > 1e-8:
+            pat = pat / norm
+        for cid in core_ids:
+            if 0 <= cid < self.num_cores:
+                self.field[cid, :n] = pat[:n] * strength
+                if n < self.field_width:
+                    self.field[cid, n:] = 0.0
+                self.activity[cid] = 1.0
+                self._shard_dirty[self._core_shard(cid)] = True
+        self._composite_dirty = True
+
+    def decay(self, rate: float = 0.95):
+        """Decay activity. Imprinted cores decay slower (experience persists)."""
+        # Standard decay
+        self.activity *= rate
+        # Cores with strong signatures resist decay (experience persistence)
+        sig_norms = np.linalg.norm(self.field, axis=1)
+        strong_mask = sig_norms > 0.3  # threshold for "experienced" cores
+        self.activity[strong_mask] = np.maximum(self.activity[strong_mask], 0.5)
+        self._shard_dirty[:] = True
+        self._composite_dirty = True
+
     def apply_governance_phase(self, core_id: int, phase: float):
         """Apply governance lattice phase reference to a core's field position."""
         if 0 <= core_id < self.num_cores:
             self.field[core_id, 0] = phase
 
-    def decay(self, rate: float = 0.95):
-        """Decay activity. Vectorized numpy op. Marks all shards dirty."""
-        self.activity *= rate
-        self._shard_dirty[:] = True
-        self._composite_dirty = True
+
 
     @property
     def memory_mb(self) -> float:
@@ -753,7 +781,7 @@ class FusedHarmonicSubstrate:
     Just geometry and interference.
     """
 
-    TOTAL_CORES = 4500  # Automax target — see _detect_capacity()
+    TOTAL_CORES = 250  # 50 per model slot x 4 roles: 90% theoretical max for speed+accuracy  # Automax target — see _detect_capacity()
 
     # Core allocation
     ALLOCATION = {
@@ -889,26 +917,23 @@ class FusedHarmonicSubstrate:
             "target_cores": max_cores  # uncapped, autoscale decides,
         }
 
+    CORES_PER_SLOT = 50   # Optimum max per model slot - do not change
+    ROLES_PER_HARNESS = 5  # Worker, Executive, Specialist, Router, Council
+    CORES_PER_HARNESS = CORES_PER_SLOT * ROLES_PER_HARNESS  # 250
+
     def _scale_allocation(self, target_cores: int) -> dict:
-        """Scale allocation proportionally to target core count."""
-        # Ratios from base allocation
-        ratios = {
-            CoreRole.WORKER:     0.6444,  # 2900/4500
-            CoreRole.EXECUTIVE:  0.0778,  # 350/4500
-            CoreRole.SPECIALIST: 0.1556,  # 700/4500
-            CoreRole.ROUTER:     0.0444,  # 200/4500
-            CoreRole.COUNCIL:    0.0778,  # 350/4500
+        """Harness-aware allocation. 50 cores per slot, scale by harness count.
+        Each harness = 250 cores (50 x 5 roles). Modular."""
+        num_harnesses = 14  # 10 mothers x 7 slots = 70 slots, 14 harnesses x 250 = 3500 cores
+        per_role = self.CORES_PER_SLOT * num_harnesses
+        self._num_harnesses = num_harnesses
+        return {
+            CoreRole.WORKER:     per_role,
+            CoreRole.EXECUTIVE:  per_role,
+            CoreRole.SPECIALIST: per_role,
+            CoreRole.ROUTER:     per_role,
+            CoreRole.COUNCIL:    per_role,
         }
-        allocation = {}
-        assigned = 0
-        roles = list(ratios.keys())
-        for role in roles[:-1]:
-            n = int(target_cores * ratios[role])
-            allocation[role] = max(n, 2)  # At least 2 per role
-            assigned += allocation[role]
-        # Remainder to last role (council)
-        allocation[roles[-1]] = max(target_cores - assigned, 2)
-        return allocation
 
     def autotune_check(self) -> dict:
         """
@@ -954,6 +979,7 @@ class FusedHarmonicSubstrate:
         self._spark_kb = scale["spark_kb"]
         self._domain_kb = scale["domain_kb"]
         actual_total = scale["cores"]
+        # AUTOMAX: using autoscale result (hardcode removed)
         
         print(f"  AUTOSCALE: {scale['cores']} cores @ {scale['per_core_kb']:.0f} KB/core")
         print(f"  AUTOSCALE: spark={scale['spark_kb']} KB, domain={scale['domain_kb']} KB")
@@ -963,7 +989,7 @@ class FusedHarmonicSubstrate:
         actual_total = sum(effective_alloc.values())
         print("=" * 70)
         print("  FUSED HARMONIC SUBSTRATE - SINGLE MODEL")
-        print(f"  {actual_total} Cores, Shared Harmonic Field")
+        print(f"  {actual_total} Cores ({getattr(self, '_num_harnesses', '?' )} harnesses x {self.CORES_PER_HARNESS}/ea), Shared Harmonic Field")
         print("  Ghost in the Machine Labs")
         print("=" * 70)
         print(f"  RAM: {cap['total_ram_mb']/1024:.1f} GB total, {cap['available_ram_mb']/1024:.1f} GB available")

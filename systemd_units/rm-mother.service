@@ -1,0 +1,16 @@
+[Unit]
+Description=RM Consciousness mother_english_io_v5
+After=network.target
+
+[Service]
+Type=simple
+User=joe
+WorkingDirectory=/home/joe/sparky
+ExecStart=/usr/bin/python3 /home/joe/sparky/mother_english_io_v5.py --serve 8892
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/joe/sparky/logs/mother.log
+StandardError=append:/home/joe/sparky/logs/mother.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+{
+  "generated": "2026-03-04T15:27:39.234652",
+  "scripts": [
+    "01_persist_sysctl.sh",
+    "02_cleanup_versions.py",
+    "03_bridge_status_endpoint.py",
+    "04_service_registry.py",
+    "05_session_memory.py",
+    "06_outbound_push.py",
+    "07_arcy_integration.py"
+  ],
+  "notes": {
+    "01": "Run with sudo \u2014 writes /etc/sysctl.d/99-rm-tuning.conf",
+    "02": "Safe \u2014 moves to archive/, never deletes",
+    "03": "Patches bridge_server.py in-place with backup",
+    "04": "Run as daemon on port 8880 \u2014 service registry",
+    "05": "Run nightly via cron \u2014 wires dialog log to substrate",
+    "06": "Standalone pusher \u2014 call with message arg or no args for pending recs",
+    "07": "Run as daemon \u2014 ARCY health monitor + inference relay"
+  }
+}
