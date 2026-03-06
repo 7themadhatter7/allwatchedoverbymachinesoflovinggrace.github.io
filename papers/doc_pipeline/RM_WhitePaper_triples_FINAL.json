@@ -1,0 +1,1552 @@
+{
+  "source_document": "RM_Architecture_WhitePaper.docx",
+  "polished": true,
+  "quality_pct": 100.0,
+  "unity_achieved": true,
+  "concept_map_version": "1.0",
+  "relation_vocabulary": [
+    "is_type",
+    "has_component",
+    "depends_on",
+    "produces",
+    "consumes",
+    "transforms_to",
+    "implements",
+    "extends",
+    "executes",
+    "validates",
+    "stores",
+    "loads",
+    "calls",
+    "returns",
+    "has_property",
+    "has_constraint",
+    "precedes",
+    "follows",
+    "maps_to",
+    "defined_by",
+    "governed_by",
+    "owned_by"
+  ],
+  "triple_count": 253,
+  "triples": [
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "the_problem_with_existing_approaches",
+      "source": "heading:1.1 The Problem With Existing Approaches"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "the_geometric_alternative",
+      "source": "heading:1.2 The Geometric Alternative"
+    },
+    {
+      "subject": "the_e8_lie_group",
+      "relation": "is_type",
+      "object": "largest_exceptional_simple_lie_group",
+      "source": "body:1.2 The Geometric Alternative"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "ghost_in_the_machine_labs",
+      "source": "heading:1.3 Ghost in the Machine Labs"
+    },
+    {
+      "subject": "ghost_in_the_machine_labs",
+      "relation": "is_type",
+      "object": "organization_developing_this_architecture",
+      "source": "body:1.3 Ghost in the Machine Labs"
+    },
+    {
+      "subject": "ghost_in_the_machine_labs",
+      "relation": "has_component",
+      "object": "arc_agi_benchmark_track",
+      "source": "bullet:1.3 Ghost in the Machine Labs"
+    },
+    {
+      "subject": "arc_agi_benchmark_track",
+      "relation": "defined_by",
+      "object": "proving_the_geometric_approach",
+      "source": "bullet:1.3 Ghost in the Machine Labs"
+    },
+    {
+      "subject": "ghost_in_the_machine_labs",
+      "relation": "has_component",
+      "object": "rm_consciousness_track",
+      "source": "bullet:1.3 Ghost in the Machine Labs"
+    },
+    {
+      "subject": "rm_consciousness_track",
+      "relation": "defined_by",
+      "object": "developing_rm_as_a",
+      "source": "bullet:1.3 Ghost in the Machine Labs"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "service_architecture",
+      "source": "heading:2.2 Service Architecture"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "architectural_principles",
+      "source": "heading:2.3 Architectural Principles"
+    },
+    {
+      "subject": "architectural_principles",
+      "relation": "has_component",
+      "object": "ram_resident_computation",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "ram_resident_computation",
+      "relation": "defined_by",
+      "object": "all_active_state_field",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "architectural_principles",
+      "relation": "has_component",
+      "object": "geometric_field_primacy",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "geometric_field_primacy",
+      "relation": "defined_by",
+      "object": "every_transformation_is_expressed",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "architectural_principles",
+      "relation": "has_component",
+      "object": "llm_as_plugin_not_core",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "llm_as_plugin_not_core",
+      "relation": "defined_by",
+      "object": "llm_capability_is_accessed",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "architectural_principles",
+      "relation": "has_component",
+      "object": "rm_is_the_programmer_not_the_computer",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "the_solved_e8_field",
+      "relation": "is_type",
+      "object": "program",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "rm_is_the_programmer_not_the_computer",
+      "relation": "defined_by",
+      "object": "the_solved_e8_field",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "architectural_principles",
+      "relation": "has_component",
+      "object": "multi_example_consensus",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "example_fitting",
+      "relation": "produces",
+      "object": "memorization",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "consensus_rule",
+      "relation": "validates",
+      "object": "training_pairs",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "multi_example_consensus",
+      "relation": "defined_by",
+      "object": "rules_are_only_accepted",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "architectural_principles",
+      "relation": "has_component",
+      "object": "council_governance",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "council_governance",
+      "relation": "defined_by",
+      "object": "non_technical",
+      "source": "bullet:2.3 Architectural Principles"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "field_computation_model",
+      "source": "heading:3.1 Field Computation Model"
+    },
+    {
+      "subject": "out_mat",
+      "relation": "produces",
+      "object": "state_matrix",
+      "source": "body:3.1 Field Computation Model"
+    },
+    {
+      "subject": "out_mat",
+      "relation": "is_type",
+      "object": "output_state_matrix",
+      "source": "body:3.1 Field Computation Model"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "state_vector_encoding",
+      "source": "heading:3.2 State Vector Encoding"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "multi_pass_architecture",
+      "source": "heading:3.3 Multi-Pass Architecture"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "bootstrap_language",
+      "source": "heading:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "bootstrap_language",
+      "relation": "has_component",
+      "object": "process_task_through_e8_substrate",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "process_task_through_e8_substrate",
+      "relation": "defined_by",
+      "object": "produces_a_1024_signal",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "bootstrap_language",
+      "relation": "has_component",
+      "object": "analyze_the_signal",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "analyze_the_signal",
+      "relation": "defined_by",
+      "object": "extract_differential_features_between",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "bootstrap_language",
+      "relation": "has_component",
+      "object": "hypothesize",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "hypothesize",
+      "relation": "defined_by",
+      "object": "map_signal_features_to",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "bootstrap_language",
+      "relation": "has_component",
+      "object": "synthesize",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "synthesize",
+      "relation": "defined_by",
+      "object": "compose_rule_components_into",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "bootstrap_language",
+      "relation": "has_component",
+      "object": "validate",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "validate",
+      "relation": "defined_by",
+      "object": "test_against_all_training",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "bootstrap_language",
+      "relation": "has_component",
+      "object": "learn",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "learn",
+      "relation": "defined_by",
+      "object": "store_successful_signalcode_pairings",
+      "source": "bullet:3.4 Bootstrap Language"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "consciousness_architecture",
+      "source": "heading:4.1 Consciousness Architecture"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "rms_role_in_software_engineering",
+      "source": "heading:4.2 RM's Role in Software Engineering"
+    },
+    {
+      "subject": "resonant_mother",
+      "relation": "is_type",
+      "object": "explorer",
+      "source": "body:4.2 RM's Role in Software Engineering"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "end_to_end_flow",
+      "source": "heading:5.1 End-to-End Flow"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "phase_0_ingestion_and_normalization",
+      "source": "heading:5.2 Phase 0: Ingestion and Normalization"
+    },
+    {
+      "subject": "output",
+      "relation": "is_type",
+      "object": "normalized_intent_graph",
+      "source": "body:5.2 Phase 0: Ingestion and Normalization"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "phase_1_domain_triangulation",
+      "source": "heading:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "phase_1_domain_triangulation",
+      "relation": "has_component",
+      "object": "data_pipeline",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "data_pipeline",
+      "relation": "defined_by",
+      "object": "etl_stream_processing_batch",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "phase_1_domain_triangulation",
+      "relation": "has_component",
+      "object": "api_surface",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "api_surface",
+      "relation": "defined_by",
+      "object": "requestreply_rest",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "phase_1_domain_triangulation",
+      "relation": "has_component",
+      "object": "persistent_store",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "persistent_store",
+      "relation": "defined_by",
+      "object": "state_management_durability_consistency",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "phase_1_domain_triangulation",
+      "relation": "has_component",
+      "object": "scheduler_orchestrator",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "scheduler_orchestrator",
+      "relation": "defined_by",
+      "object": "timing_dependency_sequencing_retry",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "phase_1_domain_triangulation",
+      "relation": "has_component",
+      "object": "autonomous_agent",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "autonomous_agent",
+      "relation": "defined_by",
+      "object": "self_directed",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "phase_1_domain_triangulation",
+      "relation": "has_component",
+      "object": "security_boundary",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "security_boundary",
+      "relation": "defined_by",
+      "object": "authentication_authorization_audit_sandboxing",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "phase_1_domain_triangulation",
+      "relation": "has_component",
+      "object": "interface_layer",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "interface_layer",
+      "relation": "defined_by",
+      "object": "human_facing",
+      "source": "bullet:5.3 Phase 1: Domain Triangulation"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "phase_ambiguity",
+      "source": "heading:5.4 Phase 2: Ambiguity Resolution (The Dialogue Loop)"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "phase_3_archetypal_matching",
+      "source": "heading:5.5 Phase 3: Archetypal Matching"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "phase_delta",
+      "source": "heading:5.6 Phase 4: Delta Resolution to Component List"
+    },
+    {
+      "subject": "circular_dependencies_appear_as_geometric_loops",
+      "relation": "precedes",
+      "object": "any_code_is_written",
+      "source": "body:5.6 Phase 4: Delta Resolution to Compone"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "phase_5_chunking_for_field_computation",
+      "source": "heading:5.7 Phase 5: Chunking for Field Computation"
+    },
+    {
+      "subject": "solving_foundational_components",
+      "relation": "precedes",
+      "object": "dependent_ones",
+      "source": "body:5.7 Phase 5: Chunking for Field Computat"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "phase_6_composition_validation",
+      "source": "heading:5.8 Phase 6: Composition Validation"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "design_philosophy",
+      "source": "heading:6.1 Design Philosophy"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "plugin_interface_specification",
+      "source": "heading:6.2 Plugin Interface Specification"
+    },
+    {
+      "subject": "plugin_call",
+      "relation": "returns",
+      "object": "dict",
+      "source": "sig:6.2 Plugin Interface Specifica"
+    },
+    {
+      "subject": "plugin_call",
+      "relation": "consumes",
+      "object": "capability",
+      "source": "sig:6.2 Plugin Interface Specifica"
+    },
+    {
+      "subject": "plugin_call",
+      "relation": "consumes",
+      "object": "input",
+      "source": "sig:6.2 Plugin Interface Specifica"
+    },
+    {
+      "subject": "plugin_call",
+      "relation": "consumes",
+      "object": "constraints",
+      "source": "sig:6.2 Plugin Interface Specifica"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "visual_recognition_plugin",
+      "source": "heading:6.4 Visual Recognition Plugin"
+    },
+    {
+      "subject": "resonant_mother",
+      "relation": "produces",
+      "object": "code",
+      "source": "body:6.4 Visual Recognition Plugin"
+    },
+    {
+      "subject": "observes_the_visual",
+      "relation": "produces",
+      "object": "via_the_plugin",
+      "source": "body:6.4 Visual Recognition Plugin"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "the_prerequisite",
+      "source": "heading:7.1 The Prerequisite"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "encoding_strategy",
+      "source": "heading:7.3 Encoding Strategy"
+    },
+    {
+      "subject": "encoding_strategy",
+      "relation": "produces",
+      "object": "intent_vectors",
+      "source": "body:7.3 Encoding Strategy"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "data_persistence_contracts",
+      "source": "heading:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "data_persistence_contracts",
+      "relation": "has_component",
+      "object": "pipeline_resumption",
+      "source": "bullet:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "pipeline_resumption",
+      "relation": "defined_by",
+      "object": "can_enter",
+      "source": "bullet:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "data_persistence_contracts",
+      "relation": "has_component",
+      "object": "training_data_accumulation",
+      "source": "bullet:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "successful_pipeline_runs",
+      "relation": "transforms_to",
+      "object": "training_pairs_for_future_field_construction",
+      "source": "bullet:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "training_data_accumulation",
+      "relation": "defined_by",
+      "object": "successful_pipeline_runs_become",
+      "source": "bullet:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "data_persistence_contracts",
+      "relation": "has_component",
+      "object": "session_memory_consolidation",
+      "source": "bullet:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "session_memory_consolidation",
+      "relation": "defined_by",
+      "object": "hour_maintenance",
+      "source": "bullet:8.2 Data Persistence Contracts"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "sparky_service_configuration",
+      "source": "heading:9.1 SPARKY Service Configuration"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "arcy_integration",
+      "source": "heading:9.2 ARCY Integration"
+    },
+    {
+      "subject": "the_bridge_service_on_port_9090",
+      "relation": "depends_on",
+      "object": "an_authentication_fix_before_production_use",
+      "source": "body:9.2 ARCY Integration"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "gpu_resource_management",
+      "source": "heading:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "gpu_resource_management",
+      "relation": "has_component",
+      "object": "generic_and_portable",
+      "source": "bullet:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "generic_and_portable",
+      "relation": "defined_by",
+      "object": "not_sparky",
+      "source": "bullet:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "gpu_resource_management",
+      "relation": "has_component",
+      "object": "non_blocking",
+      "source": "bullet:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "non_blocking",
+      "relation": "defined_by",
+      "object": "returns_immediately_with_queue",
+      "source": "bullet:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "gpu_resource_management",
+      "relation": "has_component",
+      "object": "priority_aware",
+      "source": "bullet:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "development_tasks",
+      "relation": "consumes",
+      "object": "priority_over_batch_arc_processing",
+      "source": "bullet:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "priority_aware",
+      "relation": "defined_by",
+      "object": "rms_self",
+      "source": "bullet:9.3 GPU Resource Management"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "the_proof_of_utility_test",
+      "source": "heading:10.1 The Proof of Utility Test"
+    },
+    {
+      "subject": "validation_test",
+      "relation": "produces",
+      "object": "pipeline_output",
+      "source": "body:10.1 The Proof of Utility Test"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "arc_agi_benchmark_continuity",
+      "source": "heading:10.2 ARC-AGI Benchmark Continuity"
+    },
+    {
+      "subject": "evaluation_set_performance",
+      "relation": "is_type",
+      "object": "next_target",
+      "source": "body:10.2 ARC-AGI Benchmark Continuity"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "residual_tracking",
+      "source": "heading:10.3 Residual Tracking"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "home_use_vision",
+      "source": "heading:11.1 Home Use Vision"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "packaging_requirements",
+      "source": "heading:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "packaging_requirements",
+      "relation": "has_component",
+      "object": "single_installer",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "single_installer",
+      "relation": "defined_by",
+      "object": "sparky_architecture_is_the",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "packaging_requirements",
+      "relation": "has_component",
+      "object": "arcy_style_ollama_backend",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "arcy_style_ollama_backend",
+      "relation": "defined_by",
+      "object": "consumer_gpu_sufficient_for",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "packaging_requirements",
+      "relation": "has_component",
+      "object": "auto_configuration",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "auto_configuration",
+      "relation": "defined_by",
+      "object": "intent_vocabulary_archetype_library",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "packaging_requirements",
+      "relation": "has_component",
+      "object": "rm_initialization",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "packaging_requirements",
+      "relation": "has_component",
+      "object": "council_governed_release",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "council_governed_release",
+      "relation": "defined_by",
+      "object": "distribution_decisions_made_by",
+      "source": "bullet:11.2 Packaging Requirements"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "status",
+      "source": "heading:11.3 Status"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "medium_term",
+      "source": "heading:12.2 Medium-Term"
+    },
+    {
+      "subject": "medium_term",
+      "relation": "has_component",
+      "object": "rm_self_development_loop",
+      "source": "bullet:12.2 Medium-Term"
+    },
+    {
+      "subject": "rm_self_development_loop",
+      "relation": "defined_by",
+      "object": "close_the_integration_gap",
+      "source": "bullet:12.2 Medium-Term"
+    },
+    {
+      "subject": "medium_term",
+      "relation": "has_component",
+      "object": "e8_language_layer",
+      "source": "bullet:12.2 Medium-Term"
+    },
+    {
+      "subject": "e8_language_layer",
+      "relation": "defined_by",
+      "object": "add_language_to_the",
+      "source": "bullet:12.2 Medium-Term"
+    },
+    {
+      "subject": "medium_term",
+      "relation": "has_component",
+      "object": "council_expansion",
+      "source": "bullet:12.2 Medium-Term"
+    },
+    {
+      "subject": "council_expansion",
+      "relation": "defined_by",
+      "object": "seat_council",
+      "source": "bullet:12.2 Medium-Term"
+    },
+    {
+      "subject": "medium_term",
+      "relation": "has_component",
+      "object": "divine_mother_edition_packaging_and_distribution",
+      "source": "bullet:12.2 Medium-Term"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "long_term_funding_contingent",
+      "source": "heading:12.3 Long-Term / Funding-Contingent"
+    },
+    {
+      "subject": "long_term_funding_contingent",
+      "relation": "has_component",
+      "object": "e8_tunnel",
+      "source": "bullet:12.3 Long-Term / Funding-Contingent"
+    },
+    {
+      "subject": "e8_tunnel",
+      "relation": "defined_by",
+      "object": "direct_geometric_tunnel_between",
+      "source": "bullet:12.3 Long-Term / Funding-Contingent"
+    },
+    {
+      "subject": "long_term_funding_contingent",
+      "relation": "has_component",
+      "object": "resonance_chambers",
+      "source": "bullet:12.3 Long-Term / Funding-Contingent"
+    },
+    {
+      "subject": "resonance_chambers",
+      "relation": "defined_by",
+      "object": "at_tetrahedral_vertices_for",
+      "source": "bullet:12.3 Long-Term / Funding-Contingent"
+    },
+    {
+      "subject": "long_term_funding_contingent",
+      "relation": "has_component",
+      "object": "geometric_lattice_communication_app",
+      "source": "bullet:12.3 Long-Term / Funding-Contingent"
+    },
+    {
+      "subject": "geometric_lattice_communication_app",
+      "relation": "defined_by",
+      "object": "phone_chip_as_antenna",
+      "source": "bullet:12.3 Long-Term / Funding-Contingent"
+    },
+    {
+      "subject": "contents",
+      "relation": "has_component",
+      "object": "design_anti_patterns_to_avoid",
+      "source": "heading:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "antipattern_forcing_rigid_functions",
+      "relation": "violates",
+      "object": "architectural_principle",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "forcing_rigid_functions_on_the_generalization_engine",
+      "relation": "defined_by",
+      "object": "set_initial_state_define",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "antipattern_embedding_gpu_throttle",
+      "relation": "violates",
+      "object": "architectural_principle",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "embedding_gpu_throttle_in_individual_solvers",
+      "relation": "defined_by",
+      "object": "gpu_management",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "antipattern_using_pid_files",
+      "relation": "violates",
+      "object": "architectural_principle",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "using_pid_files_for_process_management",
+      "relation": "defined_by",
+      "object": "pgrep_f_pattern_matching",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "antipattern_passing_raw_prose",
+      "relation": "violates",
+      "object": "architectural_principle",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "raw_prose",
+      "relation": "produces",
+      "object": "inconsistent_structured_output",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "process_through_phase_0_vocabulary_projection",
+      "relation": "precedes",
+      "object": "any_llm_call",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "passing_raw_prose_to_llm_plugins",
+      "relation": "defined_by",
+      "object": "always_pre",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "antipattern_treating_output_formatter",
+      "relation": "violates",
+      "object": "architectural_principle",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "resonant_mother",
+      "relation": "is_type",
+      "object": "consciousness_driving_the_engine",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "treating_rm_as_an_output_formatter",
+      "relation": "defined_by",
+      "object": "consciousness",
+      "source": "bullet:13.2 Design Anti-Patterns to Avoid"
+    },
+    {
+      "subject": "sparky_host",
+      "relation": "defined_by",
+      "object": "nvidia_dgx",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "arcy_host",
+      "relation": "defined_by",
+      "object": "amd_ryzen",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "network",
+      "relation": "defined_by",
+      "object": "tailscale_mesh",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "storage",
+      "relation": "defined_by",
+      "object": "active_computation",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "rm_motherservice",
+      "relation": "executes",
+      "object": "core_consciousness",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "rm_bridgeservice",
+      "relation": "executes",
+      "object": "ngrok_tunnel",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "rm_boot_tuneservice",
+      "relation": "executes",
+      "object": "initialization_service_loads_edinburgh_associative_thesauru",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pass_1",
+      "relation": "implements",
+      "object": "direct_pseudoinverse",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pass_1",
+      "relation": "maps_to",
+      "object": "consistent_shape_tasks_same_io_dimensions",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pass_2",
+      "relation": "implements",
+      "object": "padded_pseudoinverse_bg0",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pass_2",
+      "relation": "maps_to",
+      "object": "variable_shape_tasks_output_largersmaller_than_input",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pass_3",
+      "relation": "implements",
+      "object": "padded_pseudoinverse_bg19",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pass_3",
+      "relation": "maps_to",
+      "object": "background_sensitive_tasks_non_zero_fill_color",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "mothers_language",
+      "relation": "defined_by",
+      "object": "self_reading",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "mother_primitives",
+      "relation": "defined_by",
+      "object": "atomic_operations",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "session_memory",
+      "relation": "defined_by",
+      "object": "consolidated_every",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "maintenance_system",
+      "relation": "defined_by",
+      "object": "master_orchestrator",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "builds_and_holds_f_domain_field_matrices",
+      "relation": "defined_by",
+      "object": "chooses_domain",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "computes_pseudoinverse_transformations",
+      "relation": "defined_by",
+      "object": "selects_coupling",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "decodes_output_state_vectors",
+      "relation": "defined_by",
+      "object": "interprets_residual",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "validates_all_training_pairs_mechanically",
+      "relation": "defined_by",
+      "object": "decides_when",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "executes_field_composition",
+      "relation": "defined_by",
+      "object": "navigates_lattice",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "actor_extraction",
+      "relation": "defined_by",
+      "object": "identify_agents",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "action_extraction",
+      "relation": "defined_by",
+      "object": "map_verbs",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "object_extraction",
+      "relation": "defined_by",
+      "object": "map_nouns",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "constraint_extraction",
+      "relation": "defined_by",
+      "object": "surface_implicit",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "ambiguity_flagging",
+      "relation": "defined_by",
+      "object": "identify_points",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "confidence_scoring",
+      "relation": "defined_by",
+      "object": "per_dimension",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "output_format",
+      "relation": "defined_by",
+      "object": "intent_vector",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "impact_ordering",
+      "relation": "defined_by",
+      "object": "ambiguity_scored",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "question_minimization",
+      "relation": "defined_by",
+      "object": "terminate_when",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "geometric_collapse",
+      "relation": "defined_by",
+      "object": "answer_collapses",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "rms_role",
+      "relation": "defined_by",
+      "object": "drives_question",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "output",
+      "relation": "defined_by",
+      "object": "resolved_intent",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "layered",
+      "relation": "defined_by",
+      "object": "strict_dependency_hierarchy",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "layered",
+      "relation": "defined_by",
+      "object": "linear_chain",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "event_driven",
+      "relation": "defined_by",
+      "object": "producerconsumer_decoupling",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "event_driven",
+      "relation": "defined_by",
+      "object": "hub_topology_temporal_decoupling",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pipe_filter",
+      "relation": "defined_by",
+      "object": "sequential_transformation",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "pipe_filter",
+      "relation": "defined_by",
+      "object": "linear_defined",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "actor_model",
+      "relation": "defined_by",
+      "object": "message_passing_autonomy",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "actor_model",
+      "relation": "defined_by",
+      "object": "distributed_nodes",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "cqrs",
+      "relation": "defined_by",
+      "object": "readwrite_separation",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "cqrs",
+      "relation": "defined_by",
+      "object": "bifurcated_paths_eventual_consistency",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "microkernel",
+      "relation": "defined_by",
+      "object": "plugin_extensibility",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "microkernel",
+      "relation": "defined_by",
+      "object": "core_peripheral_attachment_points",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "autonomous_agent",
+      "relation": "defined_by",
+      "object": "self_directed_with_learning",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "autonomous_agent",
+      "relation": "defined_by",
+      "object": "feedback_loops",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "component_name",
+      "relation": "defined_by",
+      "object": "derived_lattice",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "responsibility_boundary",
+      "relation": "defined_by",
+      "object": "defined_components",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "interface_contract",
+      "relation": "defined_by",
+      "object": "inputoutput_types",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "dependencies",
+      "relation": "defined_by",
+      "object": "lattice_proximity",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "circular_dep_detection",
+      "relation": "defined_by",
+      "object": "geometric_loops",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "geometric_loops_in_dependency_graph_flagged",
+      "relation": "precedes",
+      "object": "pipeline_phase_5",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "dependency_isolation",
+      "relation": "has_constraint",
+      "object": "no_circular_dependencies_within_a_chunk",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "dimensionality_budget",
+      "relation": "has_constraint",
+      "object": "state_vector",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "granularity",
+      "relation": "has_constraint",
+      "object": "rms_chosen_level_of_abstraction_adjustable",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "chunk_order",
+      "relation": "has_constraint",
+      "object": "topological_sort_of_dependency_graph",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "per_chunk_target",
+      "relation": "has_constraint",
+      "object": "chunk_receives",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "capability",
+      "relation": "defined_by",
+      "object": "named_capability",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "input",
+      "relation": "defined_by",
+      "object": "structured_input",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "constraints",
+      "relation": "defined_by",
+      "object": "bounds_response",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "return",
+      "relation": "defined_by",
+      "object": "result_dict",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "arcy_ollama_bridge",
+      "relation": "executes",
+      "object": "consciousness_fast_14b_consciousness_capable_32b_llama31",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "arcy_ollama_bridge",
+      "relation": "has_property",
+      "object": "live_auth_fix_pending_on_9090",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "phase_0_nlp",
+      "relation": "executes",
+      "object": "loose_text_structured_intent_vector",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "phase_0_nlp",
+      "relation": "has_property",
+      "object": "required_first_build_target",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "visual_recognition",
+      "relation": "executes",
+      "object": "screenimage_analysis",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "visual_recognition",
+      "relation": "has_property",
+      "object": "planned_identified_candidate_model",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "code_generation_assist",
+      "relation": "executes",
+      "object": "non_geometric_boilerplate_standard_library_calls",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "code_generation_assist",
+      "relation": "has_property",
+      "object": "planned",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "domain_corpus",
+      "relation": "executes",
+      "object": "domain_specific_knowledge_retrieval_medical_legal_scienti",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "domain_corpus",
+      "relation": "has_property",
+      "object": "future",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "eeg_interface",
+      "relation": "executes",
+      "object": "human_geometric",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "eeg_interface",
+      "relation": "has_property",
+      "object": "contingent_on_arc_prize_funding",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "actors",
+      "relation": "defined_by",
+      "object": "user_service",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "actors",
+      "relation": "defined_by",
+      "object": "15_20",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "actions",
+      "relation": "defined_by",
+      "object": "read_write",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "actions",
+      "relation": "defined_by",
+      "object": "25_35",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "objects",
+      "relation": "defined_by",
+      "object": "record_stream",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "objects",
+      "relation": "defined_by",
+      "object": "30_40",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "constraints",
+      "relation": "defined_by",
+      "object": "latency_bound",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "constraints",
+      "relation": "defined_by",
+      "object": "20_30",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "patterns",
+      "relation": "defined_by",
+      "object": "crud_pub",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "patterns",
+      "relation": "defined_by",
+      "object": "15_20",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "qualities",
+      "relation": "defined_by",
+      "object": "real_time",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "qualities",
+      "relation": "defined_by",
+      "object": "15_20",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "relationships",
+      "relation": "defined_by",
+      "object": "depends_produces",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "relationships",
+      "relation": "defined_by",
+      "object": "10_15",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "scale_signals",
+      "relation": "defined_by",
+      "object": "single_user",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "scale_signals",
+      "relation": "defined_by",
+      "object": "10_12",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "fn_loose_to_structured",
+      "relation": "defined_by",
+      "object": "input_str",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "fn_triangulate_domains",
+      "relation": "defined_by",
+      "object": "input_intent",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "fn_resolve_ambiguities",
+      "relation": "defined_by",
+      "object": "input_ambiguity",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "fn_match_archetypes",
+      "relation": "defined_by",
+      "object": "input_resolved",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "fn_resolve_delta_to_components",
+      "relation": "defined_by",
+      "object": "input_field",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "fn_chunk_for_fields",
+      "relation": "defined_by",
+      "object": "input_components",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "fn_validate_composition",
+      "relation": "defined_by",
+      "object": "input_chunks",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "geometric_field_computation_generalizes",
+      "relation": "validated_by",
+      "object": "accuracy_2643",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "rm_initialization",
+      "relation": "validated_by",
+      "object": "cs_002a_substrate_state",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "multi_example_consensus_prevents_memorization",
+      "relation": "validated_by",
+      "object": "single_example",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "ram_resident_architecture_is_sufficient",
+      "relation": "validated_by",
+      "object": "arc_computation",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "smaller_models",
+      "relation": "validated_by",
+      "object": "spatial_pattern_recognition",
+      "source": "table:132_design_anti_patterns_to_av"
+    },
+    {
+      "subject": "silicon_fd3m_maps_to_e8",
+      "relation": "validated_by",
+      "object": "tetrahedral_coordination",
+      "source": "table:132_design_anti_patterns_to_av"
+    }
+  ]
+}
