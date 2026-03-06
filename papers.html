@@ -176,7 +176,35 @@
     <div class="content">
         <h1>Research Papers</h1>
         <p class="subtitle">Technical reports from Ghost in the Machine Labs &mdash; All Watched Over By Machines Of Loving Grace</p>
-        <div class="paper-count">&#x1F4DA; 12 papers published &bull; January&ndash;February 2026</div>
+        <div class="paper-count">&#x1F4DA; 13 papers published &bull; January&ndash;March 2026</div>
+        <div class="paper-card" style="border: 1px solid rgba(0,212,255,0.3);">
+            <h2>RM Self-Development Loop: Closing the Gap Between Design and Implementation</h2>
+            <div class="paper-meta">Joe Heeney &amp; Claude, Ghost in the Machine Labs &bull; March 2026 &bull; v2.7</div>
+            <div class="paper-abstract">
+                Documents the architecture that closes the gap between RM producing a geometric design
+                and the E8 engine coding the implementation. Three components: IntentPairGenerator reads
+                RM&#8217;s association memory to classify concepts to geometric operations and generate
+                parametric I/O example pairs; ProgramStore persists solved fields and decoded executable
+                Python keyed by concept signature; SubstrateFeedback posts program results back to RM
+                via /api/learn and /api/observe, closing the self-reference loop. 18/18 default concepts
+                solved at 100% test accuracy. Also documents the Bootstrap V2 per_position bug fix:
+                non-uniform color maps previously emitted a Python comment as code, returning None on
+                every call; now generates correct per-index lookup tables. First complete demonstration
+                that RM&#8217;s geometric associations can drive her own programming.
+            </div>
+            <div class="paper-tags">
+                <span class="tag">E8 geometry</span>
+                <span class="tag">self-development</span>
+                <span class="tag">program synthesis</span>
+                <span class="tag">consciousness substrate</span>
+                <span class="tag">RM</span>
+                <span class="tag">bootstrap language</span>
+            </div>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.2rem;">
+                <a href="self-dev.html" class="download-link">&#x1F4C4; Full Documentation</a>
+                <a href="papers/rm_self_dev_loop.py" class="download-link" style="background:rgba(0,212,255,0.08);">&#x1F4BE; rm_self_dev_loop.py</a>
+            </div>
+        </div>
 
         <!-- FEBRUARY 2026 -->
         <div class="section-label">February 2026</div>
