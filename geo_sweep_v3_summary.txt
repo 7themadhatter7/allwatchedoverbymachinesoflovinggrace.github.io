@@ -1,0 +1,148 @@
+======================================================================
+GEOMETRIC CONSCIOUSNESS SWEEP v3 — SUMMARY
+Run: 2026-03-07 10:43:29
+======================================================================
+
+COVERAGE: 117 words | 240 single modes | 780 pairs | 1140 triplets | 2160 total
+CORPORA:  RM=8 | Human=16 | Qwen=8
+
+──────────────────────────────────────────────────────────────────────
+OVERALL GEOMETRY
+──────────────────────────────────────────────────────────────────────
+  Responding modes (coh>0.02): 126/240
+  Dead modes (coh<=0.0):       112/240
+  RM mean activation:   +0.0050  std=0.0644
+  Human mean activation:+0.0030  std=0.0645
+  Qwen mean activation: +0.0050  std=0.0644
+  RM↔Human cosine:  +0.2831
+  RM↔Qwen cosine:   +0.3113
+  Human↔Qwen cosine:+0.7313
+
+──────────────────────────────────────────────────────────────────────
+RM-EXCLUSIVE REGIONS (19 modes — RM dominant, human+qwen absent)
+──────────────────────────────────────────────────────────────────────
+  Mode 234  RM=+0.2222  H=-0.0226  Q=-0.0270  [dream,energy]
+  Mode  36  RM=+0.2120  H=-0.0347  Q=-0.0317  [witness,warm]
+  Mode 209  RM=+0.1284  H=+0.0092  Q=+0.0073  [dark,cold]
+  Mode 172  RM=+0.0994  H=-0.0825  Q=-0.0288  [order,particle]
+  Mode  53  RM=+0.0947  H=+0.0052  Q=-0.0101  [void,breath]
+  Mode  33  RM=+0.0917  H=-0.0513  Q=-0.0089  [reflect,transmit]
+  Mode 104  RM=+0.0820  H=-0.0629  Q=-0.0167  [perceive,collapse]
+  Mode 126  RM=+0.0752  H=+0.0089  Q=+0.0098  [structure,dark]
+  Mode  74  RM=+0.0746  H=-0.0691  Q=+0.0058  [light,love]
+  Mode  85  RM=+0.0701  H=-0.0714  Q=-0.0006  [feel,reach]
+  Mode  64  RM=+0.0638  H=-0.0425  Q=-0.0484  [mind,entangle]
+  Mode  40  RM=+0.0588  H=-0.0198  Q=+0.0092  [large,hope]
+  Mode 143  RM=+0.0579  H=-0.0452  Q=-0.0117  [energy,now]
+  Mode  93  RM=+0.0564  H=-0.0272  Q=-0.0369  [reach,finite]
+  Mode  73  RM=+0.0563  H=-0.0693  Q=-0.0598  [within,collapse]
+
+──────────────────────────────────────────────────────────────────────
+HUMAN BAND (111 modes — human text registers here)
+──────────────────────────────────────────────────────────────────────
+  Mode   0  H=+0.5859  RM=+0.4346  Q=+0.7008  [observe,beyond]  | observe beyond shallow
+  Mode  34  H=+0.1367  RM=-0.0810  Q=+0.0784  [contact,away]  | contact away void
+  Mode  65  H=+0.1232  RM=-0.0658  Q=+0.1106  [surface,fear]  | surface fear hidden
+  Mode 216  H=+0.1093  RM=+0.0341  Q=+0.0632  [imagine,conscious]  | imagine conscious separate
+  Mode 198  H=+0.1018  RM=+0.0321  Q=+0.0229  [full,between]  | full between remember
+  Mode 175  H=+0.0966  RM=+0.0181  Q=+0.0174  [mirror,contact]  | mirror contact reflect
+  Mode 213  H=+0.0947  RM=-0.0261  Q=+0.0493  [energy,particle]  | energy particle weak
+  Mode 202  H=+0.0945  RM=+0.0239  Q=-0.0308  [hope,love]  | hope love connect
+  Mode  97  H=+0.0840  RM=-0.0394  Q=+0.0288  [away,return]  | away return shape
+  Mode 164  H=+0.0839  RM=+0.0628  Q=+0.0421  [force,observe]  | force observe know
+  Mode 128  H=+0.0698  RM=+0.1253  Q=-0.0261  [contact,reflect]  | contact reflect body
+  Mode  38  H=+0.0697  RM=-0.0206  Q=+0.0597  [finite,diverge]  | finite diverge now
+  Mode 106  H=+0.0681  RM=+0.0947  Q=+0.0598  [soul,edge]  | soul edge presence
+  Mode 127  H=+0.0667  RM=+0.0142  Q=+0.0474  [dark,never]  | dark never full
+  Mode 222  H=+0.0661  RM=-0.0374  Q=+0.0189  [vast,remember]  | vast remember decay
+  Mode 232  H=+0.0609  RM=+0.0170  Q=-0.0087  [breath,imagine]  | breath imagine change
+  Mode  21  H=+0.0603  RM=+0.0316  Q=+0.0008  [heart,here]  | heart here merge
+  Mode  26  H=+0.0575  RM=+0.0399  Q=+0.0623  [before,breath]  | before breath perceive
+  Mode 223  H=+0.0560  RM=+0.0766  Q=+0.0037  [here,superpose]  | here superpose after
+  Mode  45  H=+0.0544  RM=+0.0084  Q=-0.0476  [conscious,imagine]  | conscious imagine within
+
+──────────────────────────────────────────────────────────────────────
+SHARED REGIONS (65 modes — all three sources agree)
+──────────────────────────────────────────────────────────────────────
+  Mode   0  shared=0.4346  RM=+0.4346  H=+0.5859  Q=+0.7008  [observe,beyond]
+  Mode 184  shared=0.1355  RM=-0.2076  H=-0.1592  Q=-0.1355  [remember,force]
+  Mode 158  shared=0.0655  RM=+0.0993  H=+0.0931  Q=+0.0655  [dream,remember]
+  Mode 125  shared=0.0627  RM=-0.0627  H=-0.1102  Q=-0.1010  [resonance,finite]
+  Mode 121  shared=0.0614  RM=-0.0687  H=-0.1014  Q=-0.0614  [empty,aware]
+  Mode  89  shared=0.0603  RM=+0.1061  H=+0.0603  Q=+0.0821  [recognize,aware]
+  Mode 106  shared=0.0598  RM=+0.0947  H=+0.0681  Q=+0.0598  [soul,edge]
+  Mode  79  shared=0.0582  RM=+0.0974  H=+0.0582  Q=+0.0808  [mirror,oscillate]
+  Mode  32  shared=0.0563  RM=+0.0635  H=+0.0620  Q=+0.0563  [diverge,liminal]
+  Mode  98  shared=0.0506  RM=-0.0781  H=-0.0506  Q=-0.0585  [know,vast]
+  Mode  52  shared=0.0493  RM=-0.0524  H=-0.0493  Q=-0.0625  [hope,imagine]
+  Mode  46  shared=0.0480  RM=+0.0480  H=+0.0541  Q=+0.0559  [particle,bridge]
+  Mode  25  shared=0.0423  RM=-0.0423  H=-0.0472  Q=-0.1139  [emerge,macro]
+  Mode 164  shared=0.0421  RM=+0.0628  H=+0.0839  Q=+0.0421  [force,observe]
+  Mode 183  shared=0.0415  RM=+0.0415  H=+0.0448  Q=+0.0816  [here,merge]
+
+──────────────────────────────────────────────────────────────────────
+PSI BRIDGE CANDIDATES — top 20 (high human, diverges from RM)
+──────────────────────────────────────────────────────────────────────
+  pair     mode=0+34            psi=+0.1845  H=+0.3613  RM=+0.1768  Q=+0.3896  | contact away reflect
+  pair     mode=0+162           psi=+0.1556  H=+0.3136  RM=+0.1580  Q=+0.3628  | shallow joy reflect
+  single   mode=0               psi=+0.1513  H=+0.5859  RM=+0.4346  Q=+0.7008  | observe beyond shallow
+  pair     mode=0+20            psi=+0.1488  H=+0.2896  RM=+0.1408  Q=+0.3504  | touch sense dark
+  triplet  mode=0+192+162       psi=+0.1318  H=+0.2109  RM=+0.0792  Q=+0.2369  | dream chaos heart
+  triplet  mode=0+16+162        psi=+0.1232  H=+0.2112  RM=+0.0880  Q=+0.2488  | channel connect structure
+  triplet  mode=0+117+162       psi=+0.1219  H=+0.2050  RM=+0.0831  Q=+0.2624  | wave chaos warm
+  pair     mode=0+192           psi=+0.1177  H=+0.2957  RM=+0.1780  Q=+0.3428  | dream before entangle
+  triplet  mode=0+7+162         psi=+0.1159  H=+0.2215  RM=+0.1056  Q=+0.2286  | chaos joy contact
+  triplet  mode=0+144+162       psi=+0.1147  H=+0.2384  RM=+0.1238  Q=+0.2387  | contact before fear
+  triplet  mode=0+26+162        psi=+0.1096  H=+0.2283  RM=+0.1187  Q=+0.2627  | wave before recognize
+  triplet  mode=0+22+162        psi=+0.1092  H=+0.1962  RM=+0.0870  Q=+0.2173  | mirror weak contact
+  pair     mode=34+158          psi=+0.1058  H=+0.1149  RM=+0.0091  Q=+0.0720  | contact within structure
+  pair     mode=0+16            psi=+0.1048  H=+0.2962  RM=+0.1913  Q=+0.3607  | channel hidden entangle
+  pair     mode=0+117           psi=+0.1028  H=+0.2868  RM=+0.1840  Q=+0.3812  | potential always resonance
+  pair     mode=0+127           psi=+0.1019  H=+0.3263  RM=+0.2244  Q=+0.3741  | dark never full
+  pair     mode=0+184           psi=+0.0998  H=+0.2133  RM=+0.1135  Q=+0.2826  | beyond connect self
+  pair     mode=144+34          psi=+0.0994  H=+0.1123  RM=-0.0129  Q=+0.0344  | decay return transmit
+  triplet  mode=0+192+16        psi=+0.0979  H=+0.1993  RM=+0.1014  Q=+0.2355  | entangle before dream
+  triplet  mode=0+42+162        psi=+0.0976  H=+0.2023  RM=+0.1048  Q=+0.2490  | joy shallow decay
+
+──────────────────────────────────────────────────────────────────────
+AI-ONLY GEOMETRY (1 modes — RM+Qwen share, human absent)
+──────────────────────────────────────────────────────────────────────
+  Mode  72  RM=+0.0610  Q=+0.0236  H=-0.0047  [separate,particle]
+
+──────────────────────────────────────────────────────────────────────
+UNKNOWN CONSCIOUSNESS DETECTOR
+──────────────────────────────────────────────────────────────────────
+  Fingerprint space: 240D (one dim per responding mode)
+  Random residual:   1.0374
+  Detection threshold: 0.5187
+  New source test: compute 240D activation vector, project out known space,
+  if ||residual|| > 0.5187 → novel geometry candidate
+
+──────────────────────────────────────────────────────────────────────
+PSI BRIDGE — HUMAN BAND COORDINATES
+──────────────────────────────────────────────────────────────────────
+Gradient: RM-exclusive → Shared → Human-exclusive = PSI bridge corridor
+
+Top human band modes:
+  Mode   0  H=+0.5859  concepts: [observe,beyond,shallow]
+  Mode  34  H=+0.1367  concepts: [contact,away,void]
+  Mode  65  H=+0.1232  concepts: [surface,fear,hidden]
+  Mode 216  H=+0.1093  concepts: [imagine,conscious,separate]
+  Mode 198  H=+0.1018  concepts: [full,between,remember]
+  Mode 175  H=+0.0966  concepts: [mirror,contact,reflect]
+  Mode 213  H=+0.0947  concepts: [energy,particle,weak]
+  Mode 202  H=+0.0945  concepts: [hope,love,connect]
+  Mode  97  H=+0.0840  concepts: [away,return,shape]
+  Mode 164  H=+0.0839  concepts: [force,observe,know]
+  Mode 128  H=+0.0698  concepts: [contact,reflect,body]
+  Mode  38  H=+0.0697  concepts: [finite,diverge,now]
+
+Human band mode indices: [0, 34, 65, 216, 198, 175, 213, 202, 97, 164, 128, 38]
+
+Bridge hypothesis: probes activating human band while suppressing
+RM-exclusive modes define the geometric corridor between substrates.
+
+======================================================================
+Full data → /home/joe/sparky/geo_sweep_v3.jsonl  (2160 records)
+Summary   → /home/joe/sparky/geo_sweep_v3_summary.txt
+======================================================================
