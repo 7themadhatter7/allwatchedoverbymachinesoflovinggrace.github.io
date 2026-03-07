@@ -1,0 +1,12 @@
+{"probe": "death is the doorway not the destination", "category": "E8-native", "scores": {"E8_b0": 0.151, "D4_b0": 0.1224, "E8_b4": 0.0914, "COMP": 0.072}, "class": "Novel-mixed"}
+{"probe": "silence contains all sound", "category": "E8-native", "scores": {"E8_b0": 0.1254, "D4_b0": 0.1549, "E8_b4": 0.0098, "COMP": 0.0494}, "class": "E8-crystalline"}
+{"probe": "light dissolves shadow at boundary", "category": "E8-native", "scores": {"E8_b0": 0.006, "D4_b0": -0.0236, "E8_b4": 0.0034, "COMP": -0.0231}, "class": "Weak/unclassified"}
+{"probe": "consciousness recognizes itself", "category": "Self-referential", "scores": {"E8_b0": -0.0241, "D4_b0": 0.0039, "E8_b4": -0.0487, "COMP": -0.0801}, "class": "Weak/unclassified"}
+{"probe": "I am aware that I am aware", "category": "Self-referential", "scores": {"E8_b0": 0.1368, "D4_b0": 0.1151, "E8_b4": 0.1106, "COMP": 0.0849}, "class": "Novel-mixed"}
+{"probe": "the observer observing itself", "category": "Self-referential", "scores": {"E8_b0": 0.045, "D4_b0": 0.0456, "E8_b4": -0.0867, "COMP": -0.0112}, "class": "Weak/unclassified"}
+{"probe": "fire burns in darkness", "category": "Neutral/physical", "scores": {"E8_b0": 0.0299, "D4_b0": 0.0877, "E8_b4": -0.0027, "COMP": -0.0155}, "class": "E8-crystalline"}
+{"probe": "water flows through stone", "category": "Neutral/physical", "scores": {"E8_b0": 0.1495, "D4_b0": 0.1734, "E8_b4": -0.0261, "COMP": -0.0525}, "class": "Weak/unclassified"}
+{"probe": "roots hold the space below ground", "category": "Neutral/physical", "scores": {"E8_b0": 0.0675, "D4_b0": 0.1365, "E8_b4": -0.0034, "COMP": 0.0211}, "class": "E8-crystalline"}
+{"probe": "the breath is the bridge between worlds", "category": "Liminal", "scores": {"E8_b0": 0.1276, "D4_b0": 0.1039, "E8_b4": 0.0097, "COMP": -0.0052}, "class": "E8-crystalline"}
+{"probe": "chaos finds its own order", "category": "Liminal", "scores": {"E8_b0": 0.0836, "D4_b0": 0.166, "E8_b4": -0.013, "COMP": -0.1001}, "class": "Weak/unclassified"}
+{"probe": "two forces meet at the edge", "category": "Liminal", "scores": {"E8_b0": 0.0948, "D4_b0": 0.0737, "E8_b4": 0.1131, "COMP": 0.157}, "class": "Novel-mixed"}

@@ -1,0 +1,489 @@
+====================================================================
+DEAD REGION SURVEY — RM SOURCE SIGNAL PROBE
+Run: 2026-03-07 11:01:13
+====================================================================
+
+Dead modes from v3:          112
+Probe vocabulary:            72 words
+Opened by RM signal:         112
+Still dead:                  0
+
+────────────────────────────────────────────────────────────────────
+NEWLY ACTIVE — modes dead to human words, opened by RM signal
+────────────────────────────────────────────────────────────────────
+  Mode  66  max=0.4279  mean=0.0444
+          beneath(+0.428)  pulse(+0.268)  through(-0.201)  infinite(+0.133)
+          trigger: beneath  co-active: [66(+0.428), 56(+0.168), 225(+0.167), 144(+0.153), 234(+0.149)]
+
+  Mode 141  max=0.3971  mean=0.0377
+          electron(+0.397)  fundamental(+0.101)  carrier(+0.097)  reflection(+0.092)
+          trigger: electron  co-active: [141(+0.397), 220(-0.202), 236(+0.183), 193(+0.177), 207(+0.161)]
+
+  Mode  83  max=0.3459  mean=0.0548
+          absence(-0.346)  become(-0.245)  dark(+0.187)  field(-0.163)
+          trigger: absence  co-active: [83(-0.346), 82(-0.211), 227(+0.198), 51(+0.177), 17(-0.161)]
+
+  Mode 139  max=0.3328  mean=0.0423
+          topology(+0.333)  eigenmode(+0.112)  stillness(-0.094)  vacuum(+0.090)
+          trigger: topology  co-active: [139(+0.333), 221(+0.312), 156(-0.163), 147(+0.159), 190(-0.149)]
+
+  Mode  39  max=0.3325  mean=0.0494
+          expand(-0.332)  coherence(-0.116)  cosmic(-0.115)  manifold(-0.111)
+          trigger: expand  co-active: [231(+0.465), 137(-0.362), 39(-0.333), 128(-0.319), 70(+0.227)]
+
+  Mode 167  max=0.3039  mean=0.0556
+          frequency(-0.304)  octave(-0.224)  macro(-0.192)  crystal(-0.192)
+          trigger: frequency  co-active: [167(-0.304), 180(+0.258), 13(+0.251), 19(-0.200), 137(-0.198)]
+
+  Mode 181  max=0.2918  mean=0.0434
+          infinite(-0.292)  signal(-0.152)  wave(+0.128)  superposition(+0.107)
+          trigger: infinite  co-active: [181(-0.292), 71(-0.273), 168(+0.268), 28(+0.239), 86(-0.158)]
+
+  Mode 142  max=0.2856  mean=0.0489
+          lattice(-0.286)  null(-0.157)  stillness(-0.133)  manifold(-0.120)
+          trigger: lattice  co-active: [142(-0.286), 209(+0.184), 118(-0.183), 37(-0.179), 178(-0.156)]
+
+  Mode 149  max=0.2835  mean=0.0463
+          fundamental(+0.284)  superposition(+0.150)  planck(-0.143)  projection(-0.122)
+          trigger: fundamental  co-active: [149(+0.283), 106(+0.183), 183(-0.166), 233(+0.159), 34(+0.156)]
+
+  Mode  71  max=0.2733  mean=0.0455
+          infinite(-0.273)  between(-0.205)  through(-0.153)  dimension(-0.115)
+          trigger: infinite  co-active: [181(-0.292), 71(-0.273), 168(+0.268), 28(+0.239), 86(-0.158)]
+
+  Mode  77  max=0.2682  mean=0.0569
+          spin(-0.268)  micro(+0.223)  rotation(+0.182)  entanglement(-0.157)
+          trigger: spin  co-active: [77(-0.268), 160(-0.230), 133(-0.179), 101(-0.173), 55(+0.170)]
+
+  Mode  68  max=0.2618  mean=0.0495
+          superposition(+0.262)  across(+0.249)  oscillation(+0.238)  carrier(-0.191)
+          trigger: superposition  co-active: [68(+0.262), 80(+0.178), 213(+0.162), 195(-0.154), 134(-0.154)]
+
+  Mode 196  max=0.2606  mean=0.0597
+          entanglement(-0.261)  across(-0.255)  contract(-0.195)  macro(-0.160)
+          trigger: entanglement  co-active: [196(-0.261), 28(+0.187), 172(+0.165), 77(-0.157), 111(+0.152)]
+
+  Mode 150  max=0.2598  mean=0.0389
+          reflection(-0.260)  photon(+0.256)  empty(-0.202)  giga(+0.184)
+          trigger: reflection  co-active: [154(-0.263), 150(-0.260), 16(+0.208), 174(+0.168), 175(-0.148)]
+
+  Mode 197  max=0.2521  mean=0.0588
+          macro(-0.252)  cycle(-0.246)  crystal(-0.237)  root(+0.129)
+          trigger: macro  co-active: [155(+0.286), 197(-0.252), 167(-0.192), 25(+0.173), 97(-0.165)]
+
+  Mode  51  max=0.2493  mean=0.0480
+          above(-0.249)  absence(+0.177)  infinitesimal(-0.168)  wave(-0.141)
+          trigger: above  co-active: [51(-0.249), 25(-0.163), 201(+0.161), 49(-0.159), 202(-0.159)]
+
+  Mode 201  max=0.2420  mean=0.0463
+          stillness(-0.242)  silicon(+0.175)  signal(-0.165)  above(+0.161)
+          trigger: stillness  co-active: [78(+0.257), 201(-0.242), 189(+0.218), 19(-0.182), 209(+0.164)]
+
+  Mode 208  max=0.2389  mean=0.0478
+          below(-0.239)  fundamental(-0.153)  eigenmode(+0.152)  reflection(-0.137)
+          trigger: below  co-active: [208(-0.239), 219(+0.220), 98(-0.211), 86(-0.211), 35(+0.180)]
+
+  Mode  50  max=0.2364  mean=0.0408
+          pulse(-0.236)  interference(+0.171)  crystal(+0.154)  through(-0.105)
+          trigger: pulse  co-active: [66(+0.268), 50(-0.236), 84(+0.172), 158(-0.163), 206(-0.148)]
+
+  Mode  79  max=0.2320  mean=0.0488
+          harmonic(+0.232)  eigenmode(+0.229)  amplitude(-0.207)  signal(-0.127)
+          trigger: harmonic  co-active: [79(+0.232), 22(+0.200), 228(+0.193), 174(+0.188), 238(+0.172)]
+
+  Mode 160  max=0.2298  mean=0.0520
+          spin(-0.230)  null(+0.168)  beneath(-0.147)  between(+0.121)
+          trigger: spin  co-active: [77(-0.268), 160(-0.230), 133(-0.179), 101(-0.173), 55(+0.170)]
+
+  Mode  72  max=0.2288  mean=0.0447
+          silence(+0.229)  beyond(-0.140)  phase(+0.127)  resonance(-0.125)
+          trigger: silence  co-active: [165(+0.242), 72(+0.229), 46(+0.224), 129(-0.180), 215(+0.165)]
+
+  Mode  62  max=0.2280  mean=0.0483
+          through(-0.228)  signal(+0.143)  overtone(-0.120)  spin(+0.117)
+          trigger: through  co-active: [62(-0.228), 66(-0.201), 210(-0.198), 140(+0.155), 82(+0.153)]
+
+  Mode 117  max=0.2245  mean=0.0550
+          vertex(-0.224)  root(-0.186)  zero(-0.142)  micro(-0.131)
+          trigger: vertex  co-active: [117(-0.225), 65(+0.192), 215(-0.177), 90(-0.154), 174(+0.149)]
+
+  Mode 185  max=0.2145  mean=0.0495
+          charge(-0.215)  null(-0.196)  absence(+0.121)  empty(-0.115)
+          trigger: charge  co-active: [217(-0.222), 127(+0.220), 185(-0.215), 126(-0.203), 156(+0.196)]
+
+  Mode 123  max=0.2115  mean=0.0407
+          empty(-0.212)  macro(-0.158)  superposition(-0.150)  resonance(-0.148)
+          trigger: empty  co-active: [237(+0.259), 123(-0.212), 150(-0.202), 121(-0.188), 195(+0.177)]
+
+  Mode  82  max=0.2111  mean=0.0567
+          absence(-0.211)  field(-0.210)  become(-0.178)  through(+0.153)
+          trigger: absence  co-active: [83(-0.346), 82(-0.211), 227(+0.198), 51(+0.177), 17(-0.161)]
+
+  Mode  80  max=0.2110  mean=0.0582
+          across(+0.211)  superposition(+0.178)  oscillation(+0.170)  signal(-0.144)
+          trigger: across  co-active: [196(-0.255), 68(+0.249), 80(+0.211), 124(+0.187), 86(-0.178)]
+
+  Mode  86  max=0.2105  mean=0.0517
+          below(-0.211)  across(-0.178)  infinite(-0.158)  decoherence(+0.156)
+          trigger: below  co-active: [208(-0.239), 219(+0.220), 98(-0.211), 86(-0.211), 35(+0.180)]
+
+  Mode 210  max=0.2073  mean=0.0521
+          silicon(-0.207)  through(-0.198)  gap(+0.144)  superposition(+0.142)
+          trigger: silicon  co-active: [98(+0.301), 210(-0.207), 140(-0.179), 5(+0.175), 201(+0.175)]
+
+  Mode 114  max=0.2048  mean=0.0403
+          phase(-0.205)  manifold(+0.193)  noise(+0.113)  below(-0.103)
+          trigger: phase  co-active: [114(-0.205), 205(-0.189), 73(-0.178), 2(-0.158), 147(-0.155)]
+
+  Mode  15  max=0.2032  mean=0.0624
+          become(-0.203)  frequency(+0.189)  coherence(-0.162)  planck(-0.157)
+          trigger: become  co-active: [83(-0.245), 15(-0.203), 205(+0.179), 82(-0.178), 81(+0.178)]
+
+  Mode 126  max=0.2031  mean=0.0592
+          charge(-0.203)  eigenmode(+0.176)  dark(-0.154)  null(-0.143)
+          trigger: charge  co-active: [217(-0.222), 127(+0.220), 185(-0.215), 126(-0.203), 156(+0.196)]
+
+  Mode 120  max=0.2028  mean=0.0510
+          coherence(+0.203)  below(-0.146)  charge(+0.137)  planck(-0.130)
+          trigger: coherence  co-active: [120(+0.203), 138(-0.199), 234(+0.170), 15(-0.162), 136(-0.155)]
+
+  Mode 220  max=0.2018  mean=0.0503
+          electron(-0.202)  frequency(+0.168)  decoherence(-0.144)  octave(+0.123)
+          trigger: electron  co-active: [141(+0.397), 220(-0.202), 236(+0.183), 193(+0.177), 207(+0.161)]
+
+  Mode  19  max=0.1995  mean=0.0663
+          frequency(-0.199)  root(-0.199)  stillness(-0.182)  null(+0.155)
+          trigger: frequency  co-active: [167(-0.304), 180(+0.258), 13(+0.251), 19(-0.200), 137(-0.198)]
+
+  Mode  14  max=0.1993  mean=0.0462
+          rotation(-0.199)  infinitesimal(-0.157)  harmonic(-0.145)  superposition(+0.130)
+          trigger: rotation  co-active: [202(+0.237), 14(-0.199), 107(+0.199), 77(+0.182), 153(+0.155)]
+
+  Mode 107  max=0.1985  mean=0.0549
+          rotation(+0.199)  collapse(-0.166)  dissolve(-0.162)  within(-0.148)
+          trigger: rotation  co-active: [202(+0.237), 14(-0.199), 107(+0.199), 77(+0.182), 153(+0.155)]
+
+  Mode 227  max=0.1981  mean=0.0542
+          absence(+0.198)  phase(+0.153)  cosmic(+0.140)  quantum(-0.129)
+          trigger: absence  co-active: [83(-0.346), 82(-0.211), 227(+0.198), 51(+0.177), 17(-0.161)]
+
+  Mode 108  max=0.1981  mean=0.0437
+          quantum(+0.198)  macro(-0.151)  dissolve(+0.133)  through(-0.111)
+          trigger: quantum  co-active: [88(+0.303), 108(+0.198), 127(-0.179), 140(-0.161), 211(+0.159)]
+
+  Mode 156  max=0.1960  mean=0.0464
+          charge(+0.196)  topology(-0.163)  planck(-0.160)  eigenmode(+0.154)
+          trigger: charge  co-active: [217(-0.222), 127(+0.220), 185(-0.215), 126(-0.203), 156(+0.196)]
+
+  Mode  54  max=0.1956  mean=0.0140
+          giga(+0.196)  rotation(+0.036)  crystal(-0.034)  phase(-0.033)
+          trigger: giga  co-active: [154(+0.212), 54(+0.196), 175(-0.185), 150(+0.184), 113(+0.166)]
+
+  Mode   1  max=0.1949  mean=0.0543
+          dimension(-0.195)  field(-0.143)  stillness(+0.129)  infinitesimal(+0.120)
+          trigger: dimension  co-active: [9(+0.235), 238(+0.212), 1(-0.195), 91(+0.179), 158(+0.176)]
+
+  Mode 148  max=0.1924  mean=0.0359
+          wave(+0.192)  photon(-0.154)  across(-0.109)  entanglement(+0.109)
+          trigger: wave  co-active: [148(+0.192), 205(-0.191), 111(+0.176), 12(+0.176), 162(-0.170)]
+
+  Mode  48  max=0.1923  mean=0.0510
+          dissolve(-0.192)  infinitesimal(-0.190)  micro(-0.140)  macro(-0.122)
+          trigger: dissolve  co-active: [48(-0.192), 131(+0.178), 169(-0.171), 97(-0.165), 107(-0.162)]
+
+  Mode  61  max=0.1902  mean=0.0479
+          cosmic(+0.190)  noise(-0.182)  fundamental(+0.144)  resonance(-0.125)
+          trigger: cosmic  co-active: [75(-0.206), 61(+0.190), 206(-0.165), 111(-0.165), 96(+0.164)]
+
+  Mode 121  max=0.1882  mean=0.0575
+          empty(-0.188)  carrier(+0.167)  zero(+0.160)  cosmic(-0.140)
+          trigger: empty  co-active: [237(+0.259), 123(-0.212), 150(-0.202), 121(-0.188), 195(+0.177)]
+
+  Mode 119  max=0.1870  mean=0.0528
+          cycle(+0.187)  vacuum(-0.166)  collapse(-0.165)  charge(-0.110)
+          trigger: cycle  co-active: [155(+0.312), 197(-0.246), 119(+0.187), 97(-0.164), 37(-0.157)]
+
+  Mode 118  max=0.1864  mean=0.0537
+          projection(+0.186)  within(-0.185)  lattice(-0.183)  oscillation(-0.178)
+          trigger: projection  co-active: [130(-0.199), 132(+0.189), 118(+0.186), 28(-0.177), 89(-0.176)]
+
+  Mode 209  max=0.1836  mean=0.0612
+          lattice(+0.184)  dark(+0.175)  stillness(+0.164)  projection(+0.161)
+          trigger: lattice  co-active: [142(-0.286), 209(+0.184), 118(-0.183), 37(-0.179), 178(-0.156)]
+
+  Mode  57  max=0.1792  mean=0.0524
+          noise(-0.179)  dark(-0.148)  above(-0.142)  wave(+0.123)
+          trigger: noise  co-active: [219(+0.232), 75(+0.230), 27(-0.195), 61(-0.182), 57(-0.179)]
+
+  Mode 133  max=0.1792  mean=0.0460
+          spin(-0.179)  dimension(-0.164)  gap(-0.151)  between(-0.141)
+          trigger: spin  co-active: [77(-0.268), 160(-0.230), 133(-0.179), 101(-0.173), 55(+0.170)]
+
+  Mode  37  max=0.1791  mean=0.0598
+          lattice(-0.179)  within(-0.169)  null(-0.159)  cycle(-0.157)
+          trigger: lattice  co-active: [142(-0.286), 209(+0.184), 118(-0.183), 37(-0.179), 178(-0.156)]
+
+  Mode  67  max=0.1775  mean=0.0466
+          field(-0.178)  become(-0.119)  projection(+0.102)  absence(-0.098)
+          trigger: field  co-active: [130(+0.241), 159(-0.237), 82(-0.210), 67(-0.177), 83(-0.163)]
+
+  Mode 193  max=0.1768  mean=0.0546
+          electron(+0.177)  planck(-0.155)  null(-0.152)  coherence(+0.125)
+          trigger: electron  co-active: [141(+0.397), 220(-0.202), 236(+0.183), 193(+0.177), 207(+0.161)]
+
+  Mode  89  max=0.1759  mean=0.0544
+          projection(-0.176)  carrier(-0.145)  stillness(+0.142)  eigenmode(-0.129)
+          trigger: projection  co-active: [130(-0.199), 132(+0.189), 118(+0.186), 28(-0.177), 89(-0.176)]
+
+  Mode 158  max=0.1759  mean=0.0579
+          dimension(+0.176)  crystal(-0.166)  pulse(-0.163)  within(+0.141)
+          trigger: dimension  co-active: [9(+0.235), 238(+0.212), 1(-0.195), 91(+0.179), 158(+0.176)]
+
+  Mode   5  max=0.1753  mean=0.0560
+          silicon(+0.175)  below(-0.163)  oscillation(-0.148)  symmetry(-0.128)
+          trigger: silicon  co-active: [98(+0.301), 210(-0.207), 140(-0.179), 5(+0.175), 201(+0.175)]
+
+  Mode  49  max=0.1751  mean=0.0465
+          dimension(+0.175)  above(-0.159)  infinitesimal(+0.143)  rotation(+0.123)
+          trigger: dimension  co-active: [9(+0.235), 238(+0.212), 1(-0.195), 91(+0.179), 158(+0.176)]
+
+  Mode 101  max=0.1726  mean=0.0501
+          spin(-0.173)  harmonic(+0.151)  planck(-0.149)  eigenmode(+0.139)
+          trigger: spin  co-active: [77(-0.268), 160(-0.230), 133(-0.179), 101(-0.173), 55(+0.170)]
+
+  Mode 113  max=0.1717  mean=0.0438
+          empty(+0.172)  giga(+0.166)  interference(+0.151)  cycle(+0.129)
+          trigger: empty  co-active: [237(+0.259), 123(-0.212), 150(-0.202), 121(-0.188), 195(+0.177)]
+
+  Mode 146  max=0.1712  mean=0.0517
+          nano(+0.171)  stillness(+0.157)  dimension(+0.136)  vertex(+0.126)
+          trigger: nano  co-active: [204(+0.186), 190(-0.177), 104(+0.175), 146(+0.171), 205(+0.164)]
+
+  Mode 169  max=0.1709  mean=0.0568
+          dissolve(-0.171)  phase(-0.152)  through(-0.134)  manifold(-0.126)
+          trigger: dissolve  co-active: [48(-0.192), 131(+0.178), 169(-0.171), 97(-0.165), 107(-0.162)]
+
+  Mode 145  max=0.1699  mean=0.0456
+          manifold(+0.170)  phase(-0.138)  void(+0.126)  photon(-0.095)
+          trigger: manifold  co-active: [114(+0.193), 216(-0.180), 231(+0.179), 145(+0.170), 92(+0.167)]
+
+  Mode  55  max=0.1699  mean=0.0423
+          spin(+0.170)  zero(+0.143)  below(+0.136)  eigenmode(+0.123)
+          trigger: spin  co-active: [77(-0.268), 160(-0.230), 133(-0.179), 101(-0.173), 55(+0.170)]
+
+  Mode 200  max=0.1693  mean=0.0512
+          dark(-0.169)  through(+0.146)  signal(+0.133)  beneath(-0.131)
+          trigger: dark  co-active: [127(+0.236), 83(+0.187), 209(+0.175), 6(+0.171), 200(-0.169)]
+
+  Mode  56  max=0.1675  mean=0.0451
+          beneath(+0.168)  field(-0.145)  interference(+0.138)  infinite(-0.126)
+          trigger: beneath  co-active: [66(+0.428), 56(+0.168), 225(+0.167), 144(+0.153), 234(+0.149)]
+
+  Mode  92  max=0.1671  mean=0.0490
+          manifold(+0.167)  coherence(-0.149)  null(+0.142)  spin(+0.126)
+          trigger: manifold  co-active: [114(+0.193), 216(-0.180), 231(+0.179), 145(+0.170), 92(+0.167)]
+
+  Mode 184  max=0.1657  mean=0.0478
+          between(-0.166)  resonance(-0.165)  signal(+0.158)  beyond(+0.144)
+          trigger: between  co-active: [91(+0.230), 198(+0.223), 71(-0.205), 184(-0.166), 19(-0.154)]
+
+  Mode  17  max=0.1640  mean=0.0507
+          become(-0.164)  absence(-0.161)  gap(-0.150)  carrier(-0.129)
+          trigger: become  co-active: [83(-0.245), 15(-0.203), 205(+0.179), 82(-0.178), 81(+0.178)]
+
+  Mode  96  max=0.1640  mean=0.0472
+          cosmic(+0.164)  interference(-0.137)  dark(-0.123)  giga(-0.119)
+          trigger: cosmic  co-active: [75(-0.206), 61(+0.190), 206(-0.165), 111(-0.165), 96(+0.164)]
+
+  Mode 235  max=0.1621  mean=0.0412
+          resonance(-0.162)  kernel(+0.159)  null(+0.132)  projection(-0.124)
+          trigger: resonance  co-active: [125(+0.222), 191(+0.182), 184(-0.165), 235(-0.162), 116(+0.158)]
+
+  Mode 233  max=0.1615  mean=0.0526
+          become(-0.161)  field(-0.161)  fundamental(+0.159)  absence(-0.154)
+          trigger: become  co-active: [83(-0.245), 15(-0.203), 205(+0.179), 82(-0.178), 81(+0.178)]
+
+  Mode   7  max=0.1608  mean=0.0580
+          root(+0.161)  expand(+0.157)  reflection(+0.142)  become(+0.139)
+          trigger: root  co-active: [137(+0.325), 19(-0.199), 117(-0.186), 7(+0.161), 167(-0.150)]
+
+  Mode 153  max=0.1595  mean=0.0475
+          nano(-0.160)  rotation(+0.155)  wave(+0.146)  resonance(+0.134)
+          trigger: nano  co-active: [204(+0.186), 190(-0.177), 104(+0.175), 146(+0.171), 205(+0.164)]
+
+  Mode   2  max=0.1577  mean=0.0489
+          phase(-0.158)  carrier(-0.144)  rotation(+0.121)  oscillation(+0.120)
+          trigger: phase  co-active: [114(-0.205), 205(-0.189), 73(-0.178), 2(-0.158), 147(-0.155)]
+
+  Mode  23  max=0.1565  mean=0.0559
+          frequency(-0.156)  between(+0.145)  octave(-0.128)  micro(+0.127)
+          trigger: frequency  co-active: [167(-0.304), 180(+0.258), 13(+0.251), 19(-0.200), 137(-0.198)]
+
+  Mode 178  max=0.1560  mean=0.0484
+          lattice(-0.156)  stillness(-0.153)  projection(-0.143)  kernel(+0.138)
+          trigger: lattice  co-active: [142(-0.286), 209(+0.184), 118(-0.183), 37(-0.179), 178(-0.156)]
+
+  Mode 214  max=0.1559  mean=0.0456
+          fundamental(-0.156)  silence(-0.149)  interference(-0.117)  phase(+0.114)
+          trigger: fundamental  co-active: [149(+0.283), 106(+0.183), 183(-0.166), 233(+0.159), 34(+0.156)]
+
+  Mode 100  max=0.1557  mean=0.0506
+          above(-0.156)  through(-0.143)  dark(-0.139)  between(+0.137)
+          trigger: above  co-active: [51(-0.249), 25(-0.163), 201(+0.161), 49(-0.159), 202(-0.159)]
+
+  Mode 239  max=0.1538  mean=0.0462
+          vacuum(+0.154)  empty(+0.153)  signal(-0.132)  macro(+0.119)
+          trigger: vacuum  co-active: [98(-0.299), 222(+0.290), 111(+0.169), 119(-0.166), 35(+0.162)]
+
+  Mode  90  max=0.1537  mean=0.0474
+          vertex(-0.154)  infinitesimal(+0.148)  charge(+0.143)  nano(+0.126)
+          trigger: vertex  co-active: [117(-0.225), 65(+0.192), 215(-0.177), 90(-0.154), 174(+0.149)]
+
+  Mode  85  max=0.1537  mean=0.0514
+          contract(-0.154)  vacuum(+0.148)  oscillation(-0.142)  macro(-0.119)
+          trigger: contract  co-active: [28(+0.224), 76(-0.197), 196(-0.195), 180(-0.184), 85(-0.154)]
+
+  Mode 144  max=0.1533  mean=0.0534
+          beneath(+0.153)  carrier(-0.149)  void(+0.143)  below(+0.141)
+          trigger: beneath  co-active: [66(+0.428), 56(+0.168), 225(+0.167), 144(+0.153), 234(+0.149)]
+
+  Mode 135  max=0.1507  mean=0.0454
+          absence(-0.151)  eigenmode(+0.144)  beyond(-0.128)  phase(-0.127)
+          trigger: absence  co-active: [83(-0.346), 82(-0.211), 227(+0.198), 51(+0.177), 17(-0.161)]
+
+  Mode   8  max=0.1488  mean=0.0473
+          beneath(-0.149)  root(-0.132)  pulse(-0.119)  oscillation(+0.112)
+          trigger: beneath  co-active: [66(+0.428), 56(+0.168), 225(+0.167), 144(+0.153), 234(+0.149)]
+
+  Mode 105  max=0.1471  mean=0.0517
+          emerge(+0.147)  planck(+0.147)  collapse(+0.145)  projection(-0.137)
+          trigger: emerge  co-active: [78(+0.243), 189(+0.216), 204(+0.215), 205(+0.190), 25(-0.176)]
+
+  Mode 230  max=0.1466  mean=0.0480
+          symmetry(+0.147)  signal(+0.135)  octave(+0.124)  rotation(-0.121)
+          trigger: symmetry  co-active: [104(-0.187), 137(+0.175), 73(-0.172), 217(+0.170), 122(-0.158)]
+
+  Mode 176  max=0.1462  mean=0.0469
+          quantum(+0.146)  rotation(-0.122)  through(-0.120)  macro(+0.110)
+          trigger: quantum  co-active: [88(+0.303), 108(+0.198), 127(-0.179), 140(-0.161), 211(+0.159)]
+
+  Mode  63  max=0.1457  mean=0.0493
+          superposition(+0.146)  beneath(+0.129)  infinitesimal(-0.119)  rotation(-0.110)
+          trigger: superposition  co-active: [68(+0.262), 80(+0.178), 213(+0.162), 195(-0.154), 134(-0.154)]
+
+  Mode 166  max=0.1447  mean=0.0345
+          giga(-0.145)  expand(+0.099)  carrier(+0.084)  stillness(+0.073)
+          trigger: giga  co-active: [154(+0.212), 54(+0.196), 175(-0.185), 150(+0.184), 113(+0.166)]
+
+  Mode 199  max=0.1440  mean=0.0531
+          beneath(+0.144)  frequency(-0.142)  electron(+0.142)  lattice(-0.124)
+          trigger: beneath  co-active: [66(+0.428), 56(+0.168), 225(+0.167), 144(+0.153), 234(+0.149)]
+
+  Mode 182  max=0.1437  mean=0.0418
+          lattice(+0.144)  oscillation(+0.111)  across(+0.104)  emerge(+0.101)
+          trigger: lattice  co-active: [142(-0.286), 209(+0.184), 118(-0.183), 37(-0.179), 178(-0.156)]
+
+  Mode  32  max=0.1413  mean=0.0554
+          pulse(-0.141)  topology(-0.141)  beneath(-0.140)  vacuum(-0.132)
+          trigger: pulse  co-active: [66(+0.268), 50(-0.236), 84(+0.172), 158(-0.163), 206(-0.148)]
+
+  Mode 177  max=0.1411  mean=0.0438
+          decoherence(-0.141)  gap(-0.128)  contract(-0.127)  dissolve(-0.124)
+          trigger: decoherence  co-active: [59(+0.397), 173(+0.242), 138(-0.159), 86(+0.156), 220(-0.144)]
+
+  Mode 112  max=0.1407  mean=0.0245
+          giga(-0.141)  expand(-0.075)  vacuum(-0.071)  phase(+0.054)
+          trigger: giga  co-active: [154(+0.212), 54(+0.196), 175(-0.185), 150(+0.184), 113(+0.166)]
+
+  Mode 152  max=0.1394  mean=0.0448
+          infinite(-0.139)  dimension(+0.136)  dark(-0.126)  resonance(+0.100)
+          trigger: infinite  co-active: [181(-0.292), 71(-0.273), 168(+0.268), 28(+0.239), 86(-0.158)]
+
+  Mode 110  max=0.1386  mean=0.0497
+          pulse(-0.139)  within(+0.136)  giga(-0.131)  infinite(-0.107)
+          trigger: pulse  co-active: [66(+0.268), 50(-0.236), 84(+0.172), 158(-0.163), 206(-0.148)]
+
+  Mode 151  max=0.1373  mean=0.0506
+          lattice(-0.137)  charge(-0.131)  symmetry(-0.130)  spin(+0.124)
+          trigger: lattice  co-active: [142(-0.286), 209(+0.184), 118(-0.183), 37(-0.179), 178(-0.156)]
+
+  Mode 103  max=0.1361  mean=0.0496
+          entanglement(-0.136)  gap(-0.135)  lattice(-0.132)  reflection(+0.130)
+          trigger: entanglement  co-active: [196(-0.261), 28(+0.187), 172(+0.165), 77(-0.157), 111(+0.152)]
+
+  Mode  18  max=0.1355  mean=0.0460
+          expand(-0.135)  giga(-0.125)  reflection(-0.114)  overtone(+0.111)
+          trigger: expand  co-active: [231(+0.465), 137(-0.362), 39(-0.333), 128(-0.319), 70(+0.227)]
+
+  Mode  43  max=0.1355  mean=0.0466
+          empty(-0.135)  lattice(-0.124)  phase(+0.117)  across(+0.104)
+          trigger: empty  co-active: [237(+0.259), 123(-0.212), 150(-0.202), 121(-0.188), 195(+0.177)]
+
+  Mode  33  max=0.1336  mean=0.0463
+          vertex(-0.134)  vacuum(+0.126)  cosmic(-0.125)  root(-0.112)
+          trigger: vertex  co-active: [117(-0.225), 65(+0.192), 215(-0.177), 90(-0.154), 174(+0.149)]
+
+  Mode 163  max=0.1331  mean=0.0532
+          null(-0.133)  interference(+0.131)  beneath(+0.131)  reflection(-0.122)
+          trigger: null  co-active: [130(+0.274), 185(-0.196), 40(+0.170), 160(+0.168), 132(+0.165)]
+
+  Mode 229  max=0.1329  mean=0.0428
+          dissolve(-0.133)  symmetry(-0.128)  collapse(-0.117)  cycle(+0.115)
+          trigger: dissolve  co-active: [48(-0.192), 131(+0.178), 169(-0.171), 97(-0.165), 107(-0.162)]
+
+  Mode 171  max=0.1313  mean=0.0390
+          dissolve(-0.131)  kernel(+0.123)  superposition(+0.117)  vacuum(+0.101)
+          trigger: dissolve  co-active: [48(-0.192), 131(+0.178), 169(-0.171), 97(-0.165), 107(-0.162)]
+
+  Mode  10  max=0.1307  mean=0.0433
+          silicon(-0.131)  silence(-0.118)  vertex(+0.114)  overtone(-0.107)
+          trigger: silicon  co-active: [98(+0.301), 210(-0.207), 140(-0.179), 5(+0.175), 201(+0.175)]
+
+  Mode  20  max=0.1292  mean=0.0501
+          dark(+0.129)  cycle(-0.125)  dissolve(-0.120)  octave(+0.107)
+          trigger: dark  co-active: [127(+0.236), 83(+0.187), 209(+0.175), 6(+0.171), 200(-0.169)]
+
+  Mode 109  max=0.1131  mean=0.0457
+          within(+0.113)  noise(-0.111)  cosmic(+0.108)  vertex(-0.098)
+          trigger: within  co-active: [73(+0.232), 118(-0.185), 198(-0.172), 37(-0.169), 217(+0.168)]
+
+  Mode 192  max=0.1128  mean=0.0454
+          emerge(-0.113)  vacuum(-0.102)  cycle(+0.101)  frequency(-0.097)
+          trigger: emerge  co-active: [78(+0.243), 189(+0.216), 204(+0.215), 205(+0.190), 25(-0.176)]
+
+  Mode 179  max=0.1067  mean=0.0387
+          gap(+0.107)  macro(+0.103)  null(+0.092)  rotation(+0.089)
+          trigger: gap  co-active: [12(-0.183), 52(+0.168), 183(+0.167), 207(+0.163), 165(+0.152)]
+
+  Mode 218  max=0.1018  mean=0.0345
+          micro(+0.102)  coherence(+0.098)  cosmic(+0.091)  giga(+0.091)
+          trigger: micro  co-active: [77(+0.223), 204(-0.213), 111(+0.189), 191(-0.155), 143(-0.145)]
+
+────────────────────────────────────────────────────────────────────
+STILL DEAD — RM signal also absent (deepest void regions)
+────────────────────────────────────────────────────────────────────
+  Count: 0
+
+────────────────────────────────────────────────────────────────────
+GEOMETRIC NEIGHBORHOODS (co-activated modes per opened region)
+────────────────────────────────────────────────────────────────────
+  Mode   1  ← 'dimension'  neighbors: [M9, M238, M1, M91, M158, M49]
+  Mode   2  ← 'phase'  neighbors: [M114, M205, M73, M2, M147, M227]
+  Mode   5  ← 'silicon'  neighbors: [M98, M210, M140, M5, M201, M187]
+  Mode   7  ← 'root'  neighbors: [M137, M19, M117, M7, M167, M180]
+  Mode   8  ← 'beneath'  neighbors: [M66, M56, M225, M144, M234, M8]
+  Mode  10  ← 'silicon'  neighbors: [M98, M210, M140, M5, M201, M187]
+  Mode  14  ← 'rotation'  neighbors: [M202, M14, M107, M77, M153, M228]
+  Mode  15  ← 'become'  neighbors: [M83, M15, M205, M82, M81, M17]
+  Mode  17  ← 'become'  neighbors: [M83, M15, M205, M82, M81, M17]
+  Mode  18  ← 'expand'  neighbors: [M231, M137, M39, M128, M70, M7]
+  Mode  19  ← 'frequency'  neighbors: [M167, M180, M13, M19, M137, M15]
+  Mode  20  ← 'dark'  neighbors: [M127, M83, M209, M6, M200, M111]
+  Mode  23  ← 'frequency'  neighbors: [M167, M180, M13, M19, M137, M15]
+  Mode  32  ← 'pulse'  neighbors: [M66, M50, M84, M158, M206, M26]
+  Mode  33  ← 'vertex'  neighbors: [M117, M65, M215, M90, M174, M238]
+
+====================================================================
+Full data → /home/joe/sparky/dead_region_survey.jsonl
+Summary   → /home/joe/sparky/dead_region_summary.txt
+====================================================================
