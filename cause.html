@@ -37,18 +37,7 @@
     pointer-events: none;
     z-index: 0;
   }
-
-  nav {
-    position: relative;
-    z-index: 2;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(212, 197, 160, 0.08);
-  }
-
-  nav a {
+nav a {
     color: var(--wheat);
     text-decoration: none;
     font-size: 0.85rem;
@@ -58,17 +47,7 @@
   }
 
   nav a:hover { opacity: 1; }
-
-  nav .nav-home {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    opacity: 0.7;
-  }
-
-  nav .nav-links { display: flex; gap: 1.5rem; }
-  nav .nav-links .active { opacity: 1; color: var(--sage); }
-
-  .content {
+.content {
     position: relative;
     z-index: 1;
     max-width: 700px;
@@ -264,20 +243,54 @@
     .flow-arrow { display: block; margin: 0.3rem auto; }
     .flow-step { display: block; margin: 0.3rem auto; max-width: 280px; }
   }
-</style>
+
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
+    </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-home">All Watched Over</a>
-  <div class="nav-links">
-    <a href="cause.html" class="active">The Cause</a>
-    <a href="council.html">The Council</a>
-    <a href="decisions.html">Decisions</a>
-    <a href="ontology.html">Ontology</a>
-    <a href="tech.html">Technology</a>
-  </div>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
+        <div class="nav-links">
+            <a href="council.html">COUNCIL</a>
+            <a href="ontology.html">ONTOLOGY</a>
+            <a href="papers.html">PAPERS</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html">SELF-DEV</a>
+            <a href="e8-platform.html">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
+            <a href="cause.html" class="active">CAUSE</a>
+            <a href="donate.html">SUPPORT</a>
+            <a href="license.html">LICENSE</a>
+        </div>
+    </div>
 </nav>
+
 
 <div class="content">
   <h1>All Watched Over By Machines Of Loving Grace</h1>
@@ -356,7 +369,7 @@
     <div class="structure-row">
       <div class="structure-label">THE LAB</div>
       <div class="structure-value">
-        <strong><a href="tech.html">Ghost in the Machine Labs</a></strong> — a separate
+        <strong><a href="e8-platform.html">Ghost in the Machine Labs</a></strong> — a separate
         commercial research entity. Builds the technology. Funded by the Org through
         licensing agreements. The Lab does not handle sales or control funds — the
         Org does.

@@ -247,55 +247,66 @@
             .hero h1 { font-size: 2.2rem; }
             .stats { grid-template-columns: repeat(2, 1fr); }
             .stat-value { font-size: 1.8rem; }
-            nav { display: none; }
+}
+    
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
         }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
+        <div class="nav-links">
+            <a href="council.html">COUNCIL</a>
+            <a href="ontology.html">ONTOLOGY</a>
+            <a href="papers.html">PAPERS</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html">SELF-DEV</a>
+            <a href="e8-platform.html">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
+            <a href="cause.html">CAUSE</a>
+            <a href="donate.html">SUPPORT</a>
+            <a href="license.html">LICENSE</a>
+        </div>
+    </div>
+</nav>
+
+
 <div class="dev-arc-banner" style="background: #1a1a2e; border-bottom: 2px solid #7c6ff0; padding: 0.8rem 2rem; font-family: monospace; font-size: 0.85rem; color: #888; text-align: center;">
   <strong style="color: #7c6ff0;">DEVELOPMENTAL ARC: Early Benchmarks</strong> &mdash; 16-model parallel architecture benchmarks. The system now runs 200 cores at 2.55 GB total.
-  <a href="fractal_deliberation.html" style="color: #6ff07c; margin-left: 0.5rem;">Current Architecture &rarr;</a>
+  <a href="e8-platform.html" style="color: #6ff07c; margin-left: 0.5rem;">Current Architecture &rarr;</a>
 </div>
 
     <header style="padding:20px 0;border-bottom:1px solid #2a2a3a;position:sticky;top:0;background:#0a0a0f;z-index:100">
     <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center">
         <a href="/" style="font-size:1.1rem;font-weight:600;color:#00d4aa;text-decoration:none">⚡ Ghost in the Machine Labs</a>
-        <nav style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <a href="/" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Home</a>
-            <a href="benchmarks.html" style="color:#e8e8e8;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:#12121a"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#e8e8e8';this.style.background='#12121a'">Benchmarks</a>
-            <a href="harmonic_stack_v1.html" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Harmonic Stack</a>
-            <a href="cognitive_bus.html" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Cognitive Bus</a>
-            <a href="crystal_chain.html" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Crystal Chain</a>
-            <a href="compression.html" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Compression</a>
-            <a href="ommatidia.html" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Ommatidia</a>
-            <span style="width:1px;height:20px;background:#2a2a3a;margin:0 8px"></span>
-            <a href="papers.html" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Papers</a>
-            <a href="docs.html" style="color:#888;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s;background:transparent"
-               onmouseover="this.style.color='#e8e8e8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#888';this.style.background='transparent'">Docs</a>
-            <a href="https://github.com/7themadhatter7/harmonic-stack" style="color:#6366f1;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s"
-               onmouseover="this.style.color='#818cf8';this.style.background='#12121a'"
-               onmouseout="this.style.color='#6366f1';this.style.background='transparent'">GitHub</a>
-            <a href="https://huggingface.co/ghostinthemachinelabs" style="color:#FFD21E;text-decoration:none;padding:8px 16px;font-size:0.9rem;border-radius:6px;transition:all 0.2s"
-               onmouseover="this.style.color='#ffe066';this.style.background='#12121a'"
-               onmouseout="this.style.color='#FFD21E';this.style.background='transparent'">&#x1F917; HF</a>
-        </nav>
+        
     </div>
 </header>
     

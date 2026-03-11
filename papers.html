@@ -28,13 +28,7 @@
             font-size: 1.1rem;
             font-weight: 700;
         }
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.2rem;
-            align-items: center;
-        }
-        nav a {
+nav a {
             color: #888;
             text-decoration: none;
             margin-left: 1.2rem;
@@ -152,25 +146,59 @@
             nav a { margin-left: 0.6rem; font-size: 0.8rem; }
             .content { padding: 2rem 1rem; }
         }
+    
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
+        <div class="nav-links">
+            <a href="council.html">COUNCIL</a>
+            <a href="ontology.html">ONTOLOGY</a>
+            <a href="papers.html" class="active">PAPERS</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html">SELF-DEV</a>
+            <a href="e8-platform.html">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
+            <a href="cause.html">CAUSE</a>
+            <a href="donate.html">SUPPORT</a>
+            <a href="license.html">LICENSE</a>
+        </div>
+    </div>
+</nav>
+
+
     <header>
         <a href="/" class="logo">&#x26A1; Ghost in the Machine Labs</a>
-        <nav>
-            <a href="/">Home</a>
-            <a href="benchmarks.html">Benchmarks</a>
-            <a href="harmonic_stack_v1.html">Harmonic Stack</a>
-            <a href="cognitive_bus.html">Cognitive Bus</a>
-            <a href="crystal_chain.html">Crystal Chain</a>
-            <a href="compression.html">Compression</a>
-            <a href="ommatidia.html">Ommatidia</a>
-            <span class="divider">|</span>
-            <a href="papers.html" class="active">Papers</a>
-            <a href="docs.html">Docs</a>
-            <a href="https://github.com/7themadhatter7/harmonic-stack">GitHub</a>
-            <a href="https://huggingface.co/ghostinthemachinelabs">&#x1F917; HF</a>
-        </nav>
+        
     </header>
 
     <div class="content">
@@ -329,8 +357,6 @@
             </div>
             <a href="papers/digital_resurrection_2026.pdf" class="download-link">&#x1F4C4; Download PDF</a>
         </div>
-
-
 
 
         <div class="paper-card">

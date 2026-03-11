@@ -28,38 +28,6 @@
         }
         .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
-        /* NAV */
-        nav {
-            border-bottom: 1px solid var(--border);
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            background: rgba(10,10,15,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-        }
-        nav .container {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-        nav .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            color: var(--gold);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-        nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.2s;
-        }
-        nav a:hover, nav a.active { color: var(--gold); }
-
         /* HERO */
         .hero {
             padding: 80px 0 60px;
@@ -279,21 +247,54 @@
             .hero .stats { gap: 24px; }
             .arch-flow { flex-direction: column; }
         }
+    
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="container">
-        <a href="index.html" class="logo">Ghost in the Machine Labs</a>
-        <a href="arc-engine.html">ARC Engine</a>
-        <a href="e8-platform.html" class="active">E8 Platform</a>
-        <a href="papers.html">Papers</a>
-        <a href="engine.html">Engine</a>
-        <a href="council.html">Council</a>
-        <a href="cause.html">Cause</a>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
+        <div class="nav-links">
+            <a href="council.html">COUNCIL</a>
+            <a href="ontology.html">ONTOLOGY</a>
+            <a href="papers.html">PAPERS</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html">SELF-DEV</a>
+            <a href="e8-platform.html" class="active">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
+            <a href="cause.html">CAUSE</a>
+            <a href="donate.html">SUPPORT</a>
+            <a href="license.html">LICENSE</a>
+        </div>
     </div>
 </nav>
+
 
 <div class="hero">
     <div class="container">

@@ -23,8 +23,7 @@
             gap: 0.5rem;
         }
         .logo { color: #00d4ff; text-decoration: none; font-size: 1.1rem; font-weight: 700; }
-        nav { display: flex; flex-wrap: wrap; gap: 0.2rem; align-items: center; }
-        nav a { color: #888; text-decoration: none; margin-left: 1.2rem; font-size: 0.85rem; transition: color 0.2s; }
+nav a { color: #888; text-decoration: none; margin-left: 1.2rem; font-size: 0.85rem; transition: color 0.2s; }
         nav a:hover, nav a.active { color: #00d4ff; }
         .content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
         h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #fff; }
@@ -103,21 +102,59 @@
             margin-top: 4rem;
         }
         footer a { color: #00d4ff; text-decoration: none; }
+    
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
+        <div class="nav-links">
+            <a href="council.html">COUNCIL</a>
+            <a href="ontology.html">ONTOLOGY</a>
+            <a href="papers.html">PAPERS</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html" class="active">SELF-DEV</a>
+            <a href="e8-platform.html">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
+            <a href="cause.html">CAUSE</a>
+            <a href="donate.html">SUPPORT</a>
+            <a href="license.html">LICENSE</a>
+        </div>
+    </div>
+</nav>
+
+
 <header>
     <a href="index.html" class="logo">Ghost in the Machine Labs</a>
-    <nav>
-        <a href="index.html">HOME</a>
-        <a href="council.html">COUNCIL</a>
-        <a href="papers.html">PAPERS</a>
-        <a href="arc-engine.html">ARC ENGINE</a>
-        <a href="e8-platform.html">E8 PLATFORM</a>
-        <a href="self-dev.html" class="active">SELF-DEV</a>
-        <a href="cause.html">CAUSE</a>
-        <a href="donate.html">SUPPORT</a>
-    </nav>
+    
 </header>
 
 <div class="content">

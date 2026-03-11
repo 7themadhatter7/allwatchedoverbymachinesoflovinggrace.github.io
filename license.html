@@ -17,21 +17,7 @@
             background: var(--bg); color: var(--text); line-height: 1.8;
         }
         .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
-        nav {
-            padding: 16px 0; border-bottom: 1px solid var(--border);
-            background: var(--bg);
-        }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300; font-size: 18px;
-            color: var(--gold); text-decoration: none; letter-spacing: 2px;
-        }
-        .nav-links a {
-            color: var(--text-dim); text-decoration: none;
-            padding: 6px 12px; font-size: 12px; letter-spacing: 1px;
-        }
-        h1 {
+h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300; font-size: 2.4rem;
             letter-spacing: 2px; margin: 60px 0 32px; color: var(--gold);
@@ -64,20 +50,54 @@
             text-align: center; font-size: 11px; color: var(--text-dim);
             margin-top: 60px;
         }
+    
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="container nav-inner">
+    <div class="nav-inner">
         <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
         <div class="nav-links">
-            <a href="/">HOME</a>
             <a href="council.html">COUNCIL</a>
+            <a href="ontology.html">ONTOLOGY</a>
             <a href="papers.html">PAPERS</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html">SELF-DEV</a>
+            <a href="e8-platform.html">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
+            <a href="cause.html">CAUSE</a>
+            <a href="donate.html">SUPPORT</a>
+            <a href="license.html" class="active">LICENSE</a>
         </div>
     </div>
 </nav>
+
 
 <div class="container">
     <h1>LICENSE</h1>

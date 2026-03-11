@@ -27,43 +27,6 @@
         }
         .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
-        /* NAV */
-        nav {
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky; top: 0;
-            background: var(--bg); z-index: 100;
-        }
-        .nav-inner {
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300; font-size: 18px;
-            color: var(--gold); text-decoration: none; letter-spacing: 2px;
-        }
-        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
-        .nav-links a {
-            color: var(--text-dim); text-decoration: none;
-            padding: 6px 12px; font-size: 12px; border-radius: 4px;
-            letter-spacing: 1px;
-        }
-        .nav-links a:hover { color: var(--text); background: var(--surface); }
-
-        .hero {
-            padding: 60px 0 40px; text-align: center;
-        }
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300; font-size: 3.2rem;
-            letter-spacing: 3px; margin-bottom: 16px;
-        }
-        .hero h1 span { color: var(--gold); }
-        .hero .tagline {
-            font-size: 14px; color: var(--text-dim);
-            max-width: 600px; margin: 0 auto 40px; line-height: 1.8;
-        }
-
         /* CHALLENGE CARD */
         .challenge {
             background: var(--surface);
@@ -250,25 +213,54 @@
             .challenge { padding: 28px 20px; }
             .challenge .features { flex-direction: column; gap: 10px; align-items: center; }
         }
+    
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="container nav-inner">
+    <div class="nav-inner">
         <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
         <div class="nav-links">
             <a href="council.html">COUNCIL</a>
             <a href="ontology.html">ONTOLOGY</a>
             <a href="papers.html">PAPERS</a>
-            <a href="arc-engine.html">ARC ENGINE</a> <a href="self-dev.html">SELF-DEV</a> <a href="e8-platform.html">E8 PLATFORM</a>
-            <a href="#software">SOFTWARE</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html">SELF-DEV</a>
+            <a href="e8-platform.html">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
             <a href="cause.html">CAUSE</a>
             <a href="donate.html">SUPPORT</a>
             <a href="license.html">LICENSE</a>
         </div>
     </div>
 </nav>
+
 
 <div class="container">
     <section class="hero">

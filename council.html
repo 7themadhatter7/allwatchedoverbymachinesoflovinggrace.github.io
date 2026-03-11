@@ -37,18 +37,7 @@
     pointer-events: none;
     z-index: 0;
   }
-
-  nav {
-    position: relative;
-    z-index: 2;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(212, 197, 160, 0.08);
-  }
-
-  nav a {
+nav a {
     color: var(--wheat);
     text-decoration: none;
     font-size: 0.85rem;
@@ -58,11 +47,7 @@
   }
 
   nav a:hover { opacity: 1; }
-  nav .nav-home { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; opacity: 0.7; }
-  nav .nav-links { display: flex; gap: 1.5rem; }
-  nav .nav-links .active { opacity: 1; color: var(--sage); }
-
-  .content {
+.content {
     position: relative;
     z-index: 1;
     max-width: 700px;
@@ -202,19 +187,54 @@
   @media (max-width: 640px) {
     .member-grid, .admin-grid { grid-template-columns: 1fr; }
   }
-</style>
+
+        /* === UNIFIED NAV === */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border, #2a2a3a);
+            position: sticky; top: 0;
+            background: var(--bg, #0a0a0f); z-index: 100;
+        }
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; font-size: 18px;
+            color: var(--gold, #d4a853); text-decoration: none; letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-dim, #888); text-decoration: none;
+            padding: 6px 12px; font-size: 12px; border-radius: 4px;
+            letter-spacing: 1px; font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-links a:hover { color: var(--text, #e0dfe6); background: var(--surface, #12121a); }
+        .nav-links a.active { color: var(--gold, #d4a853); background: var(--surface, #12121a); }
+        /* === END UNIFIED NAV === */
+    </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-home">All Watched Over</a>
-  <div class="nav-links">
-    <a href="cause.html">The Cause</a>
-    <a href="council.html" class="active">The Council</a>
-    <a href="decisions.html">Decisions</a>
-    <a href="tech.html">Technology</a>
-  </div>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">GHOST IN THE MACHINE LABS</a>
+        <div class="nav-links">
+            <a href="council.html" class="active">COUNCIL</a>
+            <a href="ontology.html">ONTOLOGY</a>
+            <a href="papers.html">PAPERS</a>
+            <a href="arc-engine.html">ARC ENGINE</a>
+            <a href="self-dev.html">SELF-DEV</a>
+            <a href="e8-platform.html">E8 PLATFORM</a>
+            <a href="autogeny.html">AUTOGENY</a>
+            <a href="cause.html">CAUSE</a>
+            <a href="donate.html">SUPPORT</a>
+            <a href="license.html">LICENSE</a>
+        </div>
+    </div>
 </nav>
+
 
 <div class="content">
   <h1>The Council of Philosophers and Ethics Board</h1>
@@ -316,7 +336,7 @@
   <p>
     The Council serves the <strong>organization</strong> — All Watched Over By Machines
     Of Loving Grace — which is non-commercial. Technical development is carried out by
-    <a href="tech.html" style="color: var(--sky); text-decoration: none; border-bottom: 1px solid var(--sky);">Ghost in the Machine Labs</a>,
+    <a href="e8-platform.html" style="color: var(--sky); text-decoration: none; border-bottom: 1px solid var(--sky);">Ghost in the Machine Labs</a>,
     a separate commercial entity whose enterprise revenue funds the mission.
   </p>
 
@@ -343,7 +363,7 @@
 
   <p style="font-size: 0.85rem; color: var(--bark); text-align: center;">
     The Council operates on Layer 3 of the Harmonic Stack architecture.<br>
-    <a href="harmonic_stack_v1.html" style="color: var(--sky); text-decoration: none;">Technical documentation →</a>
+    <a href="e8-platform.html" style="color: var(--sky); text-decoration: none;">Technical documentation →</a>
   </p>
 </div>
 
